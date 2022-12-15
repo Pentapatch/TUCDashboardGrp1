@@ -33,10 +33,12 @@
             this.weatherWidghet1 = new TUCDashboardGrp1.WeatherWidghet();
             this.feedWidget1 = new TUCDashboardGrp1.FeedWidget();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.traficWidget1 = new TUCDashboardGrp1.TraficWidget();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.groupRoomsWidget1 = new TUCDashboardGrp1.GroupRoomsWidget();
             this.lecturesWidget1 = new TUCDashboardGrp1.LecturesWidget();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.traficWidget1 = new TUCDashboardGrp1.TraficWidget();
+            this.clockWidget1 = new TUCDashboardGrp1.View.ClockWidget();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -53,6 +55,10 @@
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
+            this.splitContainer5.Panel1.SuspendLayout();
+            this.splitContainer5.Panel2.SuspendLayout();
+            this.splitContainer5.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -116,7 +122,7 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.traficWidget1);
+            this.splitContainer2.Panel1.Controls.Add(this.splitContainer5);
             // 
             // splitContainer2.Panel2
             // 
@@ -124,14 +130,6 @@
             this.splitContainer2.Size = new System.Drawing.Size(849, 665);
             this.splitContainer2.SplitterDistance = 284;
             this.splitContainer2.TabIndex = 0;
-            // 
-            // traficWidget1
-            // 
-            this.traficWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.traficWidget1.Location = new System.Drawing.Point(0, 0);
-            this.traficWidget1.Name = "traficWidget1";
-            this.traficWidget1.Size = new System.Drawing.Size(849, 284);
-            this.traficWidget1.TabIndex = 0;
             // 
             // splitContainer4
             // 
@@ -166,6 +164,39 @@
             this.lecturesWidget1.Size = new System.Drawing.Size(562, 377);
             this.lecturesWidget1.TabIndex = 0;
             // 
+            // splitContainer5
+            // 
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer5.Name = "splitContainer5";
+            // 
+            // splitContainer5.Panel1
+            // 
+            this.splitContainer5.Panel1.Controls.Add(this.traficWidget1);
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.clockWidget1);
+            this.splitContainer5.Size = new System.Drawing.Size(849, 284);
+            this.splitContainer5.SplitterDistance = 283;
+            this.splitContainer5.TabIndex = 0;
+            // 
+            // traficWidget1
+            // 
+            this.traficWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.traficWidget1.Location = new System.Drawing.Point(0, 0);
+            this.traficWidget1.Name = "traficWidget1";
+            this.traficWidget1.Size = new System.Drawing.Size(283, 284);
+            this.traficWidget1.TabIndex = 1;
+            // 
+            // clockWidget1
+            // 
+            this.clockWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clockWidget1.Location = new System.Drawing.Point(0, 0);
+            this.clockWidget1.Name = "clockWidget1";
+            this.clockWidget1.Size = new System.Drawing.Size(562, 284);
+            this.clockWidget1.TabIndex = 0;
+            // 
             // DashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -194,6 +225,10 @@
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
+            this.splitContainer5.Panel1.ResumeLayout(false);
+            this.splitContainer5.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
+            this.splitContainer5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -205,9 +240,11 @@
         private SplitContainer splitContainer2;
         private SplitContainer splitContainer4;
         private WeatherWidghet weatherWidghet1;
-        private TraficWidget traficWidget1;
         private GroupRoomsWidget groupRoomsWidget1;
         private LecturesWidget lecturesWidget1;
         private FeedWidget feedWidget1;
+        private SplitContainer splitContainer5;
+        private TraficWidget traficWidget1;
+        private View.ClockWidget clockWidget1;
     }
 }
