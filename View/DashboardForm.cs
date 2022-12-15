@@ -1,4 +1,6 @@
-﻿namespace TUCDashboardGrp1
+﻿using TUCDashboardGrp1.Controller;
+
+namespace TUCDashboardGrp1
 {
     public partial class DashboardForm : Form
     {
@@ -8,7 +10,7 @@
         public DashboardForm()
         {
             InitializeComponent();
-            
+            ApiHelper.InitializeClient();
         }
 
         private void DashboardForm_KeyDown(object sender, KeyEventArgs e)
