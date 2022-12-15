@@ -16,5 +16,11 @@ namespace TUCDashboardGrp1
         {
             InitializeComponent();
         }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            string password = "abc1234";
+        }
     }
+
 }
