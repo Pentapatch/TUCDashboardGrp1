@@ -29,13 +29,13 @@ namespace TUCDashboardGrp1.Controller
              *  datorn > värden
              *  Get Bookings for varje Object 
              *  värde 1,2,3 = LIST<obj1.värden>
-             **/
+             */
              
 
 
 
             // Populate with database values
-            //booking.Room = * // Parse the Room Value from the ARG response
+            // booking.Room = * // Parse the Room Value from the ARG response
             return booking;
         }
 
