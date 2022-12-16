@@ -63,6 +63,7 @@
             // 
             // splitContainer1
             // 
+            this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
@@ -74,8 +75,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1279, 665);
-            this.splitContainer1.SplitterDistance = 426;
+            this.splitContainer1.Size = new System.Drawing.Size(1377, 665);
+            this.splitContainer1.SplitterDistance = 458;
             this.splitContainer1.TabIndex = 1;
             // 
             // splitContainer3
@@ -92,7 +93,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.feedWidget1);
-            this.splitContainer3.Size = new System.Drawing.Size(426, 665);
+            this.splitContainer3.Size = new System.Drawing.Size(458, 665);
             this.splitContainer3.SplitterDistance = 284;
             this.splitContainer3.TabIndex = 1;
             // 
@@ -101,7 +102,7 @@
             this.weatherWidghet1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.weatherWidghet1.Location = new System.Drawing.Point(0, 0);
             this.weatherWidghet1.Name = "weatherWidghet1";
-            this.weatherWidghet1.Size = new System.Drawing.Size(426, 284);
+            this.weatherWidghet1.Size = new System.Drawing.Size(458, 284);
             this.weatherWidghet1.TabIndex = 0;
             // 
             // feedWidget1
@@ -110,7 +111,7 @@
             this.feedWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.feedWidget1.Location = new System.Drawing.Point(0, 0);
             this.feedWidget1.Name = "feedWidget1";
-            this.feedWidget1.Size = new System.Drawing.Size(426, 377);
+            this.feedWidget1.Size = new System.Drawing.Size(458, 377);
             this.feedWidget1.TabIndex = 0;
             // 
             // splitContainer2
@@ -127,10 +128,20 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer2.Size = new System.Drawing.Size(849, 665);
+            this.splitContainer2.Size = new System.Drawing.Size(915, 665);
             this.splitContainer2.SplitterDistance = 284;
             this.splitContainer2.TabIndex = 0;
             // 
+
+            // traficWidget1
+            // 
+            this.traficWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.traficWidget1.Location = new System.Drawing.Point(0, 0);
+            this.traficWidget1.Name = "traficWidget1";
+            this.traficWidget1.Size = new System.Drawing.Size(915, 284);
+            this.traficWidget1.TabIndex = 0;
+            // 
+
             // splitContainer4
             // 
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -144,8 +155,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.lecturesWidget1);
-            this.splitContainer4.Size = new System.Drawing.Size(849, 377);
-            this.splitContainer4.SplitterDistance = 283;
+            this.splitContainer4.Size = new System.Drawing.Size(915, 377);
+            this.splitContainer4.SplitterDistance = 305;
             this.splitContainer4.TabIndex = 0;
             // 
             // groupRoomsWidget1
@@ -153,7 +164,7 @@
             this.groupRoomsWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupRoomsWidget1.Location = new System.Drawing.Point(0, 0);
             this.groupRoomsWidget1.Name = "groupRoomsWidget1";
-            this.groupRoomsWidget1.Size = new System.Drawing.Size(283, 377);
+            this.groupRoomsWidget1.Size = new System.Drawing.Size(305, 377);
             this.groupRoomsWidget1.TabIndex = 0;
             // 
             // lecturesWidget1
@@ -161,7 +172,7 @@
             this.lecturesWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lecturesWidget1.Location = new System.Drawing.Point(0, 0);
             this.lecturesWidget1.Name = "lecturesWidget1";
-            this.lecturesWidget1.Size = new System.Drawing.Size(562, 377);
+            this.lecturesWidget1.Size = new System.Drawing.Size(606, 377);
             this.lecturesWidget1.TabIndex = 0;
             // 
             // splitContainer5
@@ -201,7 +212,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1279, 665);
+            this.ClientSize = new System.Drawing.Size(1377, 665);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DashboardForm";

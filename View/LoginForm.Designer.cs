@@ -33,7 +33,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(152, 112);
+            this.textBox1.Location = new System.Drawing.Point(214, 222);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(125, 27);
             this.textBox1.TabIndex = 0;
@@ -47,6 +47,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
