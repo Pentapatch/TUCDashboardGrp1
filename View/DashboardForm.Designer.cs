@@ -217,7 +217,6 @@
             this.Name = "DashboardForm";
             this.Text = "DashboardForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Shown += new System.EventHandler(this.DashboardForm_Shown);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DashboardForm_KeyDown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

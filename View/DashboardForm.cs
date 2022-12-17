@@ -16,6 +16,7 @@ namespace TUCDashboardGrp1
         private readonly AdminTools admin = new();
         private bool isMouseDown = false;
         private bool isDraggingWidget = false;
+        private List<Widget> widgets = new();
 
         #endregion
 
@@ -44,8 +45,8 @@ namespace TUCDashboardGrp1
 
         private void InitializeWidgetControl()
         {
-            // Subscribe to widget events
-            foreach (Widget widget in GetWidgets(splitContainer1))
+            // Subscribe to target events
+            foreach (Widget widget in GetControlsOfType<Widget>(splitContainer1))
             {
                 widget.KeyDown += Widget_KeyDown;
                 widget.MouseDown += Widget_MouseDown;
@@ -56,22 +57,22 @@ namespace TUCDashboardGrp1
 
         private void Widget_MouseMove(object? sender, MouseEventArgs e)
         {
-            // Set a flag that indicates if a widget is being dragged
+            // Set a flag that indicates if a target is being dragged
             isDraggingWidget = isMouseDown;
 
-            // Check if dragging a widget
+            // Check if dragging a target
             if (isDraggingWidget)
             {
                 // Change the cursor to a hand
                 if (Cursor != Cursors.Hand) Cursor = Cursors.Hand;
 
-                // Try to get the widget that is located below the cursor
-                Widget? target = GetWidgetAtLocation(TranslateToClientCoordinates(e.Location, sender), GetWidgets(splitContainer1));
+                // Try to get the target that is located below the cursor
+                Widget? target = GetWidgetAtLocation(TranslateToClientCoordinates(e.Location, sender), widgets);
 
-                // Reset all widget backgrounds
+                // Reset all target backgrounds
                 ResetWidgets();
 
-                // Highlight the widget below the cursor (if found)
+                // Highlight the target below the cursor (if found)
                 if (target is Widget widget && widget != sender)
                     widget.IsHighlighted = true;
             }
@@ -79,7 +80,7 @@ namespace TUCDashboardGrp1
 
         private void ResetWidgets()
         {
-            foreach (Widget widget in GetWidgets(splitContainer1))
+            foreach (Widget widget in widgets)
             {
                 // Reset the IsHighlighted property
                 widget.IsHighlighted = false;
@@ -88,16 +89,16 @@ namespace TUCDashboardGrp1
 
         private void Widget_MouseUp(object? sender, MouseEventArgs e)
         {
-            // Are we dragging a widget?
+            // Are we dragging a target?
             if (isDraggingWidget)
             {
                 if (sender is Widget widget) // This check if so that we get access to the Widget members.
-                                                  // This method should only be called by Widgets
+                                             // This method should only be called by Widgets
                 {
-                    // Try to find the widget that is located below the mouse cursor
-                    Widget? target = GetWidgetAtLocation(TranslateToClientCoordinates(e.Location, sender), GetWidgets(splitContainer1));
+                    // Try to find the target that is located below the mouse cursor
+                    Widget? target = GetWidgetAtLocation(TranslateToClientCoordinates(e.Location, sender), widgets);
 
-                    // If a widget was found, swap places with the dragged widget
+                    // If a target was found, swap places with the dragged target
                     if (target != null)
                         SwapWidgets(widget, target);
                 }
@@ -110,9 +111,9 @@ namespace TUCDashboardGrp1
             ResetWidgets();
         }
 
-        /// <summary>Translate from local widget coordinates to client coordinates.</summary>
+        /// <summary>Translate from local target coordinates to client coordinates.</summary>
         /// <param name="location">The local coordinates to translate.</param>
-        /// <param name="sender">The widget that contains these coordinates.</param>
+        /// <param name="sender">The target that contains these coordinates.</param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
         private Point TranslateToClientCoordinates(Point location, object? sender)
@@ -123,29 +124,36 @@ namespace TUCDashboardGrp1
             throw new Exception("The sender must be a Widget.");
         }
 
-        private void Widget_MouseDown(object? sender, MouseEventArgs e) => isMouseDown = true;
+        private void Widget_MouseDown(object? sender, MouseEventArgs e)
+        {
+            isMouseDown = true; // Set the flag that indicates that the mouse is currently down
+
+            // Get a list of all of the widgets that are added to this form, and store it in a variable
+            // (for optimization purposes)
+            widgets = GetControlsOfType<Widget>(splitContainer1);
+        }
 
         private void Widget_KeyDown(object? sender, KeyEventArgs e)
         {
             if (sender != null) DashboardForm_KeyDown(sender, e);
         }
 
-        /// <summary>Get all of the widgets that is added to this form.</summary>
+        /// <summary>Get a list of all of the controls of the specified type that is contained within this form.</summary>
         /// <param name="control">The control to start the recursive search from.</param>
-        /// <returns></returns>
-        private static List<Widget> GetWidgets(Control control) => GetWidgets(control, new());
+        /// <returns>A list of type T.</returns>
+        private static List<T> GetControlsOfType<T>(Control control) => GetControlsOfType<T>(control, new());
 
-        private static List<Widget> GetWidgets(Control control, List<Widget> result)
+        private static List<T> GetControlsOfType<T>(Control control, List<T> result)
         {
             // Loop through each control within the current control
             foreach (Control current in control.Controls)
             {
-                // If the current control is a widget, add it to the result
+                // If the current control is of the target type, add it to the result
                 // Otherwise recursivelly call this method to search all of the current controls children
-                if (current is Widget widget)
-                    result.Add(widget);
+                if (current is T target)
+                    result.Add(target);
                 else
-                    GetWidgets(current, result); // Do not return from this method
+                    GetControlsOfType<T>(current, result); // Do not return from this method
             }
 
             // Return the resulting list
@@ -153,13 +161,13 @@ namespace TUCDashboardGrp1
         }
 
         /// <summary>Swap the place of two widgets.</summary>
-        /// <param name="widgetA">The first widget to swap.</param>
-        /// <param name="widgetB">The second widget to swap.</param>
-        private static void SwapWidgets(Widget widgetA, Widget widgetB) => 
+        /// <param name="widgetA">The first target to swap.</param>
+        /// <param name="widgetB">The second target to swap.</param>
+        private static void SwapWidgets(Widget widgetA, Widget widgetB) =>
             (widgetA.Parent, widgetB.Parent) = (widgetB.Parent, widgetA.Parent);
 
-        /// <summary>Return the widget that is located within the specified client location, or null if none was found.</summary>
-        /// <param name="location">The location (in client coordinates) to find the widget.</param>
+        /// <summary>Return the target that is located within the specified client location, or null if none was found.</summary>
+        /// <param name="location">The location (in client coordinates) to find the target.</param>
         /// <param name="widgets">Provide a list of all widgets that is contained within the form.</param>
         /// <returns></returns>
         private Widget? GetWidgetAtLocation(Point location, List<Widget> widgets)
