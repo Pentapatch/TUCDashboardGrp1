@@ -5,7 +5,6 @@ namespace TUCDashboardGrp1
     public partial class DashboardForm : Form
     {
         private readonly LoginForm login = new();
-        private readonly AdminTools admin = new();
         private bool isMouseDown = false;
         private bool isDraggingWidget = false;
 
@@ -176,22 +175,6 @@ namespace TUCDashboardGrp1
 
         private void ShowLogin() => login.ShowDialog();
 
-        private void ShowAdminTools()
-        {
-            // Emelie:
-            // I den här metoden borde du kunna skriva logiken som tittar ifall användaren är auktoriserad att
-            // visa admin-dialogen. /Dennis
-
-            // Någonting i stil med (pseudo-kod):
-
-            // ShowLogin()
-            // If login.Username == AdminUsername And login.Password == AdminPassword Then
-            //      Admin.ShowDialog()
-            // Else
-            //      NotifyUser()
-            // End if
-
-            admin.ShowDialog();
-        }
+    
     }
 }
