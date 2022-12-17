@@ -107,7 +107,6 @@
             // 
             // feedWidget1
             // 
-            this.feedWidget1.BackColor = System.Drawing.Color.Green;
             this.feedWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.feedWidget1.Location = new System.Drawing.Point(0, 0);
             this.feedWidget1.Name = "feedWidget1";
