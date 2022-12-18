@@ -8,16 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TUCDashboardGrp1.Controller;
+using TUCDashboardGrp1.Properties;
 
 namespace TUCDashboardGrp1
 {
-    /*
-        Få vädersymbolerna att funka i picturebox1
-        Förklara och ge instruktioner för framtida förändringar
-        Kommentera kod
-        Namnge och berätta vad filerna gör
-     */
-
     public partial class WeatherWidghet : UserControl
     {
         public WeatherWidghet()
@@ -29,42 +23,38 @@ namespace TUCDashboardGrp1
         {
             var weatherInfo = await WeatherProcessor.LoadWeather();
             label2.Text = weatherInfo.Item1;
-            pictureBox1.ImageLocation = @"..\resources\WeatherSymbols\1.png"; // Doesnt work, fix it!!
-
+            pictureBox1.Image = GetWeatherSymbol(weatherInfo.Item2);
         }
-        public static string SetWeatherSymbol(int index) 
+
+        private static Image GetWeatherSymbol(int index) => index switch
         {
-            return index switch
-            {
-                1 => "../resources/WeatherSymbols/1.png",
-                2 => "../resources/WeatherSymbols/2.png",
-                3 => "../resources/WeatherSymbols/3.png",
-                4 => "../resources/WeatherSymbols/4.png",
-                5 => "../resources/WeatherSymbols/5.png",
-                6 => "../resources/WeatherSymbols/6.png",
-                7 => "../resources/WeatherSymbols/7.png",
-                8 => "../resources/WeatherSymbols/1.png",
-                9 => "../resources/WeatherSymbols/1.png",
-                10 => "../resources/WeatherSymbols/1.png",
-                11 => "../resources/WeatherSymbols/1.png",
-                12 => "../resources/WeatherSymbols/1.png",
-                13 => "../resources/WeatherSymbols/1.png",
-                14 => "../resources/WeatherSymbols/1.png",
-                15 => "../resources/WeatherSymbols/1.png",
-                16 => "../resources/WeatherSymbols/1.png",
-                17=> "../resources/WeatherSymbols/1.png",
-                18 => "../resources/WeatherSymbols/1.png",
-                19 => "../resources/WeatherSymbols/1.png",
-                20 => "../resources/WeatherSymbols/1.png",
-                21 => "../resources/WeatherSymbols/1.png",
-                22 => "../resources/WeatherSymbols/1.png",
-                23 => "../resources/WeatherSymbols/1.png",
-                24 => "../resources/WeatherSymbols/1.png",
-                25 => "../resources/WeatherSymbols/25.png",
-                26 => "../resources/WeatherSymbols/26.png",
-                27 => "../resources/WeatherSymbols/27.png",
-
-            };
-        }
+            1 => Resources._1,
+            2 => Resources._2,
+            3 => Resources._3,
+            4 => Resources._4,
+            5 => Resources._5,
+            6 => Resources._6,
+            7 => Resources._7,
+            8 => Resources._8,
+            9 => Resources._9,
+            10 => Resources._10,
+            11 => Resources._11,
+            12 => Resources._12,
+            13 => Resources._13,
+            14 => Resources._14,
+            15 => Resources._15,
+            16 => Resources._16,
+            17 => Resources._17,
+            18 => Resources._18,
+            19 => Resources._19,
+            20 => Resources._20,
+            21 => Resources._21,
+            22 => Resources._22,
+            23 => Resources._23,
+            24 => Resources._24,
+            25 => Resources._25,
+            26 => Resources._26,
+            _ => Resources._27,
+        };
     }
 }

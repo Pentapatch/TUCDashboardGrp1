@@ -9,16 +9,16 @@ namespace TUCDashboardGrp1.Controller
     // Since the SMHI-api return data in multiple layers we need one class to dig through each layer.
     public class WeatherResultModel
     {
-        public WeatherModel[] TimeSeries { get; set; }
+        public WeatherParameters[] TimeSeries { get; set; } = Array.Empty<WeatherParameters>();
     }
     
-    public class WeatherModel
+    public class WeatherParameters
     {
-        public WeatherArray[] Parameters { get; set; }
+        public WeatherValues[] Parameters { get; set; } = Array.Empty<WeatherValues>();
     }
 
-    public class WeatherArray
+    public class WeatherValues
     {
-        public string[] Values { get; set; }
+        public string[] Values { get; set; } = Array.Empty<string>();
     }
 }
