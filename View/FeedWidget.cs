@@ -7,20 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TUCDashboardGrp1.Model;
 
 namespace TUCDashboardGrp1
 {
-    public partial class FeedWidget : UserControl
+    public partial class FeedWidget : Widget
     {
         public FeedWidget()
         {
             InitializeComponent(); // <-- Don't touch
-            test(); // <-- your code here
-        }
-
-        private void test()
-        {
-            BackColor = Color.Green;
         }
 
     }

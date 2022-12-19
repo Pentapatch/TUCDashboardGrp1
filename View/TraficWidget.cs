@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TUCDashboardGrp1.Model;
 
 namespace TUCDashboardGrp1
 {
-    public partial class TraficWidget : UserControl
+    public partial class TraficWidget : Widget
     {
         public TraficWidget()
         {
