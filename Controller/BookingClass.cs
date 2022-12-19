@@ -8,6 +8,7 @@ namespace TUCDashboardGrp1.Controller
 {
     internal class BookingClass
     {
+        public Guid ID { get; set; }
         public string Room { get; set; }
         public string Name { get; set; }
         public string Date { get; set; }
