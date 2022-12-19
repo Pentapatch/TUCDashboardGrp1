@@ -114,7 +114,7 @@ namespace TUCDashboardGrp1.Model
 
         private void Widget_Load(object? sender, EventArgs e)
         {
-            // Update the BackColor property for all controls that this widget contains
+            // UpdateSlide the BackColor property for all controls that this widget contains
             UpdateColors();
         }
 

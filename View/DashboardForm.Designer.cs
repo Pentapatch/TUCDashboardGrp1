@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            TUCDashboardGrp1.Model.FeedData feedData1 = new TUCDashboardGrp1.Model.FeedData();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.weatherWidghet1 = new TUCDashboardGrp1.WeatherWidghet();
             this.feedWidget1 = new TUCDashboardGrp1.FeedWidget();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.groupRoomsWidget1 = new TUCDashboardGrp1.GroupRoomsWidget();
-            this.lecturesWidget1 = new TUCDashboardGrp1.LecturesWidget();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.traficWidget1 = new TUCDashboardGrp1.TraficWidget();
             this.clockWidget1 = new TUCDashboardGrp1.View.ClockWidget();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.groupRoomsWidget1 = new TUCDashboardGrp1.GroupRoomsWidget();
+            this.lecturesWidget1 = new TUCDashboardGrp1.LecturesWidget();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -51,14 +52,14 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
-            this.splitContainer4.Panel1.SuspendLayout();
-            this.splitContainer4.Panel2.SuspendLayout();
-            this.splitContainer4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
             this.splitContainer5.Panel1.SuspendLayout();
             this.splitContainer5.Panel2.SuspendLayout();
             this.splitContainer5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -99,7 +100,12 @@
             // 
             // weatherWidghet1
             // 
+            this.weatherWidghet1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.weatherWidghet1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.weatherWidghet1.BorderRadius = 50;
+            this.weatherWidghet1.BorderWidth = 2;
             this.weatherWidghet1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.weatherWidghet1.IsHighlighted = false;
             this.weatherWidghet1.Location = new System.Drawing.Point(0, 0);
             this.weatherWidghet1.Name = "weatherWidghet1";
             this.weatherWidghet1.Size = new System.Drawing.Size(458, 284);
@@ -107,7 +113,15 @@
             // 
             // feedWidget1
             // 
+            this.feedWidget1.BackgroundColor = System.Drawing.Color.White;
+            this.feedWidget1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.feedWidget1.BorderRadius = 50;
+            this.feedWidget1.BorderWidth = 2;
+            feedData1.Content = "test test";
+            feedData1.Header = "Oscar was here";
+            feedData1.Image = null;
             this.feedWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.feedWidget1.IsHighlighted = false;
             this.feedWidget1.Location = new System.Drawing.Point(0, 0);
             this.feedWidget1.Name = "feedWidget1";
             this.feedWidget1.Size = new System.Drawing.Size(458, 377);
@@ -131,16 +145,50 @@
             this.splitContainer2.SplitterDistance = 284;
             this.splitContainer2.TabIndex = 0;
             // 
-
+            // splitContainer5
+            // 
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer5.Name = "splitContainer5";
+            // 
+            // splitContainer5.Panel1
+            // 
+            this.splitContainer5.Panel1.Controls.Add(this.traficWidget1);
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.clockWidget1);
+            this.splitContainer5.Size = new System.Drawing.Size(915, 284);
+            this.splitContainer5.SplitterDistance = 305;
+            this.splitContainer5.TabIndex = 0;
+            // 
             // traficWidget1
             // 
+            this.traficWidget1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.traficWidget1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.traficWidget1.BorderRadius = 50;
+            this.traficWidget1.BorderWidth = 2;
             this.traficWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.traficWidget1.IsHighlighted = false;
             this.traficWidget1.Location = new System.Drawing.Point(0, 0);
             this.traficWidget1.Name = "traficWidget1";
-            this.traficWidget1.Size = new System.Drawing.Size(915, 284);
-            this.traficWidget1.TabIndex = 0;
+            this.traficWidget1.Size = new System.Drawing.Size(305, 284);
+            this.traficWidget1.TabIndex = 1;
             // 
-
+            // clockWidget1
+            // 
+            this.clockWidget1.BackColor = System.Drawing.SystemColors.Info;
+            this.clockWidget1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.clockWidget1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.clockWidget1.BorderRadius = 50;
+            this.clockWidget1.BorderWidth = 2;
+            this.clockWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clockWidget1.IsHighlighted = false;
+            this.clockWidget1.Location = new System.Drawing.Point(0, 0);
+            this.clockWidget1.Name = "clockWidget1";
+            this.clockWidget1.Size = new System.Drawing.Size(606, 284);
+            this.clockWidget1.TabIndex = 0;
+            // 
             // splitContainer4
             // 
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -160,7 +208,12 @@
             // 
             // groupRoomsWidget1
             // 
+            this.groupRoomsWidget1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.groupRoomsWidget1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.groupRoomsWidget1.BorderRadius = 50;
+            this.groupRoomsWidget1.BorderWidth = 2;
             this.groupRoomsWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupRoomsWidget1.IsHighlighted = false;
             this.groupRoomsWidget1.Location = new System.Drawing.Point(0, 0);
             this.groupRoomsWidget1.Name = "groupRoomsWidget1";
             this.groupRoomsWidget1.Size = new System.Drawing.Size(305, 377);
@@ -168,44 +221,16 @@
             // 
             // lecturesWidget1
             // 
+            this.lecturesWidget1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.lecturesWidget1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.lecturesWidget1.BorderRadius = 50;
+            this.lecturesWidget1.BorderWidth = 2;
             this.lecturesWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lecturesWidget1.IsHighlighted = false;
             this.lecturesWidget1.Location = new System.Drawing.Point(0, 0);
             this.lecturesWidget1.Name = "lecturesWidget1";
             this.lecturesWidget1.Size = new System.Drawing.Size(606, 377);
             this.lecturesWidget1.TabIndex = 0;
-            // 
-            // splitContainer5
-            // 
-            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer5.Name = "splitContainer5";
-            // 
-            // splitContainer5.Panel1
-            // 
-            this.splitContainer5.Panel1.Controls.Add(this.traficWidget1);
-            // 
-            // splitContainer5.Panel2
-            // 
-            this.splitContainer5.Panel2.Controls.Add(this.clockWidget1);
-            this.splitContainer5.Size = new System.Drawing.Size(849, 284);
-            this.splitContainer5.SplitterDistance = 283;
-            this.splitContainer5.TabIndex = 0;
-            // 
-            // traficWidget1
-            // 
-            this.traficWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.traficWidget1.Location = new System.Drawing.Point(0, 0);
-            this.traficWidget1.Name = "traficWidget1";
-            this.traficWidget1.Size = new System.Drawing.Size(283, 284);
-            this.traficWidget1.TabIndex = 1;
-            // 
-            // clockWidget1
-            // 
-            this.clockWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clockWidget1.Location = new System.Drawing.Point(0, 0);
-            this.clockWidget1.Name = "clockWidget1";
-            this.clockWidget1.Size = new System.Drawing.Size(562, 284);
-            this.clockWidget1.TabIndex = 0;
             // 
             // DashboardForm
             // 
@@ -230,14 +255,14 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.splitContainer4.Panel1.ResumeLayout(false);
-            this.splitContainer4.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
-            this.splitContainer4.ResumeLayout(false);
             this.splitContainer5.Panel1.ResumeLayout(false);
             this.splitContainer5.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
             this.splitContainer5.ResumeLayout(false);
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

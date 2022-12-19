@@ -22,9 +22,12 @@ namespace TUCDashboardGrp1
 
         private async void WeatherWidghet_Load(object sender, EventArgs e)
         {
-            var weatherInfo = await WeatherProcessor.LoadWeather();
-            label2.Text = weatherInfo.Item1;
-            pictureBox1.Image = GetWeatherSymbol(weatherInfo.Item2);
+            if (ApiHelper.IsInitialized)
+            {
+                var weatherInfo = await WeatherProcessor.LoadWeather();
+                label2.Text = weatherInfo.Item1;
+                pictureBox1.Image = GetWeatherSymbol(weatherInfo.Item2);
+            }
         }
 
         private static Image GetWeatherSymbol(int index) => index switch
