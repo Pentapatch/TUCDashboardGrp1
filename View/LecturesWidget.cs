@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TUCDashboardGrp1.Controller;
 using TUCDashboardGrp1.Model;
 
 namespace TUCDashboardGrp1
@@ -16,7 +18,15 @@ namespace TUCDashboardGrp1
         public LecturesWidget()
         {
             InitializeComponent();
+
+           
+
+
+
         }
+
+        // x <- GetBookings();
+
 
     }
 }
