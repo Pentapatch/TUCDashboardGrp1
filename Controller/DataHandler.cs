@@ -18,6 +18,7 @@ namespace TUCDashboardGrp1.Controller
         /// </summary>
         /// <returns></returns>
 
+        // List here! 
         
 
         public BookingClass CreateBooking()   // Arg = Database response
@@ -30,9 +31,6 @@ namespace TUCDashboardGrp1.Controller
              *  Get Bookings for varje Object 
              *  värde 1,2,3 = LIST<obj1.värden>
              */
-             
-
-
 
             // Populate with database values
             // booking.Room = * // Parse the Room Value from the ARG response
@@ -41,6 +39,7 @@ namespace TUCDashboardGrp1.Controller
 
         public List<BookingClass> GetBookings()
         {
+
             List<BookingClass> bookings = new();
             // CreateBooking for each element in the database
             return bookings;
@@ -55,8 +54,6 @@ namespace TUCDashboardGrp1.Controller
         //}
 
     }
-
-
    
 
 }
