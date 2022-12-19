@@ -27,9 +27,24 @@ namespace TUCDashboardGrp1.View
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            label1.Text = DateTime.Now.ToLongTimeString();
+            var currentTime = DateTime.Now;
 
-            label2.Text = DateTime.Now.ToLongDateString();
+            label_time.Text = $"{currentTime.Hour.ToString().PadLeft(2, '0')}:{currentTime.Minute.ToString().PadLeft(2, '0')}";
+
+            //label_date.Text = DateTime.Now.ToLongDateString();
+            label_date.Text = $"{GetDayOfWeek(currentTime.DayOfWeek)} {currentTime.Day}:{(currentTime.Day <= 2 ? "a" : "e")}";
         }
+
+        private string GetDayOfWeek(DayOfWeek value) => value switch
+        {
+            DayOfWeek.Monday => "Måndag",
+            DayOfWeek.Tuesday => "Tisdag",
+            DayOfWeek.Wednesday => "Onsdag",
+            DayOfWeek.Thursday => "Torsdag",
+            DayOfWeek.Friday => "Fredag",
+            DayOfWeek.Saturday => "Lördag",
+            _ => "Söndag",
+        };
+
     }
 }
