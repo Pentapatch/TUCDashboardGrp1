@@ -1,6 +1,8 @@
-﻿namespace TUCDashboardGrp1
+﻿using TUCDashboardGrp1.Model;
+
+namespace TUCDashboardGrp1
 {
-    partial class LecturesWidget
+    partial class LecturesWidget : Widget
     {
         /// <summary> 
         /// Required designer variable.
@@ -34,9 +36,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(23, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 20);
+            this.label1.Size = new System.Drawing.Size(91, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "Lectures";
             // 

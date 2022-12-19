@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TUCDashboardGrp1.Model;
 
 namespace TUCDashboardGrp1.View
 {
-    public partial class ClockWidget : UserControl
+    public partial class ClockWidget : Widget
     {
         public ClockWidget()
         {

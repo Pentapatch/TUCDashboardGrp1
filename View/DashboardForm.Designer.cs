@@ -107,7 +107,6 @@
             // 
             // feedWidget1
             // 
-            this.feedWidget1.BackColor = System.Drawing.Color.Green;
             this.feedWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.feedWidget1.Location = new System.Drawing.Point(0, 0);
             this.feedWidget1.Name = "feedWidget1";
@@ -218,7 +217,6 @@
             this.Name = "DashboardForm";
             this.Text = "DashboardForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Shown += new System.EventHandler(this.DashboardForm_Shown);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DashboardForm_KeyDown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
