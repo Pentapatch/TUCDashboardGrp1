@@ -94,6 +94,7 @@ namespace TUCDashboardGrp1.Model
         {
             Paint += Widget_Paint;
             Load += Widget_Load;
+            Resize += Widget_Resize;
             DoubleBuffered = true;
         }
 
@@ -104,6 +105,12 @@ namespace TUCDashboardGrp1.Model
         // #####################
 
         #region Private methods
+
+        private void Widget_Resize(object? sender, EventArgs e)
+        {
+            // Redraw the widget when it's size has changed
+            Invalidate();
+        }
 
         private void Widget_Load(object? sender, EventArgs e)
         {
