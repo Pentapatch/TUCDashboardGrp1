@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TUCDashboardGrp1.Model;
+﻿using TUCDashboardGrp1.Model;
 
 namespace TUCDashboardGrp1
 {
-    public partial class GroupRoomsWidget : Widget
+    public partial class GroupRoomsWidget : RoomsWidget
     {
         public GroupRoomsWidget()
         {
             InitializeComponent();
+            Rooms.Add("G1 Roxen");
+            Rooms.Add("G2 Stångån");
+            Rooms.Add("G3 Glan");
+            Rooms.Add("G4 Berga");
+            Rooms.Add("G5 Norrköping");
+            Rooms.Add("G6 Äggskallebyn");
+            Rooms.Add("G7 Söderköping");
         }
     }
 }

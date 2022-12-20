@@ -14,21 +14,21 @@ namespace TUCDashboardGrp1.Controller
     internal class DataHandler
     {
 
-        private readonly List<BookingClass> bookingClassList = new();
+        public List<BookingClass> BookingClassList { get; private set; } = new();
 
         // https://stackoverflow.com/questions/59576074/how-to-get-response-like-this-by-using-a-sql-server-stored-procedure
 
         public BookingClass CreateBooking()   
         {
             var booking = new BookingClass { Name = DateTime.UtcNow.Ticks.ToString() };   // Using DateTime Now to populate with unique "id's"
-            bookingClassList.Add(booking);
+            BookingClassList.Add(booking);
 
             return booking;
         }
 
         public List<BookingClass> GetBookings()
         {
-            return bookingClassList;
+            return BookingClassList;
         }
         
     }

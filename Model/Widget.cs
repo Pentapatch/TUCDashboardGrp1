@@ -135,9 +135,10 @@ namespace TUCDashboardGrp1.Model
         private void DrawBody(PaintEventArgs e)
         {
             // Initialize pens and brushes
-            Pen pen = new(IsHighlighted ? Color.Orange : BorderColor, BorderWidth);
+            Color tucRed = Color.FromArgb(226, 35, 26);
+            Pen pen = new(IsHighlighted ? tucRed : BorderColor, BorderWidth);
             SolidBrush brush = new(BackgroundColor);
-            SolidBrush borderBrush = IsHighlighted ? new(Color.Orange) : new(BorderColor);
+            SolidBrush borderBrush = IsHighlighted ? new(tucRed) : new(BorderColor);
 
             // Calculate offset
             int offset = BorderWidth / 2;

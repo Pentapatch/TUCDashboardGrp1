@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TUCDashboardGrp1.Model.FeedData feedData1 = new TUCDashboardGrp1.Model.FeedData();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.weatherWidghet1 = new TUCDashboardGrp1.WeatherWidghet();
@@ -64,7 +64,7 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
@@ -100,9 +100,9 @@
             // 
             // weatherWidghet1
             // 
-            this.weatherWidghet1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.weatherWidghet1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.weatherWidghet1.BorderRadius = 50;
+            this.weatherWidghet1.BackgroundColor = System.Drawing.Color.White;
+            this.weatherWidghet1.BorderColor = System.Drawing.Color.White;
+            this.weatherWidghet1.BorderRadius = 15;
             this.weatherWidghet1.BorderWidth = 2;
             this.weatherWidghet1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.weatherWidghet1.IsHighlighted = false;
@@ -114,13 +114,11 @@
             // feedWidget1
             // 
             this.feedWidget1.BackgroundColor = System.Drawing.Color.White;
-            this.feedWidget1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.feedWidget1.BorderRadius = 50;
+            this.feedWidget1.BorderColor = System.Drawing.Color.White;
+            this.feedWidget1.BorderRadius = 15;
             this.feedWidget1.BorderWidth = 2;
-            feedData1.Content = "test test";
-            feedData1.Header = "Oscar was here";
-            feedData1.Image = null;
             this.feedWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.feedWidget1.Interval = 2500;
             this.feedWidget1.IsHighlighted = false;
             this.feedWidget1.Location = new System.Drawing.Point(0, 0);
             this.feedWidget1.Name = "feedWidget1";
@@ -164,9 +162,9 @@
             // 
             // traficWidget1
             // 
-            this.traficWidget1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.traficWidget1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.traficWidget1.BorderRadius = 50;
+            this.traficWidget1.BackgroundColor = System.Drawing.Color.White;
+            this.traficWidget1.BorderColor = System.Drawing.Color.White;
+            this.traficWidget1.BorderRadius = 15;
             this.traficWidget1.BorderWidth = 2;
             this.traficWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.traficWidget1.IsHighlighted = false;
@@ -177,10 +175,9 @@
             // 
             // clockWidget1
             // 
-            //this.clockWidget1.BackColor = System.Drawing.SystemColors.Info;
-            this.clockWidget1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.clockWidget1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.clockWidget1.BorderRadius = 50;
+            this.clockWidget1.BackgroundColor = System.Drawing.Color.White;
+            this.clockWidget1.BorderColor = System.Drawing.Color.White;
+            this.clockWidget1.BorderRadius = 15;
             this.clockWidget1.BorderWidth = 2;
             this.clockWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clockWidget1.IsHighlighted = false;
@@ -208,29 +205,41 @@
             // 
             // groupRoomsWidget1
             // 
-            this.groupRoomsWidget1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.groupRoomsWidget1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.groupRoomsWidget1.BorderRadius = 50;
+            this.groupRoomsWidget1.BackgroundColor = System.Drawing.Color.White;
+            this.groupRoomsWidget1.BorderColor = System.Drawing.Color.White;
+            this.groupRoomsWidget1.BorderRadius = 15;
             this.groupRoomsWidget1.BorderWidth = 2;
             this.groupRoomsWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupRoomsWidget1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupRoomsWidget1.IsHighlighted = false;
             this.groupRoomsWidget1.Location = new System.Drawing.Point(0, 0);
+            this.groupRoomsWidget1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.groupRoomsWidget1.Name = "groupRoomsWidget1";
+            this.groupRoomsWidget1.Rooms = ((System.Collections.Generic.List<string>)(resources.GetObject("groupRoomsWidget1.Rooms")));
+            this.groupRoomsWidget1.RowHeight = 45;
             this.groupRoomsWidget1.Size = new System.Drawing.Size(305, 377);
             this.groupRoomsWidget1.TabIndex = 0;
+            this.groupRoomsWidget1.TimelineHeight = 30;
+            this.groupRoomsWidget1.WidgetName = "Grupprum";
             // 
             // lecturesWidget1
             // 
-            this.lecturesWidget1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.lecturesWidget1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.lecturesWidget1.BorderRadius = 50;
+            this.lecturesWidget1.BackgroundColor = System.Drawing.Color.White;
+            this.lecturesWidget1.BorderColor = System.Drawing.Color.White;
+            this.lecturesWidget1.BorderRadius = 15;
             this.lecturesWidget1.BorderWidth = 2;
             this.lecturesWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lecturesWidget1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lecturesWidget1.IsHighlighted = false;
             this.lecturesWidget1.Location = new System.Drawing.Point(0, 0);
+            this.lecturesWidget1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.lecturesWidget1.Name = "lecturesWidget1";
+            this.lecturesWidget1.Rooms = ((System.Collections.Generic.List<string>)(resources.GetObject("lecturesWidget1.Rooms")));
+            this.lecturesWidget1.RowHeight = 45;
             this.lecturesWidget1.Size = new System.Drawing.Size(606, 377);
             this.lecturesWidget1.TabIndex = 0;
+            this.lecturesWidget1.TimelineHeight = 30;
+            this.lecturesWidget1.WidgetName = "Lektionssalar";
             // 
             // DashboardForm
             // 

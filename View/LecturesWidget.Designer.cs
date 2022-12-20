@@ -2,7 +2,7 @@
 
 namespace TUCDashboardGrp1
 {
-    partial class LecturesWidget : Widget
+    partial class LecturesWidget : RoomsWidget
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,33 +30,21 @@ namespace TUCDashboardGrp1
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(23, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 28);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Lectures";
             // 
             // LecturesWidget
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 45F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "LecturesWidget";
-            this.Size = new System.Drawing.Size(1037, 623);
+            this.Size = new System.Drawing.Size(1016, 546);
+            this.WidgetName = "Lektionssalar";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private Label label1;
     }
 }
