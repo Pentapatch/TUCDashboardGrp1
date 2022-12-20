@@ -37,31 +37,33 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(454, 214);
+            this.label2.Location = new System.Drawing.Point(117, 180);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(545, 72);
+            this.label2.Size = new System.Drawing.Size(275, 37);
             this.label2.TabIndex = 2;
             this.label2.Text = "Forecast not available";
             // 
             // pictureBox1
             // 
             this.pictureBox1.ImageLocation = "";
-            this.pictureBox1.Location = new System.Drawing.Point(218, 214);
+            this.pictureBox1.Location = new System.Drawing.Point(117, 100);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(230, 150);
+            this.pictureBox1.Size = new System.Drawing.Size(124, 70);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
             // WeatherWidghet
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "WeatherWidghet";
-            this.Size = new System.Drawing.Size(1514, 1010);
+            this.Size = new System.Drawing.Size(815, 473);
             this.Load += new System.EventHandler(this.WeatherWidghet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

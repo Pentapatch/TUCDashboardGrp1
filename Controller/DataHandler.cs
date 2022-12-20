@@ -9,30 +9,14 @@ namespace TUCDashboardGrp1.Controller
 {
 
     
-
+    //
 
     internal class DataHandler
     {
 
-        private List<BookingClass> bookingClassList;
+        private readonly List<BookingClass> bookingClassList = new();
 
-        public DataHandler()
-        {
-            bookingClassList = new List<BookingClass>();
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// https://stackoverflow.com/questions/59576074/how-to-get-response-like-this-by-using-a-sql-server-stored-procedure
-        /// </summary>
-        /// <returns></returns>
-
-        // List here! 
-        
+        // https://stackoverflow.com/questions/59576074/how-to-get-response-like-this-by-using-a-sql-server-stored-procedure
 
         public BookingClass CreateBooking()   
         {
@@ -47,14 +31,6 @@ namespace TUCDashboardGrp1.Controller
             return bookingClassList;
         }
         
-        //public void ListBookings()
-        //{
-            
-        //    // Get the LIST "bookings" and feed it to the appropriated Widget
-        //    // ForeEach Element in LIST -> IF ROOM = Group -> Group Widget ELSE -> LectureHall
-            
-        //}
-
     }
    
 
