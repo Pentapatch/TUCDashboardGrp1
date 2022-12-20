@@ -1,8 +1,6 @@
-﻿using TUCDashboardGrp1.Model;
-
-namespace TUCDashboardGrp1
+﻿namespace TUCDashboardGrp1.Model
 {
-    partial class GroupRoomsWidget : RoomsWidget
+    partial class RoomsWidget
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,19 +28,8 @@ namespace TUCDashboardGrp1
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // GroupRoomsWidget
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 45F);
+            components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.Name = "GroupRoomsWidget";
-            this.Size = new System.Drawing.Size(968, 523);
-            this.WidgetName = "Grupprum";
-            this.ResumeLayout(false);
-
         }
 
         #endregion
