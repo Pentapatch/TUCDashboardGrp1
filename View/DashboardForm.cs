@@ -31,7 +31,6 @@ namespace TUCDashboardGrp1
             InitializeComponent(); // Dont touch
             ApiHelper.InitializeClient();
             InitializeWidgetControl();
-
         }
 
         #endregion

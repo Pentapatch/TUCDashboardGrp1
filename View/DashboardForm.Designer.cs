@@ -177,7 +177,7 @@
             // 
             // clockWidget1
             // 
-            this.clockWidget1.BackColor = System.Drawing.SystemColors.Info;
+            //this.clockWidget1.BackColor = System.Drawing.SystemColors.Info;
             this.clockWidget1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.clockWidget1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.clockWidget1.BorderRadius = 50;

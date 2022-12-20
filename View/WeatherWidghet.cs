@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using TUCDashboardGrp1.Controller;
 using TUCDashboardGrp1.Properties;
 using TUCDashboardGrp1.Model;
+using System.Diagnostics.SymbolStore;
 
 namespace TUCDashboardGrp1
 {
@@ -17,7 +18,24 @@ namespace TUCDashboardGrp1
     {
         public WeatherWidghet()
         {
-            InitializeComponent();           
+            InitializeComponent();
+            Resize += WeatherWidget_SetLayout;
+        }
+
+
+        private void WeatherWidget_SetLayout(object? sender, EventArgs e)
+        {
+            // Setup:
+            int offsetFromCenter = 3;
+
+            // Center according to width
+            label2.Left = (Width / 2) - (label2.Width / 2);
+            pictureBox1.Left = (Width / 2) - (pictureBox1.Width / 2);
+
+            // Center according to height
+            int totalHeight = label2.Height + pictureBox1.Height;
+            pictureBox1.Top = (Height / 2) - (totalHeight / 2) - offsetFromCenter;
+            label2.Top = pictureBox1.Bottom + offsetFromCenter;
         }
 
         private async void WeatherWidghet_Load(object sender, EventArgs e)
@@ -27,6 +45,7 @@ namespace TUCDashboardGrp1
                 var weatherInfo = await WeatherProcessor.LoadWeather();
                 label2.Text = weatherInfo.Item1;
                 pictureBox1.Image = GetWeatherSymbol(weatherInfo.Item2);
+                WeatherWidget_SetLayout(this, EventArgs.Empty);
             }
         }
 
