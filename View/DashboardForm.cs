@@ -161,8 +161,11 @@ namespace TUCDashboardGrp1
         /// <summary>Swap the place of two widgets.</summary>
         /// <param name="widgetA">The first target to swap.</param>
         /// <param name="widgetB">The second target to swap.</param>
-        private static void SwapWidgets(Widget widgetA, Widget widgetB) =>
+        private static void SwapWidgets(Widget widgetA, Widget widgetB)
+        {
             (widgetA.Parent, widgetB.Parent) = (widgetB.Parent, widgetA.Parent);
+            widgetA.Focus();
+        }
 
         /// <summary>Return the target that is located within the specified client location, or null if none was found.</summary>
         /// <param name="location">The location (in client coordinates) to find the target.</param>
