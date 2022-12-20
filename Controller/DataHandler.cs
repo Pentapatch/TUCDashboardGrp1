@@ -13,6 +13,19 @@ namespace TUCDashboardGrp1.Controller
 
     internal class DataHandler
     {
+
+        private List<BookingClass> bookingClassList;
+
+        public DataHandler()
+        {
+            bookingClassList = new List<BookingClass>();
+        }
+
+
+
+
+
+
         /// <summary>
         /// https://stackoverflow.com/questions/59576074/how-to-get-response-like-this-by-using-a-sql-server-stored-procedure
         /// </summary>
@@ -21,28 +34,17 @@ namespace TUCDashboardGrp1.Controller
         // List here! 
         
 
-        public BookingClass CreateBooking()   // Arg = Database response
+        public BookingClass CreateBooking()   
         {
-            BookingClass booking = new();
-            
-            /*
-             *  O -> datorn
-             *  datorn > värden
-             *  Get Bookings for varje Object 
-             *  värde 1,2,3 = LIST<obj1.värden>
-             */
+            var booking = new BookingClass { Name = DateTime.UtcNow.Ticks.ToString() };   // Using DateTime Now to populate with unique "id's"
+            bookingClassList.Add(booking);
 
-            // Populate with database values
-            // booking.Room = * // Parse the Room Value from the ARG response
             return booking;
         }
 
         public List<BookingClass> GetBookings()
         {
-
-            List<BookingClass> bookings = new();
-            // CreateBooking for each element in the database
-            return bookings;
+            return bookingClassList;
         }
         
         //public void ListBookings()
