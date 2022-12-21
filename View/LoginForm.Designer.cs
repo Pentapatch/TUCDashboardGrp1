@@ -39,7 +39,7 @@
             // 
             // textBoxUsername
             // 
-            this.textBoxUsername.Location = new System.Drawing.Point(263, 108);
+            this.textBoxUsername.Location = new System.Drawing.Point(160, 96);
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(163, 27);
             this.textBoxUsername.TabIndex = 0;
@@ -47,10 +47,10 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(332, 201);
+            this.buttonLogin.Location = new System.Drawing.Point(229, 189);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(94, 29);
-            this.buttonLogin.TabIndex = 1;
+            this.buttonLogin.TabIndex = 2;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = true;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
@@ -58,7 +58,7 @@
             // labelUsername
             // 
             this.labelUsername.AutoSize = true;
-            this.labelUsername.Location = new System.Drawing.Point(182, 115);
+            this.labelUsername.Location = new System.Drawing.Point(79, 99);
             this.labelUsername.Name = "labelUsername";
             this.labelUsername.Size = new System.Drawing.Size(75, 20);
             this.labelUsername.TabIndex = 2;
@@ -67,7 +67,7 @@
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Location = new System.Drawing.Point(182, 154);
+            this.labelPassword.Location = new System.Drawing.Point(84, 145);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(70, 20);
             this.labelPassword.TabIndex = 3;
@@ -75,18 +75,18 @@
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(263, 154);
+            this.textBoxPassword.Location = new System.Drawing.Point(160, 142);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(163, 27);
-            this.textBoxPassword.TabIndex = 4;
+            this.textBoxPassword.TabIndex = 1;
             this.textBoxPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyDown);
             // 
             // labelAdmin
             // 
             this.labelAdmin.AutoSize = true;
             this.labelAdmin.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelAdmin.Location = new System.Drawing.Point(243, 9);
+            this.labelAdmin.Location = new System.Drawing.Point(160, 9);
             this.labelAdmin.Name = "labelAdmin";
             this.labelAdmin.Size = new System.Drawing.Size(145, 32);
             this.labelAdmin.TabIndex = 5;
@@ -95,7 +95,7 @@
             // labelMessage
             // 
             this.labelMessage.AutoSize = true;
-            this.labelMessage.Location = new System.Drawing.Point(263, 259);
+            this.labelMessage.Location = new System.Drawing.Point(160, 247);
             this.labelMessage.Name = "labelMessage";
             this.labelMessage.Size = new System.Drawing.Size(0, 20);
             this.labelMessage.TabIndex = 6;
@@ -104,7 +104,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(635, 300);
+            this.ClientSize = new System.Drawing.Size(466, 278);
             this.Controls.Add(this.labelMessage);
             this.Controls.Add(this.labelAdmin);
             this.Controls.Add(this.textBoxPassword);
