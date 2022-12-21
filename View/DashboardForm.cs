@@ -29,8 +29,10 @@ namespace TUCDashboardGrp1
         {
 
             InitializeComponent(); // Dont touch
+            
             ApiHelper.InitializeClient();
             InitializeWidgetControl();
+            GlobalTimer.Initialize();
         }
 
         #endregion
