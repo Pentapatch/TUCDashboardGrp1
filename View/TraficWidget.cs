@@ -11,10 +11,20 @@ namespace TUCDashboardGrp1
         public TraficWidget()
         {
             InitializeComponent();
+
+            // Subscribe to GlobalTimer event
+            GlobalTimer.Instance!.Tick60Seconds += GlobalTimer_Tick60Seconds;
+        }
+
+        private void GlobalTimer_Tick60Seconds(object? sender, EventArgs e)
+        {
+            // Update on each ^ Trigger
+            UpdateTrafficAsync();
         }
 
         private void TraficWidget_Load(object sender, EventArgs e)
         {
+            // Asynchronously load the traffic
             UpdateTrafficAsync();
         }
 

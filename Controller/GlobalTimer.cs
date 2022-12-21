@@ -52,13 +52,15 @@
 
         #region Events
 
+        public event EventHandler? Tick1Second;
         public event EventHandler? Tick10Seconds;
         public event EventHandler? Tick30Seconds;
         public event EventHandler? Tick60Seconds;
         public event EventHandler? Tick15Minutes;
         public event EventHandler? Tick60Minutes;
         public event EventHandler? RefreshWidget;
-        
+
+        protected virtual void OnTick1Second() => Tick1Second?.Invoke(this, EventArgs.Empty);
         protected virtual void OnTick10Seconds() => Tick10Seconds?.Invoke(this, EventArgs.Empty);
         protected virtual void OnTick30Seconds() => Tick30Seconds?.Invoke(this, EventArgs.Empty);
         protected virtual void OnTick60Seconds() => Tick60Seconds?.Invoke(this, EventArgs.Empty);
@@ -79,8 +81,11 @@
         // Private methods
 
         #region Private Methods
+
         private void Timer_Tick(object? sender, EventArgs e)
         {
+            // For each Second, trigger the 1 Second Event
+            OnTick1Second();
 
             // Increment and wrap the tick counter around
             if (++secondTick >= 60)
@@ -111,6 +116,7 @@
             }
 
         }
+        
         #endregion
 
     }

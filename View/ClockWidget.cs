@@ -1,4 +1,5 @@
-﻿using TUCDashboardGrp1.Model;
+﻿using TUCDashboardGrp1.Controller;
+using TUCDashboardGrp1.Model;
 
 namespace TUCDashboardGrp1.View
 {
@@ -10,8 +11,8 @@ namespace TUCDashboardGrp1.View
 
             // Settings
             Resize += SetLayout;
-            Refresher_Tick(this, EventArgs.Empty);
 
+            UpdateClock();
         }
 
         private void SetLayout(object? sender, EventArgs e)
@@ -31,15 +32,20 @@ namespace TUCDashboardGrp1.View
 
         }
 
-        private void ClockWidget_Load_1(object sender, EventArgs e) => Refresher.Start();
+        private void ClockWidget_Load_1(object sender, EventArgs e)
+        {
+            GlobalTimer.Instance!.Tick1Second += GlobalTimer_Tick1Second;
+        }
 
-        private void Refresher_Tick(object sender, EventArgs e)
+        private void GlobalTimer_Tick1Second(object? sender, EventArgs e) => UpdateClock();
+
+        private void UpdateClock()
         {
             var currentTime = DateTime.Now;
 
             label_time.Text = $"{currentTime.Hour.ToString().PadLeft(2, '0')}:{currentTime.Minute.ToString().PadLeft(2, '0')}";
             label_date.Text = $"{GetDayOfWeek(currentTime.DayOfWeek)} {currentTime.Day}:{(currentTime.Day <= 2 ? "a" : "e")}";
-            
+
             SetLayout(this, EventArgs.Empty);
         }
 
