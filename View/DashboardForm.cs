@@ -32,7 +32,7 @@ namespace TUCDashboardGrp1
             
             ApiHelper.InitializeClient();
             InitializeWidgetControl();
-            GlobalTimer.Initialize();
+            
         }
 
         #endregion

@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.label_time = new System.Windows.Forms.Label();
             this.label_date = new System.Windows.Forms.Label();
-            this.Refresher = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label_time
@@ -56,12 +55,6 @@
             this.label_date.Text = "Date";
             this.label_date.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Refresher
-            // 
-            this.Refresher.Enabled = true;
-            this.Refresher.Interval = 10000;
-            this.Refresher.Tick += new System.EventHandler(this.Refresher_Tick);
-            // 
             // ClockWidget
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -75,13 +68,11 @@
             this.Load += new System.EventHandler(this.ClockWidget_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
 
         private Label label_time;
         private Label label_date;
-        private System.Windows.Forms.Timer Refresher;
     }
 }

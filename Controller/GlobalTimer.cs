@@ -4,6 +4,8 @@
     {
         // Fields
 
+        #region Fields
+
         private readonly System.Windows.Forms.Timer timer = new()
         {
             Interval = 1000,
@@ -11,22 +13,46 @@
         };
 
         private int secondTick;
-        private int minuteTick = 0;
+        private int minuteTick;
+        private static GlobalTimer? instance = null;
+
+        #endregion
 
         // Properties
 
-        public static GlobalTimer? Instance { get; private set; } = null;
+        #region Properties
+
+        public static GlobalTimer? Instance
+        {
+            get
+            {
+                // This property will create ONE instance of this class,
+                // if it isn't set already
+                instance ??= new();
+                return instance;
+            }
+        }
+
+        #endregion
 
         // Constructor
+
+        #region Constructor
 
         public GlobalTimer()
         {
             timer.Tick += Timer_Tick;
             secondTick = DateTime.Now.Second;
+            minuteTick = DateTime.Now.Minute;
         }
 
-        // Events
-        
+        #endregion
+
+        // Events and Event Invokers
+
+        #region Events
+
+        public event EventHandler? Tick1Second;
         public event EventHandler? Tick10Seconds;
         public event EventHandler? Tick30Seconds;
         public event EventHandler? Tick60Seconds;
@@ -34,7 +60,7 @@
         public event EventHandler? Tick60Minutes;
         public event EventHandler? RefreshWidget;
 
-        // Event invokers
+        protected virtual void OnTick1Second() => Tick1Second?.Invoke(this, EventArgs.Empty);
         protected virtual void OnTick10Seconds() => Tick10Seconds?.Invoke(this, EventArgs.Empty);
         protected virtual void OnTick30Seconds() => Tick30Seconds?.Invoke(this, EventArgs.Empty);
         protected virtual void OnTick60Seconds() => Tick60Seconds?.Invoke(this, EventArgs.Empty);
@@ -42,15 +68,27 @@
         protected virtual void OnTick60Minutes() => Tick60Minutes?.Invoke(this, EventArgs.Empty);
         protected virtual void OnRefreshWidget() => RefreshWidget?.Invoke(this, EventArgs.Empty);
 
+        #endregion
+
         // Public methods
+
+        #region Public Methods
 
         public void Refresh() => OnRefreshWidget();
 
+        #endregion
+
+        // Private methods
+
+        #region Private Methods
+
         private void Timer_Tick(object? sender, EventArgs e)
         {
+            // For each Second, trigger the 1 Second Event
+            OnTick1Second();
 
             // Increment and wrap the tick counter around
-            if (++secondTick > 60)
+            if (++secondTick >= 60)
             {
                 minuteTick++;
                 secondTick = 0;
@@ -71,15 +109,15 @@
 
             // Raise event every even hour and
             // wrap the minute ticker
-            if (minuteTick > 60)
+            if (minuteTick >= 60)
             {
                 minuteTick = 0;
                 OnTick60Minutes();
             }
 
         }
-
-        public static void Initialize() => Instance = new();
+        
+        #endregion
 
     }
 

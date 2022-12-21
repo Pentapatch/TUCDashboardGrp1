@@ -118,7 +118,6 @@
             this.feedWidget1.BorderRadius = 15;
             this.feedWidget1.BorderWidth = 2;
             this.feedWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.feedWidget1.Interval = 2500;
             this.feedWidget1.IsHighlighted = false;
             this.feedWidget1.Location = new System.Drawing.Point(0, 0);
             this.feedWidget1.Name = "feedWidget1";

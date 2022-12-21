@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TUCDashboardGrp1.Controller;
+﻿using TUCDashboardGrp1.Controller;
 using TUCDashboardGrp1.Properties;
 using TUCDashboardGrp1.Model;
-using System.Diagnostics.SymbolStore;
 
 namespace TUCDashboardGrp1
 {
@@ -20,8 +10,14 @@ namespace TUCDashboardGrp1
         {
             InitializeComponent();
             Resize += WeatherWidget_SetLayout;
+            GlobalTimer.Instance!.Tick60Minutes += GlobalTimer_Tick60Minutes;
         }
 
+        private void GlobalTimer_Tick60Minutes(object? sender, EventArgs e)
+        {
+            // Update the forecast every even 60 minutes
+            UpdateForecastAsync();
+        }
 
         private void WeatherWidget_SetLayout(object? sender, EventArgs e)
         {
@@ -38,7 +34,13 @@ namespace TUCDashboardGrp1
             label2.Top = pictureBox1.Bottom + offsetFromCenter;
         }
 
-        private async void WeatherWidghet_Load(object sender, EventArgs e)
+        private void WeatherWidghet_Load(object sender, EventArgs e)
+        {
+            // Asynchronously load the forecast
+            UpdateForecastAsync();
+        }
+
+        private async void UpdateForecastAsync()
         {
             if (ApiHelper.IsInitialized)
             {
