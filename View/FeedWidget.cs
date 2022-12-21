@@ -1,5 +1,6 @@
 ﻿using TUCDashboardGrp1.Model;
 using TUCDashboardGrp1.Properties;
+using TUCDashboardGrp1.Controller;
 
 namespace TUCDashboardGrp1
 {
@@ -14,7 +15,7 @@ namespace TUCDashboardGrp1
 
         private FeedData? data = null;
         private int currentSlide = -1;
-        private System.Windows.Forms.Timer refresher = new() { Interval = 2500, Enabled = true };
+        private List<FeedData> feedData = new();
 
         #endregion
 
@@ -24,12 +25,12 @@ namespace TUCDashboardGrp1
 
         #region Properties
 
-        public List<FeedData> Feed { get; set; } = new();
-
-        public int Interval
+        /// <summary>
+        /// Get the feed that is currently shown. Use <see cref="SetFeed(List{FeedData})"/> to update the feed.
+        /// </summary>
+        public IReadOnlyList<FeedData> Feed
         {
-            get => refresher.Interval;
-            set => refresher.Interval = value;
+            get => feedData.AsReadOnly();
         }
 
         #endregion
@@ -45,22 +46,37 @@ namespace TUCDashboardGrp1
             InitializeComponent(); // <-- Don't touch
 
             // Add dummy feeds
-            Feed.Add(new() { Header = "Enbart en header" });
-            Feed.Add(new() { Header = "Header + Content", Content = "En fin text" });
-            Feed.Add(new() { Header = "Header + Content + Image", Content = "En fin bildtext en fin bildtext en fin bildtext en fin bildtext en fin bildtext en fin bildtext en fin bildtext", Image = Resources._1 });
-            Feed.Add(new() { Header = "En regning dag", Image = Resources._9 });
-            Feed.Add(new() { Content = "En ensam ledsen body-text" });
-            Feed.Add(new() { Content = "Body-text + bild", Image = Resources._22 });
-            Feed.Add(new() { Image = Resources._13 });
+            List<FeedData> newFeed = new();
+            newFeed.Add(new() { Header = "Enbart en header" });
+            newFeed.Add(new() { Header = "Header + Content", Content = "En fin text" });
+            newFeed.Add(new() { Header = "Header + Content + Image", Content = "En fin bildtext en fin bildtext en fin bildtext en fin bildtext en fin bildtext en fin bildtext en fin bildtext", Image = Resources._1 });
+            newFeed.Add(new() { Header = "En regning dag", Image = Resources._9 });
+            newFeed.Add(new() { Content = "En ensam ledsen body-text" });
+            newFeed.Add(new() { Content = "Body-text + bild", Image = Resources._22 });
+            newFeed.Add(new() { Image = Resources._13 });
 
-
-            UpdateSlide();
+            SetFeed(newFeed);
 
             // Subscribe to timer event
-            refresher.Tick += Refresher_Tick;
+            GlobalTimer.Instance!.Tick10Seconds += Refresher_Tick;
+            GlobalTimer.Instance!.RefreshWidget += Refresher_Tick;
 
             // Subscribe to form event
             Resize += FeedWidget_Resize;
+        }
+
+        #endregion
+
+        // ####################
+        // ## PUBLIC METHODS ##
+        // ####################
+
+        #region Public methods
+
+        public void SetFeed(List<FeedData> feed)
+        {
+            feedData = feed;
+            UpdateSlide();
         }
 
         #endregion
@@ -69,7 +85,7 @@ namespace TUCDashboardGrp1
         // ## PRIVATE METHODS ##
         // #####################
 
-        #region Public methods
+        #region Private methods
 
         private void UpdateSlide()
         {
