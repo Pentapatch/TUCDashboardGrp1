@@ -89,15 +89,12 @@ namespace TUCDashboardGrp1
         }
 
         private async void UpdateForecastAsync()
-        {
-            // Early exit if the ApiHelper is not initialized
-            // This is useful so that the Designer won't throw exceptions
-            if (!ApiHelper.IsInitialized) return;
+        {            
             WeatherResultModel? weatherInfo;
 
             try
             {
-                weatherInfo = await WeatherProcessor.LoadWeather();
+                weatherInfo = await WeatherProcessor.LoadWeather();                                
             }
             catch (Exception)
             {
