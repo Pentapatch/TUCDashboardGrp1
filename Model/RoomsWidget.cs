@@ -25,14 +25,14 @@ namespace TUCDashboardGrp1.Model
 
             // Create mock values until we get the API or database running
 
-            Bookings.Add(new() { Room = "G1 Roxen", StartTime = new TimeOnly(12, 00), EndTime = new TimeOnly(14, 00), ClassType = "Syne22Lin", Date = new DateOnly(2022, 12, 21) });
+            Bookings.Add(new() { Room = "G1 Roxen", StartTime = new TimeOnly(12, 00), EndTime = new TimeOnly(14, 00), ClassType = "Syne22Lin", Date = new DateOnly(2022, 12, 23) });
             Bookings.Add(new() { Room = "G4 Stångån", StartTime = new TimeOnly(14, 00), EndTime = new TimeOnly(16, 00), ClassType = "loser15lin", Date = new DateOnly(2022, 12, 27) });
-            Bookings.Add(new() { Room = "G3 Glan", StartTime = new TimeOnly(08, 00), EndTime = new TimeOnly(15, 00), ClassType = "loser22lin", Date = new DateOnly(2022, 12, 21) });
-            Bookings.Add(new() { Room = "G6 Äggskallebyn", StartTime = new TimeOnly(08, 00), EndTime = new TimeOnly(18, 00), ClassType = "loser22lin", Date = new DateOnly(2022, 12, 21) });
-            Bookings.Add(new() { Room = "Sal 1", StartTime = new TimeOnly(12, 00), EndTime = new TimeOnly(14, 00), ClassType = "företag", Date = new DateOnly(2022, 12, 21) });
-            Bookings.Add(new() { Room = "Sal 3", StartTime = new TimeOnly(12, 00), EndTime = new TimeOnly(14, 00), ClassType = "loser21", Date = new DateOnly(2022, 12, 21) });
-            Bookings.Add(new() { Room = "Sal 7", StartTime = new TimeOnly(12, 00), EndTime = new TimeOnly(14, 00), ClassType = "hejsan", Date = new DateOnly(2022, 12, 21) });
-            Bookings.Add(new() { Room = "Sal 9", StartTime = new TimeOnly(8, 00), EndTime = new TimeOnly(16, 00), ClassType = "Syne22Lin", Date = new DateOnly(2022, 12, 21) });
+            Bookings.Add(new() { Room = "G3 Glan", StartTime = new TimeOnly(08, 00), EndTime = new TimeOnly(15, 00), ClassType = "loser22lin", Date = new DateOnly(2022, 12, 23) });
+            Bookings.Add(new() { Room = "G6 Äggskallebyn", StartTime = new TimeOnly(08, 00), EndTime = new TimeOnly(18, 00), ClassType = "loser22lin", Date = new DateOnly(2022, 12, 23) });
+            Bookings.Add(new() { Room = "Sal 1", StartTime = new TimeOnly(12, 00), EndTime = new TimeOnly(14, 00), ClassType = "företag", Date = new DateOnly(2022, 12, 23) });
+            Bookings.Add(new() { Room = "Sal 3", StartTime = new TimeOnly(12, 00), EndTime = new TimeOnly(14, 00), ClassType = "loser21", Date = new DateOnly(2022, 12, 23) });
+            Bookings.Add(new() { Room = "Sal 7", StartTime = new TimeOnly(12, 00), EndTime = new TimeOnly(14, 00), ClassType = "hejsan", Date = new DateOnly(2022, 12, 23) });
+            Bookings.Add(new() { Room = "Sal 9", StartTime = new TimeOnly(8, 00), EndTime = new TimeOnly(16, 00), ClassType = "Syne22Lin", Date = new DateOnly(2022, 12, 23) });
         }
 
         private List<BookingClass> GetCurrentBookings()
@@ -72,7 +72,7 @@ namespace TUCDashboardGrp1.Model
             int dividerlineX = timelineX - 10;
 
             // Calculate the lenght of the timeline and set a int? for %usage
-            int timelineWidth = Width - timelineX - minimum - 10;
+            int timelineWidth = Width - timelineX - minimum - 20;
             int totalLenght = timelineWidth;
             int totalTime = TimelineStop - TimelineStart;
 
@@ -122,7 +122,7 @@ namespace TUCDashboardGrp1.Model
                         int bookingStop = booking.EndTime.Value.Hour;
 
                         // Calculate the position of the booking field
-                        int width = (totalLenght / totalTime) * (bookingStop - bookingStart);
+                        int width = (int)(totalLenght / (double)totalTime * (bookingStop - bookingStart)); // <-- This line contains the rounding error
                         int left = timelineX + ((totalLenght / totalTime) * (bookingStart - TimelineStart));
 
                         // Fill in the time line with the values of the current booking
