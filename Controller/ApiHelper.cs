@@ -9,18 +9,27 @@ namespace TUCDashboardGrp1.Controller
 {
     public class ApiHelper
     {
-        // All call to API's will go through this so that unneccessary ports won't be opened. 
-        public static HttpClient ApiClient { get; private set; }
-
-        public static bool IsInitialized { get; private set; } = false;
-
-        public static void InitializeClient() 
+        private static HttpClient? apiClient = null;
+        /// <summary>
+        /// All call to API's will go through this so that unneccessary ports won't be opened. 
+        /// </summary>
+        public static HttpClient ApiClient
         {
-            ApiClient = new HttpClient();
-            ApiClient.DefaultRequestHeaders.Accept.Clear();
-            ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            IsInitialized = true;
+            get
+            {
+                // This property will create ONE instance of this class,
+                // if it isn't set already
+                if(apiClient == null)
+                {
+                    apiClient = new();
+                    ApiClient.DefaultRequestHeaders.Accept.Clear();
+                    ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    //IsInitialized = true;
+                }
+                return apiClient;
+            }
         }
 
+        //public static bool IsInitialized { get; private set; } = false;
     }
 }
