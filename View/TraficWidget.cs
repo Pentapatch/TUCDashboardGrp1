@@ -34,7 +34,22 @@ namespace TUCDashboardGrp1
             {
                 label_timetable_rese.Text = string.Empty;
                 label_timetable_skagge.Text = string.Empty;
-                var trafficinfo = await TrafficProcessor.LoadTraffic();
+                TrafficResultModel? trafficinfo;
+                try
+                {
+                    trafficinfo = await TrafficProcessor.LoadTraffic();
+                }
+                catch (Exception)
+                {
+                    label_dir_rese.Text = "Kunde inte ladda busstider";
+                    return;
+                    
+                }
+
+                label_dir_skagge.Visible = true;
+                label_dir_rese.Text = "Mot Resecentrum";
+
+
                 int reseCount = 0;
                 int skaggeCount = 0;
                 foreach (var departure in trafficinfo.Departure)
