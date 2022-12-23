@@ -29,8 +29,7 @@ namespace TUCDashboardGrp1
         {
 
             InitializeComponent(); // Dont touch
-            
-            ApiHelper.InitializeClient();
+            // ApiHelper.InitializeClient();
             InitializeWidgetControl();
             
         }
