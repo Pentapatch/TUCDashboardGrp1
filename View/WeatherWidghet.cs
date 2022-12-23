@@ -93,8 +93,20 @@ namespace TUCDashboardGrp1
             // Early exit if the ApiHelper is not initialized
             // This is useful so that the Designer won't throw exceptions
             if (!ApiHelper.IsInitialized) return;
+            WeatherResultModel? weatherInfo;
 
-            var weatherInfo = await WeatherProcessor.LoadWeather();
+            try
+            {
+                weatherInfo = await WeatherProcessor.LoadWeather();
+            }
+            catch (Exception)
+            {
+                label_current_weather.Text = "Kunde inte ladda väder";
+                return;
+
+
+            }
+   
 
             label_current_weather.Text = $"Temperatur: {GetValueAsInt(weatherInfo, "t")}°C";
             current_weather_symbol.Image = GetForecastImage(weatherInfo);
