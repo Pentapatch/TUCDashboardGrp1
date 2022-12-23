@@ -90,6 +90,8 @@ namespace TUCDashboardGrp1
 
         private async void UpdateForecastAsync()
         {
+            var weatherInfo = await WeatherProcessor.LoadWeather();
+            
             // Early exit if the ApiHelper is not initialized
             // This is useful so that the Designer won't throw exceptions
             if (!ApiHelper.IsInitialized) return;
@@ -103,16 +105,12 @@ namespace TUCDashboardGrp1
             {
                 label_current_weather.Text = "Kunde inte ladda väder";
                 return;
-
-
             }
-   
 
             label_current_weather.Text = $"Temperatur: {GetValueAsInt(weatherInfo, "t")}°C";
             current_weather_symbol.Image = GetForecastImage(weatherInfo);
             label_forecast.Text = ForecastEnabled ? CreateForecast(weatherInfo) : string.Empty;
             SetLayout();
-
         }
 
         private static string CreateForecast(WeatherResultModel weather) =>
