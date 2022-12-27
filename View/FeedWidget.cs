@@ -49,11 +49,11 @@ namespace TUCDashboardGrp1
             List<FeedData> newFeed = new();
             newFeed.Add(new() { Header = "Enbart en header" });
             newFeed.Add(new() { Header = "Header + Content", Content = "En fin text" });
-            newFeed.Add(new() { Header = "Header + Content + Image", Content = "En fin bildtext en fin bildtext en fin bildtext en fin bildtext en fin bildtext en fin bildtext en fin bildtext", Image = Resources._1 });
-            newFeed.Add(new() { Header = "En regning dag", Image = Resources._9 });
+            //newFeed.Add(new() { Header = "Header + Content + Image", Content = "En fin bildtext en fin bildtext en fin bildtext en fin bildtext en fin bildtext en fin bildtext en fin bildtext", Image = Resources._1 });
+            //newFeed.Add(new() { Header = "En regning dag", Image = Resources._9 });
             newFeed.Add(new() { Content = "En ensam ledsen body-text" });
-            newFeed.Add(new() { Content = "Body-text + bild", Image = Resources._22 });
-            newFeed.Add(new() { Image = Resources._13 });
+            //newFeed.Add(new() { Content = "Body-text + bild", Image = Resources._22 });
+            //newFeed.Add(new() { Image = Resources._13 });
 
             SetFeed(newFeed);
 
