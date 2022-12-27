@@ -8,10 +8,12 @@ namespace TUCDashboardGrp1
         private string feedImagePath = string.Empty;
 
         private FeedData? isEditingFeedItem = null;
+        private BookingClass? isEditingBookingItem = null;
 
         private const string EmptyFeedHeader = "<ingen rubrik>";
         private const string EmptyFeedContent = "<inget innehåll>";
         private const string EmptyFeedImage = "<ingen bild>";
+        private const string EmptyBookingRoom = "Välj ett rum..";
 
         public AdminTools()
         {
@@ -31,7 +33,15 @@ namespace TUCDashboardGrp1
             // IMPORTANT: Set the ToolStripMenuItem.Tag property to the index of the target page
             int index = Convert.ToInt32(e.ClickedItem.Tag);
             tabControl1.SelectTab(index);
+
+            if (index == 1)
+            {
+                // Bookings
+                BookingsRefresh();
+            }
         }
+
+        private void btn_settings_openInExplorer_Click(object sender, EventArgs e) => LocalStorage.Instance.OpenInExplorer();
 
         #region Feed panel
 
@@ -90,7 +100,7 @@ namespace TUCDashboardGrp1
 
         private void Feed_Submit_Click(object sender, EventArgs e) => FeedSubmit();
 
-        private void FeedListView_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void Feed_ListView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             // Perform a hit test to find the entry that was clicked on
             ListViewHitTestInfo hitTest = listview_feed.HitTest(e.Location);
@@ -258,10 +268,109 @@ namespace TUCDashboardGrp1
 
         #endregion // End feed panel region
 
-        private void btn_settings_openInExplorer_Click(object sender, EventArgs e)
+        #region Booking panel
+
+        #region Event handlers
+
+        private void Booking_Submit_Click(object sender, EventArgs e) => BookingSubmit();
+
+        private void Booking_Reset_Click(object sender, EventArgs e) => BookingClearForm();
+
+        private void Booking_Room_Enter(object sender, EventArgs e) => combobox_room.DroppedDown = true;
+
+        #endregion // End event handlers region
+
+        #region Booking functions
+
+        private void BookingsRefresh()
         {
-            LocalStorage.Instance.OpenInExplorer();
+            // Load the feed into the listview control
+            listview_bookings.Items.Clear();
+
+            for (int i = LocalStorage.Instance.Storage.Bookings.Count - 1; i >= 0; i--)
+            {
+                BookingClass data = LocalStorage.Instance.Storage.Bookings[i];
+                ListViewItem item = listview_bookings.Items.Add(data.BookedFor);
+                item.Tag = data;
+
+                if (data.Date < DateOnly.FromDateTime(DateTime.Now))
+                {
+                    item.ForeColor = Color.Red;
+                }
+
+                item.SubItems.Add(data.BookedBy);
+                item.SubItems.Add(data.XMLDate);
+                item.SubItems.Add(data.XMLStartTime);
+                item.SubItems.Add(data.XMLEndTime);
+                item.SubItems.Add(data.Room);
+            }
         }
+
+        private void BookingSubmit()
+        {
+            if (!combobox_room.Items.Contains(combobox_room.Text))
+            {
+                MessageBox.Show("Det valda rummet finns inte.", DashboardForm.ApplicationTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Either update the current entry or create a new one
+            if (isEditingBookingItem != null)
+            {
+                // Update the value of the current feed entry
+                isEditingBookingItem.BookedFor = textBox_booked_for.Text;
+                isEditingBookingItem.BookedBy = textBox_booked_by.Text;
+                isEditingBookingItem.XMLDate = dateTimePicker_date.Text;
+                isEditingBookingItem.XMLStartTime = dateTimePicker_start.Text;
+                isEditingBookingItem.XMLEndTime = dateTimePicker_stop.Text;
+            }
+            else
+            {
+                // Add a new feed to the local storage
+
+                LocalStorage.Instance.Storage.Bookings.Add(new()
+                {
+                    BookedFor = textBox_booked_for.Text,
+                    BookedBy = textBox_booked_by.Text,
+                    XMLDate = dateTimePicker_date.Text,
+                    XMLStartTime = dateTimePicker_start.Text,
+                    XMLEndTime = dateTimePicker_stop.Text,
+                    Room = combobox_room.Text,
+                });
+            }
+
+            // Save the local storage to file
+            LocalStorage.Instance.Save();
+
+            // Make all widgets refresh themselves
+            GlobalTimer.Instance.Refresh();
+
+            // Clear the form
+            BookingClearForm();
+
+            // Update the treeview
+            BookingsRefresh();
+        }
+
+        private void BookingClearForm()
+        {
+            // Reset default values
+            textBox_booked_for.Text = "";
+            textBox_booked_by.Text = "";
+            dateTimePicker_date.Text = DateTime.Now.ToShortDateString();
+            dateTimePicker_start.Text = DateTime.Now.ToShortTimeString();
+            dateTimePicker_stop.Text = DateTime.Now.ToShortTimeString();
+            combobox_room.Text = EmptyBookingRoom;
+
+            // Clear the entry that is being edited
+            isEditingBookingItem = null;
+        }
+
+
+        #endregion
+
+        #endregion // End booking panel region
+
     }
 
 }

@@ -105,8 +105,10 @@
             this.weatherWidghet1.BorderRadius = 15;
             this.weatherWidghet1.BorderWidth = 2;
             this.weatherWidghet1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.weatherWidghet1.ForecastEnabled = true;
             this.weatherWidghet1.IsHighlighted = false;
             this.weatherWidghet1.Location = new System.Drawing.Point(0, 0);
+            this.weatherWidghet1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.weatherWidghet1.Name = "weatherWidghet1";
             this.weatherWidghet1.Size = new System.Drawing.Size(458, 284);
             this.weatherWidghet1.TabIndex = 0;
@@ -169,6 +171,7 @@
             this.traficWidget1.IsHighlighted = false;
             this.traficWidget1.Location = new System.Drawing.Point(0, 0);
             this.traficWidget1.Name = "traficWidget1";
+            this.traficWidget1.NumberOfTrips = 4;
             this.traficWidget1.Size = new System.Drawing.Size(305, 284);
             this.traficWidget1.TabIndex = 1;
             // 
@@ -219,6 +222,8 @@
             this.groupRoomsWidget1.Size = new System.Drawing.Size(305, 377);
             this.groupRoomsWidget1.TabIndex = 0;
             this.groupRoomsWidget1.TimelineHeight = 30;
+            this.groupRoomsWidget1.TimelineStart = 8;
+            this.groupRoomsWidget1.TimelineStop = 18;
             this.groupRoomsWidget1.WidgetName = "Grupprum";
             // 
             // lecturesWidget1
@@ -238,6 +243,8 @@
             this.lecturesWidget1.Size = new System.Drawing.Size(606, 377);
             this.lecturesWidget1.TabIndex = 0;
             this.lecturesWidget1.TimelineHeight = 30;
+            this.lecturesWidget1.TimelineStart = 8;
+            this.lecturesWidget1.TimelineStop = 18;
             this.lecturesWidget1.WidgetName = "Lektionssalar";
             // 
             // DashboardForm
