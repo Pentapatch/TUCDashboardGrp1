@@ -29,9 +29,11 @@ namespace TUCDashboardGrp1
         {
 
             InitializeComponent(); // Dont touch
-            // ApiHelper.InitializeClient();
+
+            // Initialize the settings
+            //LocalStorage ls = new();
+            LocalStorage.Initialize();
             InitializeWidgetControl();
-            
         }
 
         #endregion
