@@ -23,16 +23,14 @@ namespace TUCDashboardGrp1.Model
         {
             InitializeComponent();
 
-            // Create mock values until we get the API or database running
+            GlobalTimer.Instance.RefreshWidget += Instance_RefreshWidget;
+            Load += Instance_RefreshWidget;
+        }
 
-            Bookings.Add(new() { Room = "G1 Roxen", StartTime = new TimeOnly(12, 00), EndTime = new TimeOnly(14, 00), BookedFor = "Syne22Lin", Date = new DateOnly(2022, 12, 23) });
-            Bookings.Add(new() { Room = "G4 Stångån", StartTime = new TimeOnly(14, 00), EndTime = new TimeOnly(16, 00), BookedFor = "loser15lin", Date = new DateOnly(2022, 12, 27) });
-            Bookings.Add(new() { Room = "G3 Glan", StartTime = new TimeOnly(08, 00), EndTime = new TimeOnly(15, 00), BookedFor = "loser22lin", Date = new DateOnly(2022, 12, 23) });
-            Bookings.Add(new() { Room = "G6 Äggskallebyn", StartTime = new TimeOnly(08, 00), EndTime = new TimeOnly(18, 00), BookedFor = "loser22lin", Date = new DateOnly(2022, 12, 23) });
-            Bookings.Add(new() { Room = "Sal 1", StartTime = new TimeOnly(12, 00), EndTime = new TimeOnly(14, 00), BookedFor = "företag", Date = new DateOnly(2022, 12, 23) });
-            Bookings.Add(new() { Room = "Sal 3", StartTime = new TimeOnly(12, 00), EndTime = new TimeOnly(14, 00), BookedFor = "loser21", Date = new DateOnly(2022, 12, 23) });
-            Bookings.Add(new() { Room = "Sal 7", StartTime = new TimeOnly(12, 00), EndTime = new TimeOnly(14, 00), BookedFor = "hejsan", Date = new DateOnly(2022, 12, 23) });
-            Bookings.Add(new() { Room = "Sal 9", StartTime = new TimeOnly(8, 00), EndTime = new TimeOnly(16, 00), BookedFor = "Syne22Lin", Date = new DateOnly(2022, 12, 23) });
+        private void Instance_RefreshWidget(object? sender, EventArgs e)
+        {
+            Bookings = LocalStorage.Instance.Storage.Bookings;
+            Invalidate();
         }
 
         private List<BookingClass> GetCurrentBookings()
@@ -116,6 +114,9 @@ namespace TUCDashboardGrp1.Model
                         // Check the start and endtime to compare to the points in %
                         int bookingStart = booking.StartTime.Hour;
                         int bookingStop = booking.EndTime.Hour;
+
+                        // !!! TODO: Perform time validation here
+                        //           If out of bounds: continue;
 
                         // Calculate the position of the booking field
                         int width = (int)(totalLenght / (double)totalTime * (bookingStop - bookingStart)); // <-- This line contains the rounding error

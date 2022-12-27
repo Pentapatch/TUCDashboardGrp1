@@ -10,23 +10,24 @@ namespace TUCDashboardGrp1.Controller
             ID = Guid.NewGuid();
         }
 
-        public Guid ID { get; set; }                   // Database Use "only" .... 
-        public string Room { get; set; }      // G1, A8
+        public Guid ID { get; set; }            // Database Use "only" .... 
 
-        public string BookedBy { get; set; }  // Bokee: Dan S. Syne22
+        public string Room { get; set; }        // G1, A8
 
-        public string BookedFor { get; set; } // Syne22 
+        public string BookedBy { get; set; }    // Bokee: Dan S. Syne22
+
+        public string BookedFor { get; set; }   // Syne22 
 
         #region XML Ignore
 
         [XmlIgnore]
-        public DateOnly Date { get; set; }            // 2022-12-14
+        public DateOnly Date { get; set; }      // 2022-12-14
 
         [XmlIgnore]
-        public TimeOnly StartTime { get; set; }       // 10.00
+        public TimeOnly StartTime { get; set; } // 10.00
 
         [XmlIgnore]
-        public TimeOnly EndTime { get; set; }         // 12.00
+        public TimeOnly EndTime { get; set; }   // 12.00
 
         #endregion
 
