@@ -34,7 +34,17 @@ namespace TUCDashboardGrp1.Model
         public Image? Image { 
             get
             {
-                if (imagePath != null) return new Bitmap(imagePath);
+                if (imagePath != null && imagePath != "")
+                {
+                    try
+                    {
+                        return new Bitmap(imagePath);
+                    }
+                    catch (Exception)
+                    {
+                        XMLImage = "";
+                    }
+                }
                 return null;
             }
         }

@@ -3,6 +3,7 @@ using TUCDashboardGrp1.Model;
 
 namespace TUCDashboardGrp1
 {
+
     public partial class DashboardForm : Form
     {
 
@@ -16,6 +17,9 @@ namespace TUCDashboardGrp1
         private bool isMouseDown = false;
         private bool isDraggingWidget = false;
         private List<Widget> widgets = new();
+
+        public const string ApplicationTitle = "TUC Dashboard";
+        public const bool IsDebugging = true;
 
         #endregion
 
@@ -195,7 +199,7 @@ namespace TUCDashboardGrp1
                 ShowLogin();
         }
 
-        private void ShowLogin() => login.ShowDialog();
+        private void ShowLogin() => login.ShowDialog(this);
 
         #endregion
 

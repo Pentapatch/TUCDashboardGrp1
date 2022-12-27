@@ -45,12 +45,12 @@ namespace TUCDashboardGrp1.Model
 
         public XmlLocalStorage()
         {
-            bookings.Add( new() { Date = DateOnly.FromDateTime(DateTime.Now), StartTime = TimeOnly.FromDateTime(DateTime.Now), BookedFor = "SYNE22", Room = "G-punkt", EndTime = TimeOnly.FromDateTime(DateTime.Now.AddHours(4)) });
+            //bookings.Add( new() { Date = DateOnly.FromDateTime(DateTime.Now), StartTime = TimeOnly.FromDateTime(DateTime.Now), BookedFor = "SYNE22", Room = "G-punkt", EndTime = TimeOnly.FromDateTime(DateTime.Now.AddHours(4)) });
 
-            feed.Add(new() { Content = "Content 4", Header = "Header 4" });
-            feed.Add(new() { Content = "Content 1", Header = "Header 1" });
-            feed.Add(new() { Content = "Content 2", Header = "Header 2" });
-            feed.Add(new() { Content = "Content 3", Header = "Header 3" });
+            //feed.Add(new() { Content = "Content 4", Header = "Header 4" });
+            //feed.Add(new() { Content = "Content 1", Header = "Header 1" });
+            //feed.Add(new() { Content = "Content 2", Header = "Header 2" });
+            //feed.Add(new() { Content = "Content 3", Header = "Header 3" });
         }
 
     }
