@@ -32,7 +32,11 @@ namespace TUCDashboardGrp1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            browser.Filter = "Bildfiler| *.bmp; *.jpg; *.jpeg; *.gif; *.png | Bitmap (*.bmp) | *.bmp | Joint photographic experts group (*.jpg; *.jpeg)";
             browser.ShowDialog(this);
+
+            var test = browser.FileName;
+            // "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             picturebox_feed_preview.Image = Resources._1;
         }
 

@@ -43,6 +43,8 @@
             this.label_feed_content = new System.Windows.Forms.Label();
             this.label_feed_header = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBox_booked_for = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.button_confirm_booking = new System.Windows.Forms.Button();
             this.label_room = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -50,7 +52,7 @@
             this.label_start_time = new System.Windows.Forms.Label();
             this.dateTimePicker_stop = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker_start = new System.Windows.Forms.DateTimePicker();
-            this.textBox_name = new System.Windows.Forms.TextBox();
+            this.textBox_booked_by = new System.Windows.Forms.TextBox();
             this.label_name = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label_settings = new System.Windows.Forms.Label();
@@ -201,6 +203,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.textBox_booked_for);
+            this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.button_confirm_booking);
             this.tabPage2.Controls.Add(this.label_room);
             this.tabPage2.Controls.Add(this.comboBox1);
@@ -208,7 +212,7 @@
             this.tabPage2.Controls.Add(this.label_start_time);
             this.tabPage2.Controls.Add(this.dateTimePicker_stop);
             this.tabPage2.Controls.Add(this.dateTimePicker_start);
-            this.tabPage2.Controls.Add(this.textBox_name);
+            this.tabPage2.Controls.Add(this.textBox_booked_by);
             this.tabPage2.Controls.Add(this.label_name);
             this.tabPage2.Location = new System.Drawing.Point(8, 46);
             this.tabPage2.Name = "tabPage2";
@@ -218,9 +222,25 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // textBox_booked_for
+            // 
+            this.textBox_booked_for.Location = new System.Drawing.Point(235, 55);
+            this.textBox_booked_for.Name = "textBox_booked_for";
+            this.textBox_booked_for.Size = new System.Drawing.Size(200, 39);
+            this.textBox_booked_for.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(73, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 32);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Bokad för:";
+            // 
             // button_confirm_booking
             // 
-            this.button_confirm_booking.Location = new System.Drawing.Point(235, 530);
+            this.button_confirm_booking.Location = new System.Drawing.Point(235, 596);
             this.button_confirm_booking.Name = "button_confirm_booking";
             this.button_confirm_booking.Size = new System.Drawing.Size(164, 46);
             this.button_confirm_booking.TabIndex = 8;
@@ -230,7 +250,7 @@
             // label_room
             // 
             this.label_room.AutoSize = true;
-            this.label_room.Location = new System.Drawing.Point(73, 376);
+            this.label_room.Location = new System.Drawing.Point(73, 442);
             this.label_room.Name = "label_room";
             this.label_room.Size = new System.Drawing.Size(115, 32);
             this.label_room.TabIndex = 7;
@@ -256,7 +276,7 @@
             "A7",
             "A8",
             "A9"});
-            this.comboBox1.Location = new System.Drawing.Point(235, 376);
+            this.comboBox1.Location = new System.Drawing.Point(235, 442);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(242, 40);
             this.comboBox1.TabIndex = 6;
@@ -265,7 +285,7 @@
             // label_stop_time
             // 
             this.label_stop_time.AutoSize = true;
-            this.label_stop_time.Location = new System.Drawing.Point(73, 261);
+            this.label_stop_time.Location = new System.Drawing.Point(73, 327);
             this.label_stop_time.Name = "label_stop_time";
             this.label_stop_time.Size = new System.Drawing.Size(50, 32);
             this.label_stop_time.TabIndex = 5;
@@ -274,7 +294,7 @@
             // label_start_time
             // 
             this.label_start_time.AutoSize = true;
-            this.label_start_time.Location = new System.Drawing.Point(73, 179);
+            this.label_start_time.Location = new System.Drawing.Point(73, 245);
             this.label_start_time.Name = "label_start_time";
             this.label_start_time.Size = new System.Drawing.Size(65, 32);
             this.label_start_time.TabIndex = 4;
@@ -284,7 +304,7 @@
             // 
             this.dateTimePicker_stop.CustomFormat = "yyyy-MM-dd HH:mm";
             this.dateTimePicker_stop.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_stop.Location = new System.Drawing.Point(235, 254);
+            this.dateTimePicker_stop.Location = new System.Drawing.Point(235, 320);
             this.dateTimePicker_stop.Name = "dateTimePicker_stop";
             this.dateTimePicker_stop.Size = new System.Drawing.Size(400, 39);
             this.dateTimePicker_stop.TabIndex = 3;
@@ -293,26 +313,26 @@
             // 
             this.dateTimePicker_start.CustomFormat = "yyyy-MM-dd HH:mm";
             this.dateTimePicker_start.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_start.Location = new System.Drawing.Point(235, 174);
+            this.dateTimePicker_start.Location = new System.Drawing.Point(235, 240);
             this.dateTimePicker_start.Name = "dateTimePicker_start";
             this.dateTimePicker_start.Size = new System.Drawing.Size(400, 39);
             this.dateTimePicker_start.TabIndex = 2;
             // 
-            // textBox_name
+            // textBox_booked_by
             // 
-            this.textBox_name.Location = new System.Drawing.Point(235, 66);
-            this.textBox_name.Name = "textBox_name";
-            this.textBox_name.Size = new System.Drawing.Size(200, 39);
-            this.textBox_name.TabIndex = 1;
+            this.textBox_booked_by.Location = new System.Drawing.Point(235, 152);
+            this.textBox_booked_by.Name = "textBox_booked_by";
+            this.textBox_booked_by.Size = new System.Drawing.Size(200, 39);
+            this.textBox_booked_by.TabIndex = 1;
             // 
             // label_name
             // 
             this.label_name.AutoSize = true;
-            this.label_name.Location = new System.Drawing.Point(73, 66);
+            this.label_name.Location = new System.Drawing.Point(73, 152);
             this.label_name.Name = "label_name";
-            this.label_name.Size = new System.Drawing.Size(84, 32);
+            this.label_name.Size = new System.Drawing.Size(116, 32);
             this.label_name.TabIndex = 0;
-            this.label_name.Text = "Namn:";
+            this.label_name.Text = "Bokad av:";
             // 
             // tabPage3
             // 
@@ -336,7 +356,7 @@
             // 
             // browser
             // 
-            this.browser.FileName = "openFileDialog1";
+            this.browser.Filter = "Bildfiler|*.jpg,*.png,*.jpeg,*.gif,*.bmp";
             // 
             // AdminTools
             // 
@@ -382,7 +402,7 @@
         private Label label_feed_content;
         private Label label_feed_header;
         private OpenFileDialog browser;
-        private TextBox textBox_name;
+        private TextBox textBox_booked_by;
         private Label label_name;
         private DateTimePicker dateTimePicker_start;
         private DateTimePicker dateTimePicker_stop;
@@ -393,5 +413,7 @@
         private Label label_room;
         private TabPage tabPage3;
         private Label label_settings;
+        private TextBox textBox_booked_for;
+        private Label label1;
     }
 }
