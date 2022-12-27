@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace TUCDashboardGrp1
+﻿namespace TUCDashboardGrp1
 {
     public partial class LoginForm : Form
     {
         public LoginForm()
         {
             InitializeComponent();
+
+            Text = $"{DashboardForm.ApplicationTitle} - Login to admin tools";
+
             this.ActiveControl = textBoxUsername;
             textBoxUsername.Focus();
         }
@@ -24,14 +17,14 @@ namespace TUCDashboardGrp1
             string user = textBoxUsername.Text;
             string pass = textBoxPassword.Text;
 
-            if (user == "admin" && pass == "admin")
+            if (user == "admin" && pass == "admin" || DashboardForm.IsDebugging)
             {
                 //labelMessage.Text = "Welcome Admin";
                 //labelMessage.ForeColor = System.Drawing.Color.Green;
                 using (AdminTools a = new AdminTools())
                 {
-                    this.Visible= false;
-                    a.ShowDialog();
+                    this.Visible = false;
+                    a.ShowDialog(Owner);
                     this.Close();
                     this.Visible = true;
 

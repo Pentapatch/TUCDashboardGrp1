@@ -45,25 +45,17 @@ namespace TUCDashboardGrp1
         {
             InitializeComponent(); // <-- Don't touch
 
-            // Add dummy feeds
-            List<FeedData> newFeed = new();
-            newFeed.Add(new() { Header = "Enbart en header" });
-            newFeed.Add(new() { Header = "Header + Content", Content = "En fin text" });
-            //newFeed.Add(new() { Header = "Header + Content + Image", Content = "En fin bildtext en fin bildtext en fin bildtext en fin bildtext en fin bildtext en fin bildtext en fin bildtext", Image = Resources._1 });
-            //newFeed.Add(new() { Header = "En regning dag", Image = Resources._9 });
-            newFeed.Add(new() { Content = "En ensam ledsen body-text" });
-            //newFeed.Add(new() { Content = "Body-text + bild", Image = Resources._22 });
-            //newFeed.Add(new() { Image = Resources._13 });
-
-            SetFeed(newFeed);
-
             // Subscribe to timer event
             GlobalTimer.Instance!.Tick10Seconds += Refresher_Tick;
-            GlobalTimer.Instance!.RefreshWidget += Refresher_Tick;
+            GlobalTimer.Instance!.RefreshWidget += FeedWidget_RefreshWidget;
+            Load += FeedWidget_RefreshWidget;
 
             // Subscribe to form event
             Resize += FeedWidget_Resize;
         }
+
+        private void FeedWidget_RefreshWidget(object? sender, EventArgs e) => 
+            SetFeed(LocalStorage.Instance.Storage.Feed);
 
         #endregion
 
@@ -134,9 +126,10 @@ namespace TUCDashboardGrp1
             label_content.Top = bodyTop;
 
             picture.Left = minimum;
-            label_content.Left = picture.Right + 10;
 
             picture.Width = (Width - (minimum * 2)) / 2;
+
+            label_content.Left = picture.Right + 10;
 
             // CASE: content is null -> expand picture right
             if (data.Content == "") picture.Width = Width - picture.Left - minimum;

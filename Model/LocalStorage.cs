@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Diagnostics;
+using System.Xml.Serialization;
 
 namespace TUCDashboardGrp1.Model
 {
@@ -23,7 +24,7 @@ namespace TUCDashboardGrp1.Model
 
         public static void Initialize() => instance ??= new();
 
-        public XmlLocalStorage Value { get => value; }
+        public XmlLocalStorage Storage { get => value; }
 
         public LocalStorage()
         {
@@ -34,7 +35,6 @@ namespace TUCDashboardGrp1.Model
             ReadFile();
 
             Save();
-
         }
 
         internal void Save()
@@ -46,6 +46,11 @@ namespace TUCDashboardGrp1.Model
 
                 writer.Serialize(fs, value);
             }
+        }
+
+        public void OpenInExplorer()
+        {
+            Process.Start("explorer.exe", directoryPath);
         }
 
         private void CreateFile(string fileName, string directoryName = "Settings")
@@ -77,7 +82,7 @@ namespace TUCDashboardGrp1.Model
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Error when reading XML file:\n{e.Message}", "TUC Dashboard", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error when reading XML file:\n{e.Message}", DashboardForm.ApplicationTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 // TODO: Error management
                 throw;
             }

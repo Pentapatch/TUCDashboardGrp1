@@ -12,7 +12,7 @@ namespace TUCDashboardGrp1
             Rooms.Add("G3 Glan");
             Rooms.Add("G4 Berga");
             Rooms.Add("G5 Norrköping");
-            Rooms.Add("G6 Äggskallebyn");
+            Rooms.Add("G6 Finspång");
             Rooms.Add("G7 Söderköping");
         }
     }
