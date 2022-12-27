@@ -50,7 +50,7 @@ namespace TUCDashboardGrp1.Model
             feed.Add(new() { Content = "Content 4", Header = "Header 4" });
             feed.Add(new() { Content = "Content 1", Header = "Header 1" });
             feed.Add(new() { Content = "Content 2", Header = "Header 2" });
-            feed.Add(new() { Content = "Content 3", Header = "Header 3", XMLImage = "C:\\Users\\newsi\\OneDrive\\Skrivbord\\VSC KeyboardReferenceSheet.png" });
+            feed.Add(new() { Content = "Content 3", Header = "Header 3" });
         }
 
     }
