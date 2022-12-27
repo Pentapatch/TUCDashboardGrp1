@@ -354,10 +354,6 @@
             this.label_settings.TabIndex = 0;
             this.label_settings.Text = "Inställningar är tom för tillfället";
             // 
-            // browser
-            // 
-            this.browser.Filter = "Bildfiler|*.jpg,*.png,*.jpeg,*.gif,*.bmp";
-            // 
             // AdminTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
