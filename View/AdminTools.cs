@@ -278,6 +278,12 @@ namespace TUCDashboardGrp1
 
         private void Booking_Room_Enter(object sender, EventArgs e) => combobox_room.DroppedDown = true;
 
+        private void dateTimePicker_start_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime startValue = dateTimePicker_start.Value;
+            dateTimePicker_stop.Value = startValue.AddHours(2);
+        }
+
         #endregion // End event handlers region
 
         #region Booking functions
@@ -304,6 +310,9 @@ namespace TUCDashboardGrp1
                 item.SubItems.Add(data.XMLEndTime);
                 item.SubItems.Add(data.Room);
             }
+
+            // Reset all controls
+            BookingClearForm();
         }
 
         private void BookingSubmit()
@@ -358,14 +367,36 @@ namespace TUCDashboardGrp1
             textBox_booked_for.Text = "";
             textBox_booked_by.Text = "";
             dateTimePicker_date.Text = DateTime.Now.ToShortDateString();
-            dateTimePicker_start.Text = DateTime.Now.ToShortTimeString();
-            dateTimePicker_stop.Text = DateTime.Now.ToShortTimeString();
+            // Vi är intresserade av .Minute, kanske .Hour
+
+            DateTime now = RoundToClosetHalfHour(DateTime.Now);
+
+            dateTimePicker_start.Text = now.ToShortTimeString();
+            dateTimePicker_stop.Text = now.AddHours(2).ToShortTimeString();
+
             combobox_room.Text = EmptyBookingRoom;
 
             // Clear the entry that is being edited
             isEditingBookingItem = null;
         }
 
+        private static DateTime RoundToClosetHalfHour(DateTime value)
+        {
+            int hour = value.Hour;
+            int minute = value.Minute;
+
+            if (minute < 30)
+            {
+                minute = 30;
+            }
+            else if (minute >= 30)
+            {
+                minute = 0;
+                hour++;
+            }
+
+            return new DateTime(value.Year, value.Month, value.Day, hour, minute, 0);
+        }
 
         #endregion
 
