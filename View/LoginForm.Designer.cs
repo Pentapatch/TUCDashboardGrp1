@@ -51,18 +51,18 @@
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(94, 29);
             this.buttonLogin.TabIndex = 2;
-            this.buttonLogin.Text = "Login";
+            this.buttonLogin.Text = "Logga in";
             this.buttonLogin.UseVisualStyleBackColor = true;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // labelUsername
             // 
             this.labelUsername.AutoSize = true;
-            this.labelUsername.Location = new System.Drawing.Point(79, 99);
+            this.labelUsername.Location = new System.Drawing.Point(51, 99);
             this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(75, 20);
+            this.labelUsername.Size = new System.Drawing.Size(109, 20);
             this.labelUsername.TabIndex = 2;
-            this.labelUsername.Text = "Username";
+            this.labelUsername.Text = "Användarnamn";
             // 
             // labelPassword
             // 
@@ -71,7 +71,7 @@
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(70, 20);
             this.labelPassword.TabIndex = 3;
-            this.labelPassword.Text = "Password";
+            this.labelPassword.Text = "Lösenord";
             // 
             // textBoxPassword
             // 
@@ -86,11 +86,11 @@
             // 
             this.labelAdmin.AutoSize = true;
             this.labelAdmin.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelAdmin.Location = new System.Drawing.Point(160, 9);
+            this.labelAdmin.Location = new System.Drawing.Point(97, 9);
             this.labelAdmin.Name = "labelAdmin";
-            this.labelAdmin.Size = new System.Drawing.Size(145, 32);
+            this.labelAdmin.Size = new System.Drawing.Size(272, 32);
             this.labelAdmin.TabIndex = 5;
-            this.labelAdmin.Text = "Admin login";
+            this.labelAdmin.Text = "Logga in till adminpanel";
             // 
             // labelMessage
             // 
