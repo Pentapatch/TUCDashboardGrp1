@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TUCDashboardGrp1.Controller
+﻿namespace TUCDashboardGrp1.Controller
 {
     public class WeatherProcessor
     {
@@ -35,29 +29,19 @@ namespace TUCDashboardGrp1.Controller
         16 = tstm,    Thunder probability.                    Unit: %.
         17 = gust,    Wind gust speed.                        Unit: m/s.
         18 = Wsymb2,  Weather symbol.                         Unit: Integer 1-27 (number of the symbol)
-
         */
 
-        public static async Task<(string, int)> LoadWeather() 
-        {
-            string url = "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/15.62157/lat/58.41086/data.json";
-            
-            // On the string below you can experiment with changing longitude and latitude in the link if you want to try other cities.
-            //string url = "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/17.141273/lat/60.674880/data.json";
+        public static string Url { get; set; } = "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/15.62157/lat/58.41086/data.json";
 
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
+        public static async Task<WeatherResultModel> LoadWeather()
+        {
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(Url))
             {
-                if(response.IsSuccessStatusCode)
-                {
-                    WeatherResultModel weather = await response.Content.ReadAsAsync<WeatherResultModel>();
-                    return ($"Temperature: {weather.TimeSeries[0].Parameters[10].Values[0]}°C \n" +
-                        $"Precipitation: {weather.TimeSeries[0].Parameters[2].Values[0]} mm/h", 
-                        Convert.ToInt32(weather.TimeSeries[0].Parameters[18].Values[0]));
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                // Get and return the result asynchronously
+                if (response.IsSuccessStatusCode) return await response.Content.ReadAsAsync<WeatherResultModel>();
+
+                // Unsuccessful: Throw error
+                throw new Exception(response.ReasonPhrase);
             }
         }
     }

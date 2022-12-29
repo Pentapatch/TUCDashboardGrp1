@@ -22,7 +22,7 @@
 
         #region Properties
 
-        public static GlobalTimer? Instance
+        public static GlobalTimer Instance
         {
             get
             {

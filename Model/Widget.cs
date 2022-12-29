@@ -114,9 +114,59 @@ namespace TUCDashboardGrp1.Model
 
         private void Widget_Load(object? sender, EventArgs e)
         {
-            // UpdateSlide the BackColor property for all controls that this widget contains
-            UpdateColors();
+            // Get all controls that is contained within this widget
+            // Loop through each of them
+            foreach (Control control in GetAllControls())
+            {
+                // Set the BackColor property to the custom BackgroundColor property
+                control.BackColor = BackgroundColor;
+
+                // Subscribe to mouse events
+                // This is used for raising the same event but from the Widget
+                // so we can move the widget by dragging it, from anywhere within the widget
+                control.MouseDown += Control_MouseDown;
+                control.MouseUp += Control_MouseUp;
+                control.MouseMove += Control_MouseMove;
+            }
         }
+
+        private void Control_MouseMove(object? sender, MouseEventArgs e)
+        {
+            // Raise the event from the parent widget
+            if (sender is Control control)
+                OnMouseMove(CreateEventArgs(e, control));
+        }
+
+        private void Control_MouseUp(object? sender, MouseEventArgs e)
+        {
+            // Raise the event from the parent widget
+            if (sender is Control control)
+                OnMouseUp(CreateEventArgs(e, control));
+        }
+
+        private void Control_MouseDown(object? sender, MouseEventArgs e)
+        {
+            // Raise the event from the parent widget
+            if (sender is Control control)
+                OnMouseDown(CreateEventArgs(e, control));
+        }
+
+        /// <summary>Create a new <see cref="MouseEventArgs"/> object that is translated to widget coordinate space.</summary>
+        /// <param name="e">The <see cref="MouseEventArgs"/> object to translate.</param>
+        /// <param name="control">The control that recieved the <see cref="MouseEventArgs"/>.</param>
+        /// <returns>A new <see cref="MouseEventArgs"/> object that is translated to the parent widgets coordinate space.</returns>
+        private MouseEventArgs CreateEventArgs(MouseEventArgs e, Control control)
+        {
+            var translatedCoordinates = Translate(e.Location, control);
+            return new (e.Button, e.Clicks, translatedCoordinates.X, translatedCoordinates.Y, e.Delta);
+        }
+
+        /// <summary>Translate the event coordinates to the widget coordinate space.</summary>
+        /// <param name="point">The event coordinates to translate.</param>
+        /// <param name="control">The control that raised the event.</param>
+        /// <returns>A tuple that contains translated X and Y values from control coordinates to widget coordinates.</returns>
+        private (int X, int Y) Translate(Point point, Control control) => 
+            (point.X + control.Left, point.Y + control.Top); 
 
         private void Widget_Paint(object? sender, PaintEventArgs e)
         {
@@ -188,10 +238,7 @@ namespace TUCDashboardGrp1.Model
 
         private void UpdateColors()
         {
-            foreach (Control control in GetAllControls())
-            {
-                control.BackColor = BackgroundColor;
-            }
+            
         }
 
         /// <summary>Get a list that contains all of the controls added to this widget</summary>

@@ -30,35 +30,42 @@ namespace TUCDashboardGrp1
 
         private async void UpdateTrafficAsync()
         {
-            if (ApiHelper.IsInitialized)
+
+            label_timetable_rese.Text = string.Empty;
+            label_timetable_skagge.Text = string.Empty;
+            TrafficResultModel? trafficinfo;
+            try
             {
-                label_timetable_rese.Text = string.Empty;
-                label_timetable_skagge.Text = string.Empty;
-                var trafficinfo = await TrafficProcessor.LoadTraffic();
-                int reseCount = 0;
-                int skaggeCount = 0;
-                foreach (var departure in trafficinfo.Departure)
-                {
-                    if (departure.Direction.Contains("Räknestickan"))
-                    {
-                        if (++reseCount <= NumberOfTrips)
-                        {
-                            label_timetable_rese.Text += departure.Time.ToShortTimeString() + "\n";
-                        }
-                    }
-                    else
-                    {
-                        if (++skaggeCount <= NumberOfTrips)
-                        {
-                            label_timetable_skagge.Text += departure.Time.ToShortTimeString() + "\n";
-                        }
-                    }
-                }
-
-                if (label_timetable_rese.Text.Length != 0) label_timetable_rese.Text = label_timetable_rese.Text[0..^1];
-
-                if (label_timetable_skagge.Text.Length != 0) label_timetable_skagge.Text = label_timetable_skagge.Text[0..^1];
+                trafficinfo = await TrafficProcessor.LoadTraffic();
             }
+            catch (Exception)
+            {
+                label_dir_rese.Text = "Kunde inte ladda busstider";
+                return;
+            }
+
+            label_dir_skagge.Visible = true;
+            label_dir_rese.Text = "Mot Resecentrum";
+
+            int reseCount = 0;
+            int skaggeCount = 0;
+            foreach (var departure in trafficinfo.Departure)
+            {
+                if (departure.Direction.Contains("Räknestickan"))
+                {
+                    if (++reseCount <= NumberOfTrips)
+                        label_timetable_rese.Text += departure.Time.ToShortTimeString() + "\n";
+                }
+                else
+                {
+                    if (++skaggeCount <= NumberOfTrips)
+                        label_timetable_skagge.Text += departure.Time.ToShortTimeString() + "\n";
+                }
+            }
+
+            if (label_timetable_rese.Text.Length != 0) label_timetable_rese.Text = label_timetable_rese.Text[0..^1];
+            if (label_timetable_skagge.Text.Length != 0) label_timetable_skagge.Text = label_timetable_skagge.Text[0..^1];
+
         }
     }
 }

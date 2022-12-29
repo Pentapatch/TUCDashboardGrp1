@@ -23,16 +23,14 @@ namespace TUCDashboardGrp1.Model
         {
             InitializeComponent();
 
-            // Create mock values until we get the API or database running
+            GlobalTimer.Instance.RefreshWidget += Instance_RefreshWidget;
+            Load += Instance_RefreshWidget;
+        }
 
-            Bookings.Add(new() { Room = "G1 Roxen", StartTime = new TimeOnly(12, 00), EndTime = new TimeOnly(14, 00), ClassType = "Syne22Lin", Date = new DateOnly(2022, 12, 21) });
-            Bookings.Add(new() { Room = "G4 Stångån", StartTime = new TimeOnly(14, 00), EndTime = new TimeOnly(16, 00), ClassType = "loser15lin", Date = new DateOnly(2022, 12, 27) });
-            Bookings.Add(new() { Room = "G3 Glan", StartTime = new TimeOnly(08, 00), EndTime = new TimeOnly(15, 00), ClassType = "loser22lin", Date = new DateOnly(2022, 12, 21) });
-            Bookings.Add(new() { Room = "G6 Äggskallebyn", StartTime = new TimeOnly(08, 00), EndTime = new TimeOnly(18, 00), ClassType = "loser22lin", Date = new DateOnly(2022, 12, 21) });
-            Bookings.Add(new() { Room = "Sal 1", StartTime = new TimeOnly(12, 00), EndTime = new TimeOnly(14, 00), ClassType = "företag", Date = new DateOnly(2022, 12, 21) });
-            Bookings.Add(new() { Room = "Sal 3", StartTime = new TimeOnly(12, 00), EndTime = new TimeOnly(14, 00), ClassType = "loser21", Date = new DateOnly(2022, 12, 21) });
-            Bookings.Add(new() { Room = "Sal 7", StartTime = new TimeOnly(12, 00), EndTime = new TimeOnly(14, 00), ClassType = "hejsan", Date = new DateOnly(2022, 12, 21) });
-            Bookings.Add(new() { Room = "Sal 9", StartTime = new TimeOnly(8, 00), EndTime = new TimeOnly(16, 00), ClassType = "Syne22Lin", Date = new DateOnly(2022, 12, 21) });
+        private void Instance_RefreshWidget(object? sender, EventArgs e)
+        {
+            Bookings = LocalStorage.Instance.Storage.Bookings;
+            Invalidate();
         }
 
         private List<BookingClass> GetCurrentBookings()
@@ -72,7 +70,7 @@ namespace TUCDashboardGrp1.Model
             int dividerlineX = timelineX - 10;
 
             // Calculate the lenght of the timeline and set a int? for %usage
-            int timelineWidth = Width - timelineX - minimum - 10;
+            int timelineWidth = Width - timelineX - minimum - 20;
             int totalLenght = timelineWidth;
             int totalTime = TimelineStop - TimelineStart;
 
@@ -113,23 +111,22 @@ namespace TUCDashboardGrp1.Model
                 {
                     if (Rooms[i] == booking.Room)
                     {
-                        // Early exit checks (skip current because no times is set)
-                        if (booking.StartTime == null) continue;
-                        if (booking.EndTime == null) continue;
-
                         // Check the start and endtime to compare to the points in %
-                        int bookingStart = booking.StartTime.Value.Hour;
-                        int bookingStop = booking.EndTime.Value.Hour;
+                        int bookingStart = booking.StartTime.Hour;
+                        int bookingStop = booking.EndTime.Hour;
+
+                        // !!! TODO: Perform time validation here
+                        //           If out of bounds: continue;
 
                         // Calculate the position of the booking field
-                        int width = (totalLenght / totalTime) * (bookingStop - bookingStart);
+                        int width = (int)(totalLenght / (double)totalTime * (bookingStop - bookingStart)); // <-- This line contains the rounding error
                         int left = timelineX + ((totalLenght / totalTime) * (bookingStart - TimelineStart));
 
                         // Fill in the time line with the values of the current booking
                         e.Graphics.FillRectangle(tucRedBrush, left, timelineY, width, TimelineHeight);
 
                         // Get the name of the bookie
-                        string bookieName = booking.ClassType;
+                        string bookieName = booking.BookedFor;
 
                         // Calculate where in the Booking to draw
                         int bookieWidth = (int)e.Graphics.MeasureString(bookieName, bookingFont).Width;

@@ -28,51 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.label_current_weather = new System.Windows.Forms.Label();
+            this.current_weather_symbol = new System.Windows.Forms.PictureBox();
+            this.label_forecast = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.current_weather_symbol)).BeginInit();
             this.SuspendLayout();
             // 
-            // label2
+            // label_current_weather
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(117, 180);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(275, 37);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Forecast not available";
+            this.label_current_weather.AutoSize = true;
+            this.label_current_weather.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_current_weather.Location = new System.Drawing.Point(134, 240);
+            this.label_current_weather.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_current_weather.Name = "label_current_weather";
+            this.label_current_weather.Size = new System.Drawing.Size(270, 46);
+            this.label_current_weather.TabIndex = 2;
+            this.label_current_weather.Text = "Laddar prognos..";
             // 
-            // pictureBox1
+            // current_weather_symbol
             // 
-            this.pictureBox1.ImageLocation = "";
-            this.pictureBox1.Location = new System.Drawing.Point(117, 100);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(124, 70);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.current_weather_symbol.ImageLocation = "";
+            this.current_weather_symbol.Location = new System.Drawing.Point(134, 133);
+            this.current_weather_symbol.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.current_weather_symbol.Name = "current_weather_symbol";
+            this.current_weather_symbol.Size = new System.Drawing.Size(142, 93);
+            this.current_weather_symbol.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.current_weather_symbol.TabIndex = 3;
+            this.current_weather_symbol.TabStop = false;
+            // 
+            // label_forecast
+            // 
+            this.label_forecast.AutoSize = true;
+            this.label_forecast.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_forecast.Location = new System.Drawing.Point(134, 356);
+            this.label_forecast.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_forecast.Name = "label_forecast";
+            this.label_forecast.Size = new System.Drawing.Size(0, 28);
+            this.label_forecast.TabIndex = 4;
             // 
             // WeatherWidghet
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Controls.Add(this.label_forecast);
+            this.Controls.Add(this.current_weather_symbol);
+            this.Controls.Add(this.label_current_weather);
+            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "WeatherWidghet";
-            this.Size = new System.Drawing.Size(815, 473);
+            this.Size = new System.Drawing.Size(932, 631);
             this.Load += new System.EventHandler(this.WeatherWidghet_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.current_weather_symbol)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private Label label2;
-        private PictureBox pictureBox1;
+        private Label label_current_weather;
+        private PictureBox current_weather_symbol;
+        private Label label_forecast;
     }
 }

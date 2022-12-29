@@ -40,9 +40,9 @@
             this.label_dir_rese.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_dir_rese.Location = new System.Drawing.Point(23, 18);
             this.label_dir_rese.Name = "label_dir_rese";
-            this.label_dir_rese.Size = new System.Drawing.Size(180, 28);
+            this.label_dir_rese.Size = new System.Drawing.Size(138, 28);
             this.label_dir_rese.TabIndex = 1;
-            this.label_dir_rese.Text = "Mot Resecentrum";
+            this.label_dir_rese.Text = "Laddar resor..";
             // 
             // label_dir_skagge
             // 
@@ -53,6 +53,7 @@
             this.label_dir_skagge.Size = new System.Drawing.Size(165, 28);
             this.label_dir_skagge.TabIndex = 2;
             this.label_dir_skagge.Text = "Mot Skäggetorp";
+            this.label_dir_skagge.Visible = false;
             // 
             // label_timetable_rese
             // 
