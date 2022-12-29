@@ -38,6 +38,22 @@ namespace TUCDashboardGrp1
             //LocalStorage ls = new();
             LocalStorage.Initialize();
             InitializeWidgetControl();
+            Resize += DashboardForm_Resize;
+        }
+
+        private void DashboardForm_Resize(object? sender, EventArgs e)
+        {
+            UpdateLayout();
+        }
+
+        private void UpdateLayout()
+        {
+            sc_main.SplitterDistance = sc_main.Height / 5;
+            sc_top.SplitterDistance = sc_top.Width / 3;
+            sc_top_left.SplitterDistance = sc_top_left.Width / 2;
+            sc_top_right.SplitterDistance = sc_top_right.Width / 2;
+            sc_bottom.SplitterDistance = sc_bottom.Width / 3;
+            sc_right.SplitterDistance = sc_right.Height / 2;
         }
 
         #endregion
@@ -51,7 +67,7 @@ namespace TUCDashboardGrp1
         private void InitializeWidgetControl()
         {
             // Subscribe to target events
-            foreach (Widget widget in GetControlsOfType<Widget>(splitContainer1))
+            foreach (Widget widget in GetControlsOfType<Widget>(sc_main))
             {
                 widget.KeyDown += Widget_KeyDown;
                 widget.MouseDown += Widget_MouseDown;
@@ -135,7 +151,7 @@ namespace TUCDashboardGrp1
 
             // Get a list of all of the widgets that are added to this form, and store it in a variable
             // (for optimization purposes)
-            widgets = GetControlsOfType<Widget>(splitContainer1);
+            widgets = GetControlsOfType<Widget>(sc_main);
         }
 
         private void Widget_KeyDown(object? sender, KeyEventArgs e)
