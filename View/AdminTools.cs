@@ -15,6 +15,9 @@ namespace TUCDashboardGrp1
         private const string EmptyFeedImage = "<ingen bild>";
         private const string EmptyBookingRoom = "Välj ett rum..";
 
+        private int bookingLengthOffset = 0;
+        private bool doNotUpdateBookingLengthOffset = false;
+
         public AdminTools()
         {
             InitializeComponent();
@@ -278,10 +281,35 @@ namespace TUCDashboardGrp1
 
         private void Booking_Room_Enter(object sender, EventArgs e) => combobox_room.DroppedDown = true;
 
-        private void dateTimePicker_start_ValueChanged(object sender, EventArgs e)
+        private void Booking_StartTime_ValueChanged(object sender, EventArgs e)
+        {
+            if (doNotUpdateBookingLengthOffset)
+            {
+                doNotUpdateBookingLengthOffset = false; // reset flag
+                return;
+            }
+
+            DateTime startValue = dateTimePicker_start.Value;
+            //dateTimePicker_stop.Value = RoundToClosestHalfHour(startValue.AddHours(bookingLengthOffset), false);
+            dateTimePicker_stop.Value = startValue.AddHours(bookingLengthOffset);
+            //dateTimePicker_stop.Value = startValue.AddHours(2);
+        }
+
+        private void Booking_EndTime_ValueChanged(object sender, EventArgs e)
         {
             DateTime startValue = dateTimePicker_start.Value;
-            dateTimePicker_stop.Value = startValue.AddHours(2);
+            DateTime stopValue = dateTimePicker_stop.Value;
+
+            if (stopValue < startValue)
+            {
+                doNotUpdateBookingLengthOffset = true;
+                dateTimePicker_start.Value = stopValue;
+                bookingLengthOffset = 0;
+                return;
+            }
+
+            // Set the bookingLengthOffset (difference between the start and stop time)
+            bookingLengthOffset = stopValue.Hour - startValue.Hour;
         }
 
         #endregion // End event handlers region
@@ -369,7 +397,7 @@ namespace TUCDashboardGrp1
             dateTimePicker_date.Text = DateTime.Now.ToShortDateString();
             // Vi är intresserade av .Minute, kanske .Hour
 
-            DateTime now = RoundToClosetHalfHour(DateTime.Now);
+            DateTime now = RoundToClosestHalfHour(DateTime.Now);
 
             dateTimePicker_start.Text = now.ToShortTimeString();
             dateTimePicker_stop.Text = now.AddHours(2).ToShortTimeString();
@@ -380,7 +408,7 @@ namespace TUCDashboardGrp1
             isEditingBookingItem = null;
         }
 
-        private static DateTime RoundToClosetHalfHour(DateTime value)
+        private static DateTime RoundToClosestHalfHour(DateTime value, bool incrementHour = true)
         {
             int hour = value.Hour;
             int minute = value.Minute;
@@ -392,7 +420,7 @@ namespace TUCDashboardGrp1
             else if (minute >= 30)
             {
                 minute = 0;
-                hour++;
+                if (incrementHour) hour++;
             }
 
             return new DateTime(value.Year, value.Month, value.Day, hour, minute, 0);

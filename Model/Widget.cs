@@ -190,7 +190,7 @@ namespace TUCDashboardGrp1.Model
             SolidBrush brush = new(BackgroundColor);
             SolidBrush borderBrush = IsHighlighted ? new(tucRed) : new(BorderColor);
 
-            // Calculate offset
+            // Calculate bookingLengthOffset
             int offset = BorderWidth / 2;
             int size = BorderRadius - offset * 2;
 
