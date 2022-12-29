@@ -15,9 +15,6 @@ namespace TUCDashboardGrp1
         private const string EmptyFeedImage = "<ingen bild>";
         private const string EmptyBookingRoom = "Välj ett rum..";
 
-        private int bookingLengthOffset = 0;
-        private bool doNotUpdateBookingLengthOffset = false;
-
         public AdminTools()
         {
             InitializeComponent();
@@ -280,37 +277,6 @@ namespace TUCDashboardGrp1
         private void Booking_Reset_Click(object sender, EventArgs e) => BookingClearForm();
 
         private void Booking_Room_Enter(object sender, EventArgs e) => combobox_room.DroppedDown = true;
-
-        private void Booking_StartTime_ValueChanged(object sender, EventArgs e)
-        {
-            if (doNotUpdateBookingLengthOffset)
-            {
-                doNotUpdateBookingLengthOffset = false; // reset flag
-                return;
-            }
-
-            DateTime startValue = dateTimePicker_start.Value;
-            //dateTimePicker_stop.Value = RoundToClosestHalfHour(startValue.AddHours(bookingLengthOffset), false);
-            dateTimePicker_stop.Value = startValue.AddHours(bookingLengthOffset);
-            //dateTimePicker_stop.Value = startValue.AddHours(2);
-        }
-
-        private void Booking_EndTime_ValueChanged(object sender, EventArgs e)
-        {
-            DateTime startValue = dateTimePicker_start.Value;
-            DateTime stopValue = dateTimePicker_stop.Value;
-
-            if (stopValue < startValue)
-            {
-                doNotUpdateBookingLengthOffset = true;
-                dateTimePicker_start.Value = stopValue;
-                bookingLengthOffset = 0;
-                return;
-            }
-
-            // Set the bookingLengthOffset (difference between the start and stop time)
-            bookingLengthOffset = stopValue.Hour - startValue.Hour;
-        }
 
         #endregion // End event handlers region
 

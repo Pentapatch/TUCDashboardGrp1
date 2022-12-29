@@ -357,7 +357,6 @@
             this.dateTimePicker_stop.ShowUpDown = true;
             this.dateTimePicker_stop.Size = new System.Drawing.Size(79, 27);
             this.dateTimePicker_stop.TabIndex = 4;
-            this.dateTimePicker_stop.ValueChanged += new System.EventHandler(this.Booking_EndTime_ValueChanged);
             // 
             // listview_bookings
             // 
@@ -519,7 +518,6 @@
             this.dateTimePicker_start.ShowUpDown = true;
             this.dateTimePicker_start.Size = new System.Drawing.Size(79, 27);
             this.dateTimePicker_start.TabIndex = 3;
-            this.dateTimePicker_start.ValueChanged += new System.EventHandler(this.Booking_StartTime_ValueChanged);
             // 
             // dateTimePicker_date
             // 
@@ -557,7 +555,7 @@
             this.tab_settings.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tab_settings.Name = "tab_settings";
             this.tab_settings.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tab_settings.Size = new System.Drawing.Size(1245, 587);
+            this.tab_settings.Size = new System.Drawing.Size(1235, 587);
             this.tab_settings.TabIndex = 2;
             this.tab_settings.Text = "Inställningar";
             this.tab_settings.UseVisualStyleBackColor = true;
