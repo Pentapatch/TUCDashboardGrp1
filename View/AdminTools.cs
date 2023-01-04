@@ -309,6 +309,9 @@ namespace TUCDashboardGrp1
                 item.SubItems.Add(data.XMLEndTime);
                 item.SubItems.Add(data.Room);
             }
+
+            // Reset all controls
+            BookingClearForm();
         }
 
         private void BookingSubmit()
@@ -363,14 +366,36 @@ namespace TUCDashboardGrp1
             textBox_booked_for.Text = "";
             textBox_booked_by.Text = "";
             dateTimePicker_date.Text = DateTime.Now.ToShortDateString();
-            dateTimePicker_start.Text = DateTime.Now.ToShortTimeString();
-            dateTimePicker_stop.Text = DateTime.Now.ToShortTimeString();
+            // Vi är intresserade av .Minute, kanske .Hour
+
+            DateTime now = RoundToClosestHalfHour(DateTime.Now);
+
+            dateTimePicker_start.Text = now.ToShortTimeString();
+            dateTimePicker_stop.Text = now.AddHours(2).ToShortTimeString();
+
             combobox_room.Text = EmptyBookingRoom;
 
             // Clear the entry that is being edited
             isEditingBookingItem = null;
         }
 
+        private static DateTime RoundToClosestHalfHour(DateTime value, bool incrementHour = true)
+        {
+            int hour = value.Hour;
+            int minute = value.Minute;
+
+            if (minute < 30)
+            {
+                minute = 30;
+            }
+            else if (minute >= 30)
+            {
+                minute = 0;
+                if (incrementHour) hour++;
+            }
+
+            return new DateTime(value.Year, value.Month, value.Day, hour, minute, 0);
+        }
 
         #endregion
 
