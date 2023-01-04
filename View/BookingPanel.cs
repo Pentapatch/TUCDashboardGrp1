@@ -1,6 +1,5 @@
 ﻿using TUCDashboardGrp1.Controller;
 using TUCDashboardGrp1.Model;
-using TUCDashboardGrp1.View;
 
 namespace TUCDashboardGrp1.View
 {
@@ -35,13 +34,17 @@ namespace TUCDashboardGrp1.View
 
         #region Booking functions
 
+        public void ClearRooms() => combobox_room.Items.Clear();
+
+        public void AddRoom(string roomName) => combobox_room.Items.Add(roomName);
+
         public void BookingsRefresh()
         {
             // Load the feed into the listview control
             listview_bookings.Items.Clear();
 
-            AdminTools.testar();
-            //PopulateRoomsList();
+            // Ask AdminTools to populate the combobox with values
+            if (ParentForm is TUCDashboardGrp1.AdminTools admin) admin.PopulateRoomsList();
 
             for (int i = LocalStorage.Instance.Storage.Bookings.Count - 1; i >= 0; i--)
             {

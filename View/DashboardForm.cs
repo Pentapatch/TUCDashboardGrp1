@@ -39,6 +39,13 @@ namespace TUCDashboardGrp1
             LocalStorage.Initialize();
             InitializeWidgetControl();
             Resize += DashboardForm_Resize;
+            Shown += DashboardForm_Shown;
+        }
+
+        private void DashboardForm_Shown(object? sender, EventArgs e)
+        {
+            var test = GetControlsOfType<Widget>(sc_main);
+            if (test.Count > 0) test[0].Focus();
         }
 
         private void DashboardForm_Resize(object? sender, EventArgs e)

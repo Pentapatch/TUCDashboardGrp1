@@ -7,7 +7,6 @@ namespace TUCDashboardGrp1
     public partial class AdminTools : Form
     {
 
-        
         public AdminTools()
         {
             InitializeComponent();
@@ -19,14 +18,15 @@ namespace TUCDashboardGrp1
             tabControl1.SizeMode = TabSizeMode.Fixed;
             
             feedPanel1.FeedRefresh();
-
         }
 
-        public static void testar()
-        {
-            throw new NotImplementedException();
-        }
+        public void PopulateRoomsList() => roomPanel1.PopulateRoomsList();
 
+        public void ChangeTab(int index) => tabControl1.SelectTab(index);
+
+        public void ClearRooms() => bookingPanel1.ClearRooms();
+
+        public void AddRoom(string roomName) => bookingPanel1.AddRoom(roomName);
 
         private void AdminTools_FormClosing(object sender, FormClosingEventArgs e) => LocalStorage.Instance.Save();
 
@@ -38,13 +38,17 @@ namespace TUCDashboardGrp1
 
             if (index == 1)
             {
-                
                 bookingPanel1.BookingsRefresh();
             }
         }
 
         private void btn_settings_openInExplorer_Click(object sender, EventArgs e) => LocalStorage.Instance.OpenInExplorer();
 
+        private void btn_edit_rooms_Click(object sender, EventArgs e)
+        {
+            ChangeTab(3);
+            PopulateRoomsList();
+        }
     }
 
 }

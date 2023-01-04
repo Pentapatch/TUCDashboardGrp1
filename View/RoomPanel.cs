@@ -13,58 +13,62 @@ namespace TUCDashboardGrp1.View
             // Initialize, don't touch! 
             InitializeComponent();
         }
+
         // EventHandlers
         #region EventHandlers
         private void btn_add_room_Click(object sender, EventArgs e)
         {
             AddRoom();
         }
+
         private void btn_editrooms_back_Click(object sender, EventArgs e)
         {
-            // TODO: Link to AdminTools
-            // tabControl1.SelectTab(2);
+            if (ParentForm is TUCDashboardGrp1.AdminTools admin) admin.ChangeTab(2);
         }
-        private void btn_edit_rooms_Click(object sender, EventArgs e)
-        {
-            // TODO: Move to AdminTools
-            //tabControl1.SelectTab(3);
-            PopulateRoomsList();
-        }
+
         private void btn_edit_room_Click(object sender, EventArgs e)
         {
             EditRooms();
         }
+
         private void btn_editrooms_clear_Click(object sender, EventArgs e)
         {
             ClearRoomsForm();
         }
+
         private void btn_remove_all_Click(object sender, EventArgs e)
         {
             RemoveAllRooms();
         }
+
         private void btn_remove_Click(object sender, EventArgs e)
         {
             RemoveSelectedRoom();
             PopulateRoomsList();
         }
+
         private void checkb_is_group_Click(object sender, EventArgs e)
         {
             if (checkb_is_lecture.Checked)
                 checkb_is_lecture.Checked = false;
         }
+
         private void checkb_is_lecture_Click(object sender, EventArgs e)
         {
             if (checkb_is_group.Checked)
                 checkb_is_group.Checked = false;
         }
+
         private void listView_edit_rooms_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             EditRooms();
         }
+
         private void listView_edit_rooms_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete) RemoveSelectedRoom();
         }
+
         #endregion
 
         // Functions
@@ -162,14 +166,16 @@ namespace TUCDashboardGrp1.View
         {
             // Clear the listview
             listView_edit_rooms.Items.Clear();
-            // TODO:
-            //combobox_room.Items.Clear();
+            TUCDashboardGrp1.AdminTools admin = (TUCDashboardGrp1.AdminTools)ParentForm;
+
+            admin.ClearRooms();
+
             foreach (Rooms room in LocalStorage.Instance.Storage.Rooms)
             {
                 listView_edit_rooms.Items.Add(room.RoomName);
                 listView_edit_rooms.Items[^1].SubItems.Add(room.RoomType);
-                // TODO:
-                //combobox_room.Items.Add(room.RoomName);
+                admin.AddRoom(room.RoomName);
+                
             }
 
 
