@@ -219,5 +219,14 @@ namespace TUCDashboardGrp1
 
         #endregion
 
+        private void weatherWidghet1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void feedWidget1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
