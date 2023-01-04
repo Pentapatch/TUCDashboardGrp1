@@ -67,6 +67,7 @@
             this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -76,14 +77,16 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1377, 665);
-            this.splitContainer1.SplitterDistance = 458;
+            this.splitContainer1.Size = new System.Drawing.Size(2238, 1064);
+            this.splitContainer1.SplitterDistance = 744;
+            this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 1;
             // 
             // splitContainer3
             // 
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.splitContainer3.Name = "splitContainer3";
             this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -94,8 +97,9 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.feedWidget1);
-            this.splitContainer3.Size = new System.Drawing.Size(458, 665);
-            this.splitContainer3.SplitterDistance = 284;
+            this.splitContainer3.Size = new System.Drawing.Size(744, 1064);
+            this.splitContainer3.SplitterDistance = 454;
+            this.splitContainer3.SplitterWidth = 6;
             this.splitContainer3.TabIndex = 1;
             // 
             // weatherWidghet1
@@ -108,9 +112,9 @@
             this.weatherWidghet1.ForecastEnabled = true;
             this.weatherWidghet1.IsHighlighted = false;
             this.weatherWidghet1.Location = new System.Drawing.Point(0, 0);
-            this.weatherWidghet1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.weatherWidghet1.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.weatherWidghet1.Name = "weatherWidghet1";
-            this.weatherWidghet1.Size = new System.Drawing.Size(458, 284);
+            this.weatherWidghet1.Size = new System.Drawing.Size(744, 454);
             this.weatherWidghet1.TabIndex = 0;
             // 
             // feedWidget1
@@ -122,14 +126,16 @@
             this.feedWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.feedWidget1.IsHighlighted = false;
             this.feedWidget1.Location = new System.Drawing.Point(0, 0);
+            this.feedWidget1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.feedWidget1.Name = "feedWidget1";
-            this.feedWidget1.Size = new System.Drawing.Size(458, 377);
+            this.feedWidget1.Size = new System.Drawing.Size(744, 604);
             this.feedWidget1.TabIndex = 0;
             // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -140,14 +146,16 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer2.Size = new System.Drawing.Size(915, 665);
-            this.splitContainer2.SplitterDistance = 284;
+            this.splitContainer2.Size = new System.Drawing.Size(1488, 1064);
+            this.splitContainer2.SplitterDistance = 454;
+            this.splitContainer2.SplitterWidth = 6;
             this.splitContainer2.TabIndex = 0;
             // 
             // splitContainer5
             // 
             this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer5.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer5.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.splitContainer5.Name = "splitContainer5";
             // 
             // splitContainer5.Panel1
@@ -157,8 +165,9 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.clockWidget1);
-            this.splitContainer5.Size = new System.Drawing.Size(915, 284);
-            this.splitContainer5.SplitterDistance = 305;
+            this.splitContainer5.Size = new System.Drawing.Size(1488, 454);
+            this.splitContainer5.SplitterDistance = 496;
+            this.splitContainer5.SplitterWidth = 6;
             this.splitContainer5.TabIndex = 0;
             // 
             // traficWidget1
@@ -170,9 +179,10 @@
             this.traficWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.traficWidget1.IsHighlighted = false;
             this.traficWidget1.Location = new System.Drawing.Point(0, 0);
+            this.traficWidget1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.traficWidget1.Name = "traficWidget1";
             this.traficWidget1.NumberOfTrips = 4;
-            this.traficWidget1.Size = new System.Drawing.Size(305, 284);
+            this.traficWidget1.Size = new System.Drawing.Size(496, 454);
             this.traficWidget1.TabIndex = 1;
             // 
             // clockWidget1
@@ -184,14 +194,16 @@
             this.clockWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clockWidget1.IsHighlighted = false;
             this.clockWidget1.Location = new System.Drawing.Point(0, 0);
+            this.clockWidget1.Margin = new System.Windows.Forms.Padding(10, 6, 10, 6);
             this.clockWidget1.Name = "clockWidget1";
-            this.clockWidget1.Size = new System.Drawing.Size(606, 284);
+            this.clockWidget1.Size = new System.Drawing.Size(986, 454);
             this.clockWidget1.TabIndex = 0;
             // 
             // splitContainer4
             // 
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.splitContainer4.Name = "splitContainer4";
             // 
             // splitContainer4.Panel1
@@ -201,8 +213,9 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.lecturesWidget1);
-            this.splitContainer4.Size = new System.Drawing.Size(915, 377);
-            this.splitContainer4.SplitterDistance = 305;
+            this.splitContainer4.Size = new System.Drawing.Size(1488, 604);
+            this.splitContainer4.SplitterDistance = 496;
+            this.splitContainer4.SplitterWidth = 6;
             this.splitContainer4.TabIndex = 0;
             // 
             // groupRoomsWidget1
@@ -215,11 +228,11 @@
             this.groupRoomsWidget1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupRoomsWidget1.IsHighlighted = false;
             this.groupRoomsWidget1.Location = new System.Drawing.Point(0, 0);
-            this.groupRoomsWidget1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.groupRoomsWidget1.Margin = new System.Windows.Forms.Padding(13, 11, 13, 11);
             this.groupRoomsWidget1.Name = "groupRoomsWidget1";
             this.groupRoomsWidget1.Rooms = ((System.Collections.Generic.List<string>)(resources.GetObject("groupRoomsWidget1.Rooms")));
             this.groupRoomsWidget1.RowHeight = 45;
-            this.groupRoomsWidget1.Size = new System.Drawing.Size(305, 377);
+            this.groupRoomsWidget1.Size = new System.Drawing.Size(496, 604);
             this.groupRoomsWidget1.TabIndex = 0;
             this.groupRoomsWidget1.TimelineHeight = 30;
             this.groupRoomsWidget1.TimelineStart = 8;
@@ -236,11 +249,11 @@
             this.lecturesWidget1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lecturesWidget1.IsHighlighted = false;
             this.lecturesWidget1.Location = new System.Drawing.Point(0, 0);
-            this.lecturesWidget1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.lecturesWidget1.Margin = new System.Windows.Forms.Padding(13, 11, 13, 11);
             this.lecturesWidget1.Name = "lecturesWidget1";
             this.lecturesWidget1.Rooms = ((System.Collections.Generic.List<string>)(resources.GetObject("lecturesWidget1.Rooms")));
             this.lecturesWidget1.RowHeight = 45;
-            this.lecturesWidget1.Size = new System.Drawing.Size(606, 377);
+            this.lecturesWidget1.Size = new System.Drawing.Size(986, 604);
             this.lecturesWidget1.TabIndex = 0;
             this.lecturesWidget1.TimelineHeight = 30;
             this.lecturesWidget1.TimelineStart = 8;
@@ -249,11 +262,12 @@
             // 
             // DashboardForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1377, 665);
+            this.ClientSize = new System.Drawing.Size(2238, 1064);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "DashboardForm";
             this.Text = "DashboardForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

@@ -10,6 +10,7 @@ namespace TUCDashboardGrp1.Model
 
         private List<FeedData> feed = new();
         private List<BookingClass> bookings = new();
+        private List<Rooms> rooms = new();
 
         #endregion
 
@@ -20,6 +21,9 @@ namespace TUCDashboardGrp1.Model
 
         [XmlIgnore]
         public List<BookingClass> Bookings { get => bookings; set => bookings = value; }
+        
+        [XmlIgnore]
+        public List<Rooms> Rooms { get => rooms; set => rooms = value; }
         #endregion
 
         #region XML
@@ -40,6 +44,13 @@ namespace TUCDashboardGrp1.Model
             set { if (value != null) bookings = new List<BookingClass>(value); }
         }
 
+        [XmlElement("XMLRooms")]
+        public Rooms[]? XMLRooms
+        {
+            get { return rooms.ToArray(); }
+            set { if (value != null) rooms = new List<Rooms>(value); }
+        }
+
         #endregion
 
 
@@ -54,6 +65,8 @@ namespace TUCDashboardGrp1.Model
             //feed.Add(new() { Content = "Content 1", Header = "Header 1" });
             //feed.Add(new() { Content = "Content 2", Header = "Header 2" });
             //feed.Add(new() { Content = "Content 3", Header = "Header 3" });
+
+            //rooms.Add(new() { RoomName = "G9 Bollnäs", RoomType = "Sal" });
         }
 
     }
