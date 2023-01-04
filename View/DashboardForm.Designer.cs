@@ -40,7 +40,7 @@
             this.feedWidget1 = new TUCDashboardGrp1.FeedWidget();
             this.sc_right = new System.Windows.Forms.SplitContainer();
             this.lecturesWidget1 = new TUCDashboardGrp1.LecturesWidget();
-            this.roomsWidget1 = new TUCDashboardGrp1.Model.RoomsWidget();
+            this.groupRoomsWidget1 = new TUCDashboardGrp1.GroupRoomsWidget();
             ((System.ComponentModel.ISupportInitialize)(this.sc_main)).BeginInit();
             this.sc_main.Panel1.SuspendLayout();
             this.sc_main.Panel2.SuspendLayout();
@@ -228,7 +228,7 @@
             // 
             // sc_right.Panel2
             // 
-            this.sc_right.Panel2.Controls.Add(this.roomsWidget1);
+            this.sc_right.Panel2.Controls.Add(this.groupRoomsWidget1);
             this.sc_right.Size = new System.Drawing.Size(800, 462);
             this.sc_right.SplitterDistance = 228;
             this.sc_right.SplitterWidth = 3;
@@ -255,25 +255,26 @@
             this.lecturesWidget1.TimelineStop = 18;
             this.lecturesWidget1.WidgetName = "Lektionssalar";
             // 
-            // roomsWidget1
+            // groupRoomsWidget1
             // 
-            this.roomsWidget1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.roomsWidget1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.roomsWidget1.BorderRadius = 15;
-            this.roomsWidget1.BorderWidth = 0;
-            this.roomsWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.roomsWidget1.IsHighlighted = false;
-            this.roomsWidget1.Location = new System.Drawing.Point(0, 0);
-            this.roomsWidget1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.roomsWidget1.Name = "roomsWidget1";
-            this.roomsWidget1.Rooms = ((System.Collections.Generic.List<string>)(resources.GetObject("roomsWidget1.Rooms")));
-            this.roomsWidget1.RowHeight = 45;
-            this.roomsWidget1.Size = new System.Drawing.Size(800, 231);
-            this.roomsWidget1.TabIndex = 0;
-            this.roomsWidget1.TimelineHeight = 30;
-            this.roomsWidget1.TimelineStart = 8;
-            this.roomsWidget1.TimelineStop = 18;
-            this.roomsWidget1.WidgetName = "";
+            this.groupRoomsWidget1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.groupRoomsWidget1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.groupRoomsWidget1.BorderRadius = 15;
+            this.groupRoomsWidget1.BorderWidth = 0;
+            this.groupRoomsWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupRoomsWidget1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupRoomsWidget1.IsHighlighted = false;
+            this.groupRoomsWidget1.Location = new System.Drawing.Point(0, 0);
+            this.groupRoomsWidget1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.groupRoomsWidget1.Name = "groupRoomsWidget1";
+            this.groupRoomsWidget1.Rooms = ((System.Collections.Generic.List<string>)(resources.GetObject("groupRoomsWidget1.Rooms")));
+            this.groupRoomsWidget1.RowHeight = 45;
+            this.groupRoomsWidget1.Size = new System.Drawing.Size(800, 231);
+            this.groupRoomsWidget1.TabIndex = 0;
+            this.groupRoomsWidget1.TimelineHeight = 30;
+            this.groupRoomsWidget1.TimelineStart = 8;
+            this.groupRoomsWidget1.TimelineStop = 18;
+            this.groupRoomsWidget1.WidgetName = "Grupprum";
             // 
             // DashboardForm
             // 
@@ -329,6 +330,6 @@
         private TraficWidget traficWidget1;
         private FeedWidget feedWidget1;
         private LecturesWidget lecturesWidget1;
-        private Model.RoomsWidget roomsWidget1;
+        private GroupRoomsWidget groupRoomsWidget1;
     }
 }
