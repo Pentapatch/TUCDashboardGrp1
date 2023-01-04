@@ -12,10 +12,10 @@ namespace TUCDashboardGrp1.Model
         #region Fields
 
         private bool isShown = false;
-        private int borderRadius = 50;
-        private Color borderColor = Color.FromArgb(84, 84, 84);
-        private int borderWidth = 2;
-        private Color backgroundColor = Color.FromArgb(48, 48, 48);
+        private int borderRadius = 15;
+        private Color borderColor = Color.FromArgb(255, 255, 255);
+        private int borderWidth = 0;
+        private Color backgroundColor = Color.FromArgb(255, 255, 255);
         private bool isHighlighted;
 
         #endregion
