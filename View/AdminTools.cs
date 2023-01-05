@@ -28,7 +28,7 @@ namespace TUCDashboardGrp1
 
         public void AddRoom(string roomName) => bookingPanel1.AddRoom(roomName);
 
-        private void AdminTools_FormClosing(object sender, FormClosingEventArgs e) => LocalStorage.Instance.Save();
+        private void AdminTools_FormClosing(object sender, FormClosingEventArgs e) => LocalStorage.Instance.Save<XmlLocalStorage>();
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
