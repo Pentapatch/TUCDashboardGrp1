@@ -173,6 +173,7 @@
             this.combobox_room.Size = new System.Drawing.Size(235, 28);
             this.combobox_room.TabIndex = 5;
             this.combobox_room.Text = "Välj ett rum..";
+            this.combobox_room.DropDownClosed += new System.EventHandler(this.combobox_room_DropDownClosed);
             this.combobox_room.Enter += new System.EventHandler(this.Booking_Room_Enter);
             // 
             // label4

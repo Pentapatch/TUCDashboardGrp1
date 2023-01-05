@@ -77,7 +77,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(148, 620);
+            this.menuStrip1.Size = new System.Drawing.Size(122, 465);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -87,7 +87,7 @@
             this.feedToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.feedToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.feedToolStripMenuItem.Name = "feedToolStripMenuItem";
-            this.feedToolStripMenuItem.Size = new System.Drawing.Size(141, 32);
+            this.feedToolStripMenuItem.Size = new System.Drawing.Size(115, 25);
             this.feedToolStripMenuItem.Tag = "0";
             this.feedToolStripMenuItem.Text = "&Flöde";
             this.feedToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -97,7 +97,7 @@
             this.bookingsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.bookingsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.bookingsToolStripMenuItem.Name = "bookingsToolStripMenuItem";
-            this.bookingsToolStripMenuItem.Size = new System.Drawing.Size(141, 32);
+            this.bookingsToolStripMenuItem.Size = new System.Drawing.Size(115, 25);
             this.bookingsToolStripMenuItem.Tag = "1";
             this.bookingsToolStripMenuItem.Text = "&Bokningar";
             this.bookingsToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -107,7 +107,7 @@
             this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.settingsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(141, 32);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(115, 25);
             this.settingsToolStripMenuItem.Tag = "2";
             this.settingsToolStripMenuItem.Text = "Inställninga&r";
             this.settingsToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -119,21 +119,21 @@
             this.tabControl1.Controls.Add(this.tab_settings);
             this.tabControl1.Controls.Add(this.tab_edit_rooms);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(148, 0);
+            this.tabControl1.Location = new System.Drawing.Point(122, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1245, 620);
+            this.tabControl1.Size = new System.Drawing.Size(1097, 465);
             this.tabControl1.TabIndex = 1;
             // 
             // tab_feed
             // 
             this.tab_feed.Controls.Add(this.feedPanel1);
-            this.tab_feed.Location = new System.Drawing.Point(4, 29);
+            this.tab_feed.Location = new System.Drawing.Point(4, 24);
             this.tab_feed.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tab_feed.Name = "tab_feed";
             this.tab_feed.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tab_feed.Size = new System.Drawing.Size(1237, 587);
+            this.tab_feed.Size = new System.Drawing.Size(1089, 437);
             this.tab_feed.TabIndex = 0;
             this.tab_feed.Text = "Flöde";
             this.tab_feed.UseVisualStyleBackColor = true;
@@ -142,19 +142,19 @@
             // 
             this.feedPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.feedPanel1.Location = new System.Drawing.Point(2, 1);
-            this.feedPanel1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.feedPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.feedPanel1.Name = "feedPanel1";
-            this.feedPanel1.Size = new System.Drawing.Size(1233, 585);
+            this.feedPanel1.Size = new System.Drawing.Size(1085, 435);
             this.feedPanel1.TabIndex = 0;
             // 
             // tab_booking
             // 
             this.tab_booking.Controls.Add(this.bookingPanel1);
-            this.tab_booking.Location = new System.Drawing.Point(4, 29);
+            this.tab_booking.Location = new System.Drawing.Point(4, 24);
             this.tab_booking.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tab_booking.Name = "tab_booking";
             this.tab_booking.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tab_booking.Size = new System.Drawing.Size(1246, 587);
+            this.tab_booking.Size = new System.Drawing.Size(1089, 437);
             this.tab_booking.TabIndex = 1;
             this.tab_booking.Text = "Bokningar";
             this.tab_booking.UseVisualStyleBackColor = true;
@@ -163,9 +163,9 @@
             // 
             this.bookingPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bookingPanel1.Location = new System.Drawing.Point(2, 1);
-            this.bookingPanel1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.bookingPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bookingPanel1.Name = "bookingPanel1";
-            this.bookingPanel1.Size = new System.Drawing.Size(1242, 585);
+            this.bookingPanel1.Size = new System.Drawing.Size(1085, 435);
             this.bookingPanel1.TabIndex = 0;
             // 
             // tab_settings
@@ -175,11 +175,11 @@
             this.tab_settings.Controls.Add(this.btn_edit_rooms);
             this.tab_settings.Controls.Add(this.btn_settings_openInExplorer);
             this.tab_settings.Controls.Add(this.label_settings);
-            this.tab_settings.Location = new System.Drawing.Point(4, 29);
+            this.tab_settings.Location = new System.Drawing.Point(4, 24);
             this.tab_settings.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tab_settings.Name = "tab_settings";
             this.tab_settings.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tab_settings.Size = new System.Drawing.Size(1237, 587);
+            this.tab_settings.Size = new System.Drawing.Size(1081, 437);
             this.tab_settings.TabIndex = 2;
             this.tab_settings.Text = "Inställningar";
             this.tab_settings.UseVisualStyleBackColor = true;
@@ -187,29 +187,29 @@
             // label_edit_rooms
             // 
             this.label_edit_rooms.AutoSize = true;
-            this.label_edit_rooms.Location = new System.Drawing.Point(67, 167);
+            this.label_edit_rooms.Location = new System.Drawing.Point(59, 125);
             this.label_edit_rooms.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_edit_rooms.Name = "label_edit_rooms";
-            this.label_edit_rooms.Size = new System.Drawing.Size(95, 20);
+            this.label_edit_rooms.Size = new System.Drawing.Size(77, 15);
             this.label_edit_rooms.TabIndex = 4;
             this.label_edit_rooms.Text = "Hantera rum:";
             // 
             // btn_read_roomsXML
             // 
-            this.btn_read_roomsXML.Location = new System.Drawing.Point(281, 161);
+            this.btn_read_roomsXML.Location = new System.Drawing.Point(246, 121);
             this.btn_read_roomsXML.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_read_roomsXML.Name = "btn_read_roomsXML";
-            this.btn_read_roomsXML.Size = new System.Drawing.Size(113, 29);
+            this.btn_read_roomsXML.Size = new System.Drawing.Size(99, 22);
             this.btn_read_roomsXML.TabIndex = 3;
             this.btn_read_roomsXML.Text = "Hämta från fil";
             this.btn_read_roomsXML.UseVisualStyleBackColor = true;
             // 
             // btn_edit_rooms
             // 
-            this.btn_edit_rooms.Location = new System.Drawing.Point(176, 161);
+            this.btn_edit_rooms.Location = new System.Drawing.Point(154, 121);
             this.btn_edit_rooms.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_edit_rooms.Name = "btn_edit_rooms";
-            this.btn_edit_rooms.Size = new System.Drawing.Size(93, 29);
+            this.btn_edit_rooms.Size = new System.Drawing.Size(81, 22);
             this.btn_edit_rooms.TabIndex = 2;
             this.btn_edit_rooms.Text = "Ändra..";
             this.btn_edit_rooms.UseVisualStyleBackColor = true;
@@ -217,9 +217,10 @@
             // 
             // btn_settings_openInExplorer
             // 
-            this.btn_settings_openInExplorer.Location = new System.Drawing.Point(70, 85);
+            this.btn_settings_openInExplorer.Location = new System.Drawing.Point(61, 64);
+            this.btn_settings_openInExplorer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_settings_openInExplorer.Name = "btn_settings_openInExplorer";
-            this.btn_settings_openInExplorer.Size = new System.Drawing.Size(155, 29);
+            this.btn_settings_openInExplorer.Size = new System.Drawing.Size(136, 22);
             this.btn_settings_openInExplorer.TabIndex = 1;
             this.btn_settings_openInExplorer.Text = "Ö&ppna i explorer";
             this.btn_settings_openInExplorer.UseVisualStyleBackColor = true;
@@ -228,10 +229,10 @@
             // label_settings
             // 
             this.label_settings.AutoSize = true;
-            this.label_settings.Location = new System.Drawing.Point(70, 51);
+            this.label_settings.Location = new System.Drawing.Point(61, 38);
             this.label_settings.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_settings.Name = "label_settings";
-            this.label_settings.Size = new System.Drawing.Size(216, 20);
+            this.label_settings.Size = new System.Drawing.Size(170, 15);
             this.label_settings.TabIndex = 0;
             this.label_settings.Text = "Inställningar är tom för tillfället";
             // 
@@ -239,11 +240,11 @@
             // 
             this.tab_edit_rooms.Controls.Add(this.roomPanel1);
             this.tab_edit_rooms.Controls.Add(this.label_is_lecture);
-            this.tab_edit_rooms.Location = new System.Drawing.Point(4, 29);
+            this.tab_edit_rooms.Location = new System.Drawing.Point(4, 24);
             this.tab_edit_rooms.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tab_edit_rooms.Name = "tab_edit_rooms";
             this.tab_edit_rooms.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tab_edit_rooms.Size = new System.Drawing.Size(1246, 587);
+            this.tab_edit_rooms.Size = new System.Drawing.Size(1081, 437);
             this.tab_edit_rooms.TabIndex = 3;
             this.tab_edit_rooms.Text = "Redigera rum";
             this.tab_edit_rooms.UseVisualStyleBackColor = true;
@@ -252,18 +253,18 @@
             // 
             this.roomPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.roomPanel1.Location = new System.Drawing.Point(2, 1);
-            this.roomPanel1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.roomPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.roomPanel1.Name = "roomPanel1";
-            this.roomPanel1.Size = new System.Drawing.Size(1242, 585);
+            this.roomPanel1.Size = new System.Drawing.Size(1077, 435);
             this.roomPanel1.TabIndex = 5;
             // 
             // label_is_lecture
             // 
             this.label_is_lecture.AutoSize = true;
-            this.label_is_lecture.Location = new System.Drawing.Point(162, 92);
+            this.label_is_lecture.Location = new System.Drawing.Point(142, 69);
             this.label_is_lecture.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_is_lecture.Name = "label_is_lecture";
-            this.label_is_lecture.Size = new System.Drawing.Size(0, 20);
+            this.label_is_lecture.Size = new System.Drawing.Size(0, 15);
             this.label_is_lecture.TabIndex = 4;
             // 
             // columnHeader4
@@ -308,12 +309,13 @@
             // 
             // AdminTools
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1393, 620);
+            this.ClientSize = new System.Drawing.Size(1219, 465);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimizeBox = false;
             this.Name = "AdminTools";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

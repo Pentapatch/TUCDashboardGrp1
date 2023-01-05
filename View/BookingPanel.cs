@@ -30,6 +30,20 @@ namespace TUCDashboardGrp1.View
 
         private void Booking_Room_Enter(object sender, EventArgs e) => combobox_room.DroppedDown = true;
 
+        private void combobox_room_DropDownClosed(object sender, EventArgs e)
+        {
+            // Check if any room in the list contains part of what was written
+            foreach (string room in combobox_room.Items)
+            {
+                if (room.ToLower() == combobox_room.Text.ToLower() ||
+                    room.ToLower().Contains(combobox_room.Text.ToLower()))
+                {
+                    combobox_room.Text = room;
+                    return;
+                }
+            }
+        }
+        
         private void Listview_MouseDoubleClick(object sender, MouseEventArgs e) => EditBooking();
 
         private void listview_bookings_KeyDown(object sender, KeyEventArgs e)
