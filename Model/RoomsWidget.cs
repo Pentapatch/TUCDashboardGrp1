@@ -6,7 +6,6 @@ namespace TUCDashboardGrp1.Model
 {
     public partial class RoomsWidget : Widget
     {
-
         public string WidgetName { get; set; } = string.Empty;
         public List<BookingClass> Bookings { get; set; } = new();
 
@@ -25,10 +24,23 @@ namespace TUCDashboardGrp1.Model
 
             GlobalTimer.Instance.RefreshWidget += Instance_RefreshWidget;
             Load += Instance_RefreshWidget;
+
+            UpdateRooms();
+        }
+
+        private void UpdateRooms()
+        {
+            Rooms.Clear();
+            foreach (Rooms room in LocalStorage.Instance.Storage.Rooms)
+            {
+                if (this is LecturesWidget && room.RoomType == "Sal") Rooms.Add(room.RoomName);
+                else if (this is GroupRoomsWidget && room.RoomType == "Grupprum") Rooms.Add(room.RoomName);
+            }
         }
 
         private void Instance_RefreshWidget(object? sender, EventArgs e)
         {
+            UpdateRooms();
             Bookings = LocalStorage.Instance.Storage.Bookings;
             Invalidate();
         }
@@ -45,7 +57,7 @@ namespace TUCDashboardGrp1.Model
 
         protected override void OnPaint(PaintEventArgs e)
         {
-
+            
             base.OnPaint(e);
 
             // Do not bother drawing if there are no rooms declared
@@ -159,6 +171,8 @@ namespace TUCDashboardGrp1.Model
 
             return max;
         }
+
+
 
     }
 
