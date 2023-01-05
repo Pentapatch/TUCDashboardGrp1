@@ -18,9 +18,8 @@ namespace TUCDashboardGrp1
         public FeedPanel()   // Initialize, don't touch
         {
             InitializeComponent();
+            GlobalTimer.Instance.RefreshWidget += Instance_RefreshWidget;
         }
-
-
 
         #region Event handlers
 
@@ -93,6 +92,8 @@ namespace TUCDashboardGrp1
             else btn_feed_browseForImage.Focus();
         }
 
+        private void Instance_RefreshWidget(object? sender, EventArgs e) => FeedRefresh();
+
         #endregion // End event handlers region
 
         #region Feed functions
@@ -142,7 +143,7 @@ namespace TUCDashboardGrp1
             }
 
             // Save the local storage to file
-            LocalStorage.Instance.Save<XmlLocalStorage>();
+            LocalStorage.Instance.SaveData();
 
             // Make all widgets refresh themselves
             GlobalTimer.Instance.Refresh();
@@ -232,7 +233,7 @@ namespace TUCDashboardGrp1
                 FeedRemoveEntry(item);
 
             // Save the local storage to file
-            LocalStorage.Instance.Save<XmlLocalStorage>();
+            LocalStorage.Instance.SaveData();
 
             // Make all widgets refresh themselves
             GlobalTimer.Instance.Refresh();

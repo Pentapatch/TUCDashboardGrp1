@@ -38,11 +38,6 @@
             this.tab_booking = new System.Windows.Forms.TabPage();
             this.bookingPanel1 = new TUCDashboardGrp1.View.BookingPanel();
             this.tab_settings = new System.Windows.Forms.TabPage();
-            this.label_edit_rooms = new System.Windows.Forms.Label();
-            this.btn_read_roomsXML = new System.Windows.Forms.Button();
-            this.btn_edit_rooms = new System.Windows.Forms.Button();
-            this.btn_settings_openInExplorer = new System.Windows.Forms.Button();
-            this.label_settings = new System.Windows.Forms.Label();
             this.tab_edit_rooms = new System.Windows.Forms.TabPage();
             this.roomPanel1 = new TUCDashboardGrp1.View.RoomPanel();
             this.label_is_lecture = new System.Windows.Forms.Label();
@@ -54,6 +49,7 @@
             this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.fileSystemWatcher2 = new System.IO.FileSystemWatcher();
+            this.settingsPanel1 = new TUCDashboardGrp1.View.SettingsPanel();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tab_feed.SuspendLayout();
@@ -170,71 +166,15 @@
             // 
             // tab_settings
             // 
-            this.tab_settings.Controls.Add(this.label_edit_rooms);
-            this.tab_settings.Controls.Add(this.btn_read_roomsXML);
-            this.tab_settings.Controls.Add(this.btn_edit_rooms);
-            this.tab_settings.Controls.Add(this.btn_settings_openInExplorer);
-            this.tab_settings.Controls.Add(this.label_settings);
+            this.tab_settings.Controls.Add(this.settingsPanel1);
             this.tab_settings.Location = new System.Drawing.Point(4, 24);
             this.tab_settings.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tab_settings.Name = "tab_settings";
             this.tab_settings.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tab_settings.Size = new System.Drawing.Size(1081, 437);
+            this.tab_settings.Size = new System.Drawing.Size(1089, 437);
             this.tab_settings.TabIndex = 2;
             this.tab_settings.Text = "Inställningar";
             this.tab_settings.UseVisualStyleBackColor = true;
-            // 
-            // label_edit_rooms
-            // 
-            this.label_edit_rooms.AutoSize = true;
-            this.label_edit_rooms.Location = new System.Drawing.Point(59, 125);
-            this.label_edit_rooms.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label_edit_rooms.Name = "label_edit_rooms";
-            this.label_edit_rooms.Size = new System.Drawing.Size(77, 15);
-            this.label_edit_rooms.TabIndex = 4;
-            this.label_edit_rooms.Text = "Hantera rum:";
-            // 
-            // btn_read_roomsXML
-            // 
-            this.btn_read_roomsXML.Location = new System.Drawing.Point(246, 121);
-            this.btn_read_roomsXML.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.btn_read_roomsXML.Name = "btn_read_roomsXML";
-            this.btn_read_roomsXML.Size = new System.Drawing.Size(99, 22);
-            this.btn_read_roomsXML.TabIndex = 3;
-            this.btn_read_roomsXML.Text = "Hämta från fil";
-            this.btn_read_roomsXML.UseVisualStyleBackColor = true;
-            // 
-            // btn_edit_rooms
-            // 
-            this.btn_edit_rooms.Location = new System.Drawing.Point(154, 121);
-            this.btn_edit_rooms.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.btn_edit_rooms.Name = "btn_edit_rooms";
-            this.btn_edit_rooms.Size = new System.Drawing.Size(81, 22);
-            this.btn_edit_rooms.TabIndex = 2;
-            this.btn_edit_rooms.Text = "Ändra..";
-            this.btn_edit_rooms.UseVisualStyleBackColor = true;
-            this.btn_edit_rooms.Click += new System.EventHandler(this.btn_edit_rooms_Click);
-            // 
-            // btn_settings_openInExplorer
-            // 
-            this.btn_settings_openInExplorer.Location = new System.Drawing.Point(61, 64);
-            this.btn_settings_openInExplorer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_settings_openInExplorer.Name = "btn_settings_openInExplorer";
-            this.btn_settings_openInExplorer.Size = new System.Drawing.Size(136, 22);
-            this.btn_settings_openInExplorer.TabIndex = 1;
-            this.btn_settings_openInExplorer.Text = "Ö&ppna i explorer";
-            this.btn_settings_openInExplorer.UseVisualStyleBackColor = true;
-            this.btn_settings_openInExplorer.Click += new System.EventHandler(this.btn_settings_openInExplorer_Click);
-            // 
-            // label_settings
-            // 
-            this.label_settings.AutoSize = true;
-            this.label_settings.Location = new System.Drawing.Point(61, 38);
-            this.label_settings.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label_settings.Name = "label_settings";
-            this.label_settings.Size = new System.Drawing.Size(170, 15);
-            this.label_settings.TabIndex = 0;
-            this.label_settings.Text = "Inställningar är tom för tillfället";
             // 
             // tab_edit_rooms
             // 
@@ -244,7 +184,7 @@
             this.tab_edit_rooms.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tab_edit_rooms.Name = "tab_edit_rooms";
             this.tab_edit_rooms.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tab_edit_rooms.Size = new System.Drawing.Size(1081, 437);
+            this.tab_edit_rooms.Size = new System.Drawing.Size(1089, 437);
             this.tab_edit_rooms.TabIndex = 3;
             this.tab_edit_rooms.Text = "Redigera rum";
             this.tab_edit_rooms.UseVisualStyleBackColor = true;
@@ -255,7 +195,7 @@
             this.roomPanel1.Location = new System.Drawing.Point(2, 1);
             this.roomPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.roomPanel1.Name = "roomPanel1";
-            this.roomPanel1.Size = new System.Drawing.Size(1077, 435);
+            this.roomPanel1.Size = new System.Drawing.Size(1085, 435);
             this.roomPanel1.TabIndex = 5;
             // 
             // label_is_lecture
@@ -307,6 +247,14 @@
             this.fileSystemWatcher2.EnableRaisingEvents = true;
             this.fileSystemWatcher2.SynchronizingObject = this;
             // 
+            // settingsPanel1
+            // 
+            this.settingsPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsPanel1.Location = new System.Drawing.Point(2, 1);
+            this.settingsPanel1.Name = "settingsPanel1";
+            this.settingsPanel1.Size = new System.Drawing.Size(1085, 435);
+            this.settingsPanel1.TabIndex = 0;
+            // 
             // AdminTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -327,7 +275,6 @@
             this.tab_feed.ResumeLayout(false);
             this.tab_booking.ResumeLayout(false);
             this.tab_settings.ResumeLayout(false);
-            this.tab_settings.PerformLayout();
             this.tab_edit_rooms.ResumeLayout(false);
             this.tab_edit_rooms.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
@@ -347,17 +294,12 @@
         private TabPage tab_feed;
         private TabPage tab_booking;
         private TabPage tab_settings;
-        private Label label_settings;
-        private Button btn_settings_openInExplorer;
         private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;
         private ColumnHeader columnHeader7;
         private ColumnHeader columnHeader8;
         private ColumnHeader columnHeader9;
-        private Label label_edit_rooms;
-        private Button btn_read_roomsXML;
-        private Button btn_edit_rooms;
         private TabPage tab_edit_rooms;
         private FileSystemWatcher fileSystemWatcher1;
         private FeedPanel feedPanel1;
@@ -365,5 +307,6 @@
         private View.BookingPanel bookingPanel1;
         private Label label_is_lecture;
         private View.RoomPanel roomPanel1;
+        private View.SettingsPanel settingsPanel1;
     }
 }
