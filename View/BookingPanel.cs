@@ -14,6 +14,9 @@ namespace TUCDashboardGrp1.View
         private const string EmptyBookingRoom = "Välj ett rum..";
         #endregion
 
+        public TimeOnly? OpeningHour { get; set; } = null;
+        public TimeOnly? ClosingHour { get; set; } = null;
+
         public BookingPanel() // Initialization, don't touch
         {
             InitializeComponent();
@@ -70,9 +73,37 @@ namespace TUCDashboardGrp1.View
 
         private void BookingSubmit()
         {
+            // Early exit if selected room doesn't exist.
             if (!combobox_room.Items.Contains(combobox_room.Text))
             {
                 MessageBox.Show("Det valda rummet finns inte.", DashboardForm.ApplicationTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Early exit if opening hours have not been set yet
+            if (OpeningHour == null || ClosingHour == null)
+            {
+                MessageBox.Show("Du måste ange öppettider innan du kan boka",
+                    DashboardForm.ApplicationTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Early exit if either start time or end time falls outside of opened hours.
+            if(!IsSchoolOpen(dateTimePicker_start.Value) || !IsSchoolOpen(dateTimePicker_stop.Value) )
+            {
+                MessageBox.Show(
+                    $"Du har försökt boka ett rum {dateTimePicker_start.Text}-{dateTimePicker_stop.Text}, men öppettiderna är {OpeningHour} - {ClosingHour}.\n" +
+                    "Vänligen ändra till en tid inom öppettiderna.",
+                    DashboardForm.ApplicationTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Early exit if starttime is later than endtime.
+            if(dateTimePicker_start.Value > dateTimePicker_stop.Value)
+            {
+                MessageBox.Show(
+                    $"Starttid kan inte vara senare än sluttid.",
+                    DashboardForm.ApplicationTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -149,6 +180,19 @@ namespace TUCDashboardGrp1.View
             }
 
             return new DateTime(value.Year, value.Month, value.Day, hour, minute, 0);
+        }
+
+        private bool IsSchoolOpen(DateTime dateTime)
+        {
+            TimeOnly time = new TimeOnly(dateTime.Hour, dateTime.Minute);
+            
+            //School has not opened yet
+            if (time < OpeningHour ) return false;
+
+            // School has closed for the day
+            if (time >= ClosingHour && time.Minute != 0) return false;
+            
+            return true;
         }
 
         #endregion

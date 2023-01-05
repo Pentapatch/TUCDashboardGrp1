@@ -49,6 +49,27 @@ namespace TUCDashboardGrp1
             ChangeTab(3);
             PopulateRoomsList();
         }
+
+        private void btn_save_openedHours_Click(object sender, EventArgs e)
+        {
+            SaveOpeningHours();
+        }
+
+        private void SaveOpeningHours()
+        {
+            string openingTime = dtpicker_opening.Value.ToShortTimeString();
+            string closingTime = dtpicker_closing.Value.ToShortTimeString();
+
+            // Ask the user to confirm the changed opening hours.
+            if (MessageBox.Show($"Vänligen bekräfta byte av öppettider {openingTime} - {closingTime}.",
+                   DashboardForm.ApplicationTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
+
+            // TODO: 
+            // Should save settings to Local storage instead of setting the properties directly.
+            bookingPanel1.OpeningHour = new TimeOnly(dtpicker_opening.Value.Hour, dtpicker_opening.Value.Minute);
+            bookingPanel1.ClosingHour = new TimeOnly(dtpicker_closing.Value.Hour, dtpicker_closing.Value.Minute);
+        }
     }
 
 }
