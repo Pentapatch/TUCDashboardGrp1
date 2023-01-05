@@ -32,6 +32,8 @@
             this.label_dir_skagge = new System.Windows.Forms.Label();
             this.label_timetable_rese = new System.Windows.Forms.Label();
             this.label_timetable_skagge = new System.Windows.Forms.Label();
+            this.label_dir_norrk = new System.Windows.Forms.Label();
+            this.label_timetable_norrk = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label_dir_rese
@@ -48,7 +50,7 @@
             // 
             this.label_dir_skagge.AutoSize = true;
             this.label_dir_skagge.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_dir_skagge.Location = new System.Drawing.Point(23, 281);
+            this.label_dir_skagge.Location = new System.Drawing.Point(261, 18);
             this.label_dir_skagge.Name = "label_dir_skagge";
             this.label_dir_skagge.Size = new System.Drawing.Size(165, 28);
             this.label_dir_skagge.TabIndex = 2;
@@ -68,15 +70,38 @@
             // 
             this.label_timetable_skagge.AutoSize = true;
             this.label_timetable_skagge.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_timetable_skagge.Location = new System.Drawing.Point(23, 332);
+            this.label_timetable_skagge.Location = new System.Drawing.Point(261, 69);
             this.label_timetable_skagge.Name = "label_timetable_skagge";
             this.label_timetable_skagge.Size = new System.Drawing.Size(0, 28);
             this.label_timetable_skagge.TabIndex = 4;
+            // 
+            // label_dir_norrk
+            // 
+            this.label_dir_norrk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_dir_norrk.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_dir_norrk.Location = new System.Drawing.Point(525, 18);
+            this.label_dir_norrk.Name = "label_dir_norrk";
+            this.label_dir_norrk.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label_dir_norrk.Size = new System.Drawing.Size(204, 28);
+            this.label_dir_norrk.TabIndex = 5;
+            this.label_dir_norrk.Text = "Tåg mot Norrköping";
+            this.label_dir_norrk.Visible = false;
+            // 
+            // label_timetable_norrk
+            // 
+            this.label_timetable_norrk.AutoSize = true;
+            this.label_timetable_norrk.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_timetable_norrk.Location = new System.Drawing.Point(525, 69);
+            this.label_timetable_norrk.Name = "label_timetable_norrk";
+            this.label_timetable_norrk.Size = new System.Drawing.Size(0, 28);
+            this.label_timetable_norrk.TabIndex = 6;
             // 
             // TraficWidget
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label_timetable_norrk);
+            this.Controls.Add(this.label_dir_norrk);
             this.Controls.Add(this.label_timetable_skagge);
             this.Controls.Add(this.label_timetable_rese);
             this.Controls.Add(this.label_dir_skagge);
@@ -95,5 +120,7 @@
         private Label label_dir_skagge;
         private Label label_timetable_rese;
         private Label label_timetable_skagge;
+        private Label label_dir_norrk;
+        private Label label_timetable_norrk;
     }
 }
