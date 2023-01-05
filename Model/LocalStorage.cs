@@ -6,10 +6,13 @@ namespace TUCDashboardGrp1.Model
     public class LocalStorage
     {
 
-        private string path = string.Empty;
+        private string pathToStorage = string.Empty;
+        private string pathToSettings = string.Empty;
         private string directoryPath = string.Empty;
 
-        private XmlLocalStorage value;
+
+        private XmlLocalStorage dataStorage;
+        private Settings settings;
 
         private static LocalStorage? instance = null;
 
@@ -24,27 +27,30 @@ namespace TUCDashboardGrp1.Model
 
         public static void Initialize() => instance ??= new();
 
-        public XmlLocalStorage Storage { get => value; }
+        public XmlLocalStorage Storage { get => dataStorage; }
 
-        public LocalStorage()
+        public Settings Settings { get => settings; }
+
+        private LocalStorage()
         {
-            value = new();
+            dataStorage = new();
+            settings = new();
 
-            CreateFile("AppData1", "Settings");
+            CreateFile<XmlLocalStorage>(dataStorage, "AppData1", "Settings");
+            CreateFile<Settings>(settings, "UserSettings", "Settings");
 
-            ReadFile();
-
-            Save();
+            dataStorage = ReadFile<XmlLocalStorage>(dataStorage);
+            settings = ReadFile<Settings>(settings);
         }
 
-        internal void Save()
+        internal void Save<T>()
         {
-            if (File.Exists(path))
+            if (File.Exists(pathToStorage))
             {
-                using FileStream fs = File.Create(path);
-                XmlSerializer writer = new(typeof(XmlLocalStorage));
+                using FileStream fs = File.Create(pathToStorage);
+                XmlSerializer writer = new(typeof(T));
 
-                writer.Serialize(fs, value);
+                writer.Serialize(fs, dataStorage);
             }
         }
 
@@ -53,10 +59,18 @@ namespace TUCDashboardGrp1.Model
             Process.Start("explorer.exe", directoryPath);
         }
 
-        private void CreateFile(string fileName, string directoryName = "Settings")
+        private void CreateFile<T>(T source, string fileName, string directoryName = "Settings")
         {
             directoryPath = @$"{Application.UserAppDataPath}\{directoryName}";
-            path = @$"{directoryPath}\{fileName.Trim().Replace(".xml", "")}.xml";
+
+            string path = @$"{directoryPath}\{fileName.Trim().Replace(".xml", "")}.xml";
+
+            if (source is XmlLocalStorage)
+            {
+                pathToStorage = path;
+            } else if (source is Settings) {
+                pathToSettings = path;
+            }
 
             // Create a blank file if none exists
             if (!File.Exists(path))
@@ -64,21 +78,32 @@ namespace TUCDashboardGrp1.Model
                 Directory.CreateDirectory(directoryPath);
 
                 using FileStream fs = File.Create(path);
-                XmlSerializer writer = new(typeof(XmlLocalStorage));
+                XmlSerializer writer = new(typeof(T));
 
-                writer.Serialize(fs, value);
+                writer.Serialize(fs, source);
             }
         }
 
-        private void ReadFile()
+        private T ReadFile<T>(T obj)
         {
-            XmlSerializer reader = new(typeof(XmlLocalStorage));
+            XmlSerializer reader = new(typeof(T));
+
+            string path = "";
+
+            if (obj is XmlLocalStorage)
+            {
+                path = pathToStorage;
+            }
+            else if (obj is Settings)
+            {
+                path = pathToSettings;
+            }
+
 
             using StreamReader file = new(path);
             try
             {
-                XmlLocalStorage ls = (XmlLocalStorage)reader.Deserialize(file)!;
-                value = ls;
+                return (T)reader.Deserialize(file)!;
             }
             catch (Exception e)
             {
