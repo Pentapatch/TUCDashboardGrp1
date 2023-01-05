@@ -33,7 +33,7 @@
 
             else
             {
-                labelMessage.Text = "Invalid details";
+                labelMessage.Text = "Felaktiga inloggningsuppgifter";
                 labelMessage.ForeColor = System.Drawing.Color.Red;
             }
 
@@ -53,7 +53,9 @@
         {
             if (e.KeyCode == Keys.Enter)
             {
+                this.ActiveControl = textBoxUsername;
                 buttonLogin_Click(sender, new());
+                
             }
         }
 

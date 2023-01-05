@@ -4,14 +4,14 @@ using TUCDashboardGrp1.Model;
 namespace TUCDashboardGrp1.View
 {
 
-
-
     public partial class BookingPanel : UserControl
     {
         // setting Fields
         #region Fields
+
         private BookingClass? isEditingBookingItem = null;
         private const string EmptyBookingRoom = "Välj ett rum..";
+
         #endregion
 
         public BookingPanel() // Initialization, don't touch
@@ -41,6 +41,24 @@ namespace TUCDashboardGrp1.View
                     combobox_room.Text = room;
                     return;
                 }
+            }
+        }
+        
+        private void Listview_MouseDoubleClick(object sender, MouseEventArgs e) => EditBooking();
+
+        private void listview_bookings_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Check if delete key was pressed
+            if (e.KeyCode == Keys.Delete && listview_bookings.SelectedItems.Count > 0)
+            {
+                // Delete entries
+                RemoveEntries();
+            }
+            else if (e.KeyCode == Keys.A && e.Control && !e.Alt && !e.Shift)
+            {
+                // Select all items
+                foreach (ListViewItem item in listview_bookings.Items)
+                    item.Selected = true;
             }
         }
 
@@ -99,6 +117,7 @@ namespace TUCDashboardGrp1.View
                 isEditingBookingItem.XMLDate = dateTimePicker_date.Text;
                 isEditingBookingItem.XMLStartTime = dateTimePicker_start.Text;
                 isEditingBookingItem.XMLEndTime = dateTimePicker_stop.Text;
+                isEditingBookingItem.Room = combobox_room.Text;
             }
             else
             {
@@ -143,6 +162,10 @@ namespace TUCDashboardGrp1.View
 
             combobox_room.Text = EmptyBookingRoom;
 
+            listview_bookings.Enabled = true;
+            button1.Text = "Lägg till";
+            button2.Text = "Rensa";
+
             // Clear the entry that is being edited
             isEditingBookingItem = null;
         }
@@ -165,15 +188,65 @@ namespace TUCDashboardGrp1.View
             return new DateTime(value.Year, value.Month, value.Day, hour, minute, 0);
         }
 
+        private void RemoveEntries()
+        {
+            // Give the user a chanse to abort (early exit)
+            if (MessageBox.Show($"Vill du verkligen ta bort " +
+                $"{(listview_bookings.SelectedItems.Count == 1 ? "detta" : $"dessa {listview_bookings.SelectedItems.Count}")} fält?",
+                DashboardForm.ApplicationTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
+
+            foreach (ListViewItem item in listview_bookings.SelectedItems)
+                RemoveEntry(item);
+
+            // Save the local storage to file
+            LocalStorage.Instance.Save();
+
+            // Make all widgets refresh themselves
+            GlobalTimer.Instance.Refresh();
+
+            // Clear the form
+            BookingClearForm();
+        }
+
+        private void RemoveEntry(ListViewItem item)
+        {
+            if (item.Tag is not BookingClass) return;
+
+            // Remove the entry from the local storage
+            LocalStorage.Instance.Storage.Bookings.Remove((BookingClass)item.Tag);
+
+            // Remove the item from the listview
+            listview_bookings.Items.Remove(item);
+        }
+
+        private void EditBooking()
+        {
+            if (listview_bookings.SelectedItems[0].Tag is BookingClass booking)
+            {
+                isEditingBookingItem = booking;
+
+                // Load the controls with the values of the isEditingBookingItem
+                textBox_booked_for.Text = isEditingBookingItem.BookedFor;
+                textBox_booked_by.Text = isEditingBookingItem.BookedBy;
+                dateTimePicker_date.Text = isEditingBookingItem.Date.ToString("o");
+                dateTimePicker_start.Text = isEditingBookingItem.StartTime.ToString();
+                dateTimePicker_stop.Text = isEditingBookingItem.EndTime.ToString();
+                combobox_room.Text = isEditingBookingItem.Room;
+
+                // Disable the listview
+                listview_bookings.Enabled = false;
+
+                // Update the button texts
+                button1.Text = "Uppdatera";
+                button2.Text = "Avbryt";
+            }
+        }
 
         #endregion
 
         #endregion // End booking panel region
 
     }
-
-
-
-
 
 }
