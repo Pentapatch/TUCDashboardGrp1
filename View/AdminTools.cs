@@ -28,7 +28,7 @@ namespace TUCDashboardGrp1
 
         public void AddRoom(string roomName) => bookingPanel1.AddRoom(roomName);
 
-        private void AdminTools_FormClosing(object sender, FormClosingEventArgs e) => LocalStorage.Instance.Save<XmlLocalStorage>();
+        private void AdminTools_FormClosing(object sender, FormClosingEventArgs e) => LocalStorage.Instance.SaveData();
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -36,19 +36,16 @@ namespace TUCDashboardGrp1
             int index = Convert.ToInt32(e.ClickedItem.Tag);
             tabControl1.SelectTab(index);
 
-            if (index == 1)
+            if (index == 0)
+            {
+                feedPanel1.FeedRefresh();
+            }
+            else if (index == 1)
             {
                 bookingPanel1.BookingsRefresh();
             }
         }
 
-        private void btn_settings_openInExplorer_Click(object sender, EventArgs e) => LocalStorage.Instance.OpenInExplorer();
-
-        private void btn_edit_rooms_Click(object sender, EventArgs e)
-        {
-            ChangeTab(3);
-            PopulateRoomsList();
-        }
     }
 
 }

@@ -135,7 +135,7 @@ namespace TUCDashboardGrp1.View
             }
 
             // Save the local storage to file
-            LocalStorage.Instance.Save<XmlLocalStorage>();
+            LocalStorage.Instance.SaveData();
 
             // Make all widgets refresh themselves
             GlobalTimer.Instance.Refresh();
@@ -200,7 +200,7 @@ namespace TUCDashboardGrp1.View
                 RemoveEntry(item);
 
             // Save the local storage to file
-            LocalStorage.Instance.Save<XmlLocalStorage>();
+            LocalStorage.Instance.SaveData();
 
             // Make all widgets refresh themselves
             GlobalTimer.Instance.Refresh();
