@@ -116,7 +116,7 @@ namespace TUCDashboardGrp1.View
                 isEditingRoomItem.RoomType = checkb_is_lecture.Checked ? "Sal" : "Grupprum";
             }
             ClearRoomsForm();
-            LocalStorage.Instance.Save();
+            LocalStorage.Instance.Save<XmlLocalStorage>();
             PopulateRoomsList();
             GlobalTimer.Instance.Refresh();
         }
@@ -187,7 +187,7 @@ namespace TUCDashboardGrp1.View
                 return;
 
             LocalStorage.Instance.Storage.Rooms.Clear();
-            LocalStorage.Instance.Save();
+            LocalStorage.Instance.Save<XmlLocalStorage>();
             PopulateRoomsList();
             GlobalTimer.Instance.Refresh();
         }
@@ -210,7 +210,7 @@ namespace TUCDashboardGrp1.View
 
                 }
             }
-            LocalStorage.Instance.Save();
+            LocalStorage.Instance.Save<XmlLocalStorage>();
             PopulateRoomsList();
             GlobalTimer.Instance.Refresh();
         }
