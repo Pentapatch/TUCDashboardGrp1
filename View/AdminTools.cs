@@ -7,6 +7,7 @@ namespace TUCDashboardGrp1
     public partial class AdminTools : Form
     {
 
+        
         public AdminTools()
         {
             InitializeComponent();
@@ -45,6 +46,7 @@ namespace TUCDashboardGrp1
                 bookingPanel1.BookingsRefresh();
             }
         }
+
 
     }
 

@@ -41,6 +41,12 @@ namespace TUCDashboardGrp1.Model
         private void Instance_RefreshWidget(object? sender, EventArgs e)
         {
             UpdateRooms();
+
+            if (LocalStorage.Instance.Settings.OpeningHour != null) 
+                TimelineStart= LocalStorage.Instance.Settings.OpeningHour.Value.Hour;
+            if (LocalStorage.Instance.Settings.ClosingHour != null) 
+                TimelineStop = LocalStorage.Instance.Settings.ClosingHour.Value.Hour;
+
             Bookings = LocalStorage.Instance.Storage.Bookings;
             Invalidate();
         }

@@ -19,9 +19,6 @@ namespace TUCDashboardGrp1.View
             InitializeComponent();
         }
 
-
-        #region Booking panel
-
         #region Event handlers
 
         private void Booking_Submit_Click(object sender, EventArgs e) => BookingSubmit();
@@ -43,7 +40,7 @@ namespace TUCDashboardGrp1.View
                 }
             }
         }
-        
+
         private void Listview_MouseDoubleClick(object sender, MouseEventArgs e) => EditBooking();
 
         private void listview_bookings_KeyDown(object sender, KeyEventArgs e)
@@ -84,10 +81,7 @@ namespace TUCDashboardGrp1.View
                 ListViewItem item = listview_bookings.Items.Add(data.BookedFor);
                 item.Tag = data;
 
-                if (data.Date < DateOnly.FromDateTime(DateTime.Now))
-                {
-                    item.ForeColor = Color.Red;
-                }
+                if (data.Date < DateOnly.FromDateTime(DateTime.Now)) item.ForeColor = Color.Red;
 
                 item.SubItems.Add(data.BookedBy);
                 item.SubItems.Add(data.XMLDate);
@@ -102,11 +96,7 @@ namespace TUCDashboardGrp1.View
 
         private void BookingSubmit()
         {
-            if (!combobox_room.Items.Contains(combobox_room.Text))
-            {
-                MessageBox.Show("Det valda rummet finns inte.", DashboardForm.ApplicationTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            if (!ValidateBooking()) return;
 
             // Either update the current entry or create a new one
             if (isEditingBookingItem != null)
@@ -117,7 +107,6 @@ namespace TUCDashboardGrp1.View
                 isEditingBookingItem.XMLDate = dateTimePicker_date.Text;
                 isEditingBookingItem.XMLStartTime = dateTimePicker_start.Text;
                 isEditingBookingItem.XMLEndTime = dateTimePicker_stop.Text;
-                isEditingBookingItem.Room = combobox_room.Text;
             }
             else
             {
@@ -153,7 +142,6 @@ namespace TUCDashboardGrp1.View
             textBox_booked_for.Text = "";
             textBox_booked_by.Text = "";
             dateTimePicker_date.Text = DateTime.Now.ToShortDateString();
-            // Vi är intresserade av .Minute, kanske .Hour
 
             DateTime now = RoundToClosestHalfHour(DateTime.Now);
 
@@ -175,10 +163,7 @@ namespace TUCDashboardGrp1.View
             int hour = value.Hour;
             int minute = value.Minute;
 
-            if (minute < 30)
-            {
-                minute = 30;
-            }
+            if (minute < 30) minute = 30;
             else if (minute >= 30)
             {
                 minute = 0;
@@ -243,10 +228,67 @@ namespace TUCDashboardGrp1.View
             }
         }
 
+        private static bool IsFacilityOpen(DateTime dateTime)
+        {
+            TimeOnly time = new (dateTime.Hour, dateTime.Minute);
+
+            //School has not opened yet
+            if (time < LocalStorage.Instance.Settings.OpeningHour) return false;
+
+            // School has closed for the day
+            if (time >= LocalStorage.Instance.Settings.ClosingHour && time.Minute != 0) return false;
+
+            return true;
+        }
+
+        private bool ValidateBooking()
+        {
+            string openingHours = LocalStorage.Instance.Settings.XMLOpeningHour;
+            string closingHours = LocalStorage.Instance.Settings.XMLClosingHour;
+
+            // Early exit if selected room doesn't exist.
+            if (!combobox_room.Items.Contains(combobox_room.Text))
+            {
+                MessageBox.Show("Det valda rummet finns inte.", DashboardForm.ApplicationTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Early exit if opening hours have not been set yet
+            if (openingHours == "" || closingHours == "")
+            {
+                if(MessageBox.Show("Du måste ange öppettider innan du kan boka.\nVill du gå till inställningar?",
+                    DashboardForm.ApplicationTitle, MessageBoxButtons.YesNoCancel, 
+                    MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    if(ParentForm is TUCDashboardGrp1.AdminTools admin) admin.ChangeTab(2);
+                }
+                
+                return false;
+            }
+
+            // Early exit if either start time or end time falls outside of opened hours.
+            if (!IsFacilityOpen(dateTimePicker_start.Value) || !IsFacilityOpen(dateTimePicker_stop.Value))
+            {
+                MessageBox.Show(
+                    $"Du har försökt boka ett rum {dateTimePicker_start.Text}-{dateTimePicker_stop.Text}, men öppettiderna är {openingHours} - {closingHours}.\n" +
+                    "Vänligen ändra till en tid inom öppettiderna.",
+                    DashboardForm.ApplicationTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Early exit if starttime is later than endtime.
+            if (dateTimePicker_start.Value > dateTimePicker_stop.Value)
+            {
+                MessageBox.Show(
+                    $"Starttid kan inte vara senare än sluttid.",
+                    DashboardForm.ApplicationTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
+
         #endregion
-
-        #endregion // End booking panel region
-
     }
 
 }
