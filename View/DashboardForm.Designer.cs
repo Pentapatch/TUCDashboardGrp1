@@ -41,6 +41,7 @@
             this.sc_right = new System.Windows.Forms.SplitContainer();
             this.lecturesWidget1 = new TUCDashboardGrp1.LecturesWidget();
             this.groupRoomsWidget1 = new TUCDashboardGrp1.GroupRoomsWidget();
+            this.logoWidget1 = new TUCDashboardGrp1.View.LogoWidget();
             ((System.ComponentModel.ISupportInitialize)(this.sc_main)).BeginInit();
             this.sc_main.Panel1.SuspendLayout();
             this.sc_main.Panel2.SuspendLayout();
@@ -50,6 +51,7 @@
             this.sc_top.Panel2.SuspendLayout();
             this.sc_top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sc_top_left)).BeginInit();
+            this.sc_top_left.Panel1.SuspendLayout();
             this.sc_top_left.Panel2.SuspendLayout();
             this.sc_top_left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sc_top_right)).BeginInit();
@@ -110,6 +112,11 @@
             this.sc_top_left.Location = new System.Drawing.Point(0, 0);
             this.sc_top_left.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sc_top_left.Name = "sc_top_left";
+            // 
+            // sc_top_left.Panel1
+            // 
+            this.sc_top_left.Panel1.Controls.Add(this.logoWidget1);
+            this.sc_top_left.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.sc_top_left_Panel1_Paint);
             // 
             // sc_top_left.Panel2
             // 
@@ -177,6 +184,7 @@
             this.traficWidget1.Location = new System.Drawing.Point(0, 0);
             this.traficWidget1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.traficWidget1.Name = "traficWidget1";
+            this.traficWidget1.NumberOfTrains = 2;
             this.traficWidget1.NumberOfTrips = 4;
             this.traficWidget1.Size = new System.Drawing.Size(420, 115);
             this.traficWidget1.TabIndex = 0;
@@ -276,6 +284,19 @@
             this.groupRoomsWidget1.TimelineStop = 18;
             this.groupRoomsWidget1.WidgetName = "Grupprum";
             // 
+            // logoWidget1
+            // 
+            this.logoWidget1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.logoWidget1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.logoWidget1.BorderRadius = 15;
+            this.logoWidget1.BorderWidth = 0;
+            this.logoWidget1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logoWidget1.IsHighlighted = false;
+            this.logoWidget1.Location = new System.Drawing.Point(0, 0);
+            this.logoWidget1.Name = "logoWidget1";
+            this.logoWidget1.Size = new System.Drawing.Size(200, 115);
+            this.logoWidget1.TabIndex = 0;
+            // 
             // DashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -298,6 +319,7 @@
             this.sc_top.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.sc_top)).EndInit();
             this.sc_top.ResumeLayout(false);
+            this.sc_top_left.Panel1.ResumeLayout(false);
             this.sc_top_left.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.sc_top_left)).EndInit();
             this.sc_top_left.ResumeLayout(false);
@@ -331,5 +353,6 @@
         private FeedWidget feedWidget1;
         private LecturesWidget lecturesWidget1;
         private GroupRoomsWidget groupRoomsWidget1;
+        private View.LogoWidget logoWidget1;
     }
 }

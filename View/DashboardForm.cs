@@ -235,5 +235,10 @@ namespace TUCDashboardGrp1
         {
 
         }
+
+        private void sc_top_left_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
