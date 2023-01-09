@@ -159,7 +159,7 @@ namespace TUCDashboardGrp1
         {
             OpenFileDialog browser = new()
             {
-                Filter = "Bildfiler| *.bmp; *.jpg; *.jpeg; *.gif; *.png | Bitmap (*.bmp) | *.bmp | Joint Photographic Experts Group (*.jpg; *.jpeg) | *.jpg; *.jpeg | Graphics Interchange Format (*.gif) | *.gif | Portable Network Graphics (*.png) | *.png",
+                Filter = "Bildfiler| *.bmp; *.jpg; *.jpeg; *.gif; *.png; | Bitmap (*.bmp) | *.bmp; | Joint Photographic Experts Group (*.jpg, *.jpeg) | *.jpg; *.jpeg; | Graphics Interchange Format (*.gif) | *.gif; | Portable Network Graphics (*.png) | *.png;",
                 CheckFileExists = true,
                 CheckPathExists = true,
                 Multiselect = false,
@@ -242,13 +242,17 @@ namespace TUCDashboardGrp1
             FeedClearForm();
         }
 
+
+
+
+
+
+
         #endregion // End feed functions
 
-
-
-
-
-
-
+        private void FeedPanel_Resize(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

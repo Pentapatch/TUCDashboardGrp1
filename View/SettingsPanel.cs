@@ -19,6 +19,30 @@ namespace TUCDashboardGrp1.View
         {
             // Change the textlabel to reflect the name of thenew file used.
             lbl_currentDataFile.Text = new FileInfo(LocalStorage.Instance.Settings.DataPath).Name;
+
+            string logotypePath = LocalStorage.Instance.Settings.LogotypePath;
+
+            if (logotypePath != "")
+                lbl_logotypePath.Text = new FileInfo(logotypePath).Name;
+            else
+                lbl_logotypePath.Text = "";
+
+            if (logotypePath != "")
+                pb_logotypePreview.LoadAsync(logotypePath);
+            else
+                pb_logotypePreview.Image = null;
+
+            // Update all of the color preview labels
+            lbl_backgroundColorPreview.BackColor = LocalStorage.Instance.Settings.BackgroundColor;
+            lbl_widgetBackgroundColorPreview.BackColor = LocalStorage.Instance.Settings.WidgetBackgroundColor;
+            lbl_accentColorPreview.BackColor = LocalStorage.Instance.Settings.AccentColor;
+            lbl_textColorPreview.BackColor = LocalStorage.Instance.Settings.TextColor;
+            lbl_baseColorPreview.BackColor = LocalStorage.Instance.Settings.BaseColor;
+            lbl_borderColorPreview.BackColor = LocalStorage.Instance.Settings.BorderColor;
+
+            // Update the slider
+            slider_borderRadius.Value = LocalStorage.Instance.Settings.BorderRadius;
+            slider_borderWidth.Value = LocalStorage.Instance.Settings.BorderWidth;
         }
 
         private void btn_dataBrowse_Click(object sender, EventArgs e)
@@ -29,9 +53,12 @@ namespace TUCDashboardGrp1.View
                 CheckFileExists = true,
                 CheckPathExists = true,
                 Multiselect = false,
-                InitialDirectory = LocalStorage.Instance.Settings.DataPath,
+                InitialDirectory = new FileInfo(LocalStorage.Instance.Settings.DataPath).Directory?.FullName,
             };
             browser.ShowDialog(this);
+
+            // Early exit if no file was selected
+            if (browser.FileName == "") return;
 
             // Save the current filepath to the Settings.xml for the next loadup of the program
             LocalStorage.Instance.Settings.DataPath = browser.FileName;
@@ -51,6 +78,15 @@ namespace TUCDashboardGrp1.View
         }
 
         private void btn_save_openedHour_Click(object sender, EventArgs e) => SaveOpeningHours();
+
+        private void btn_clearLogotypePath_Click(object sender, EventArgs e)
+        {
+            // Clear the setting
+            LocalStorage.Instance.Settings.LogotypePath = "";
+
+            // Refresh all widgets
+            GlobalTimer.Instance.Refresh();
+        }
 
         private void SaveOpeningHours()
         {
@@ -75,5 +111,128 @@ namespace TUCDashboardGrp1.View
             dtpicker_closing.Text = LocalStorage.Instance.Settings.ClosingHour == null ? "00:00" : LocalStorage.Instance.Settings.XMLClosingHour;
         }
 
+        private void btn_browseForLogotypePath_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog browser = new()
+            {
+                Filter = "Bildfiler| *.bmp; *.jpg; *.jpeg; *.gif; *.png; | Bitmap (*.bmp) | *.bmp; | Joint Photographic Experts Group (*.jpg, *.jpeg) | *.jpg; *.jpeg; | Graphics Interchange Format (*.gif) | *.gif; | Portable Network Graphics (*.png) | *.png;",
+                CheckFileExists = true,
+                CheckPathExists = true,
+                Multiselect = false,
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+            };
+            browser.ShowDialog(this);
+
+            // Early exit if no file was selected
+            if (browser.FileName == "") return;
+
+            // Set the new path
+            LocalStorage.Instance.Settings.LogotypePath = browser.FileName;
+
+            // Save the settings
+            LocalStorage.Instance.SaveSettings();
+
+            // Refresh all widgets
+            GlobalTimer.Instance.Refresh();
+            GlobalTimer.Instance.RefreshSettingsOnly();
+        }
+
+        public enum ColorTypeEnum
+        {
+            Background,
+            WidgetBackground,
+            Base,
+            Accent,
+            Text,
+            Border,
+        }
+
+        private Label GetPreviewLabel(ColorTypeEnum type) => type switch
+        {
+            ColorTypeEnum.Background => lbl_backgroundColorPreview,
+            ColorTypeEnum.WidgetBackground => lbl_widgetBackgroundColorPreview,
+            ColorTypeEnum.Base => lbl_baseColorPreview,
+            ColorTypeEnum.Accent => lbl_accentColorPreview,
+            ColorTypeEnum.Border => lbl_borderColorPreview,
+            _ => lbl_textColorPreview,
+        };
+
+        private Color? BrowseForColor()
+        {
+            ColorDialog cd = new();
+
+            if (cd.ShowDialog() == DialogResult.OK) return cd.Color;
+
+            return null;
+        }
+
+        private void UpdateColor(ColorTypeEnum type)
+        {
+            // Browse for the color
+            Color? color = BrowseForColor();
+
+            // Early exit if cancelled
+            if (color == null) return;
+
+            // Update the preview label
+            GetPreviewLabel(type).BackColor = color.Value;
+
+            // Update the local storage property
+            switch (type)
+            {
+                case ColorTypeEnum.Background:
+                    LocalStorage.Instance.Settings.BackgroundColor = color.Value;
+                    break;
+                case ColorTypeEnum.WidgetBackground:
+                    LocalStorage.Instance.Settings.WidgetBackgroundColor = color.Value;
+                    break;
+                case ColorTypeEnum.Base:
+                    LocalStorage.Instance.Settings.BaseColor = color.Value;
+                    break;
+                case ColorTypeEnum.Accent:
+                    LocalStorage.Instance.Settings.AccentColor = color.Value;
+                    break;
+                case ColorTypeEnum.Text:
+                    LocalStorage.Instance.Settings.TextColor = color.Value;
+                    break;
+                case ColorTypeEnum.Border:
+                    LocalStorage.Instance.Settings.BorderColor = color.Value;
+                    break;
+                default:
+                    break;
+            }
+
+            // Save the settings
+            LocalStorage.Instance.SaveSettings();
+            
+            // Update Widgets
+            GlobalTimer.Instance.RefreshSettingsOnly();
+        }
+
+        private void btn_browseForBackgroundColor_Click(object sender, EventArgs e) => UpdateColor(ColorTypeEnum.Background);
+
+        private void btn_browseForWidgetBackgroundColor_Click(object sender, EventArgs e) => UpdateColor(ColorTypeEnum.WidgetBackground);
+
+        private void btn_browseForBaseColor_Click(object sender, EventArgs e) => UpdateColor(ColorTypeEnum.Base);
+
+        private void btn_browseForAccentColor_Click(object sender, EventArgs e) => UpdateColor(ColorTypeEnum.Accent);
+
+        private void btn_browseForTextColor_Click(object sender, EventArgs e) => UpdateColor(ColorTypeEnum.Text);
+
+        private void btn_browseForBorderColor_Click(object sender, EventArgs e) => UpdateColor(ColorTypeEnum.Border);
+
+        private void slider_borderRadius_ValueChanged(object sender, EventArgs e)
+        {
+            LocalStorage.Instance.Settings.BorderRadius = slider_borderRadius.Value;
+            LocalStorage.Instance.SaveSettings();
+            GlobalTimer.Instance.RefreshSettingsOnly();
+        }
+
+        private void slider_borderWidth_ValueChanged(object sender, EventArgs e)
+        {
+            LocalStorage.Instance.Settings.BorderWidth = slider_borderWidth.Value;
+            LocalStorage.Instance.SaveSettings();
+            GlobalTimer.Instance.RefreshSettingsOnly();
+        }
     }
 }

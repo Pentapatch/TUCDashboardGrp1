@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using TUCDashboardGrp1.Controller;
 
 namespace TUCDashboardGrp1.Model
 {
@@ -32,11 +33,7 @@ namespace TUCDashboardGrp1.Model
             set
             {
                 backgroundColor = value;
-                if (isShown)
-                {
-                    UpdateColors();
-                    Invalidate();
-                }
+                if (isShown) Invalidate();
             }
         }
 
@@ -96,6 +93,32 @@ namespace TUCDashboardGrp1.Model
             Load += Widget_Load;
             Resize += Widget_Resize;
             DoubleBuffered = true;
+            GlobalTimer.Instance.RefreshSettings += Instance_RefreshSettings;
+            UpdateColors();
+        }
+
+        private void Instance_RefreshSettings(object? sender, EventArgs e) => UpdateColors();
+
+        private void UpdateColors()
+        {
+            // Update background color and border color
+            BackgroundColor = LocalStorage.Instance.Settings.WidgetBackgroundColor;
+            BorderColor = LocalStorage.Instance.Settings.BorderColor;
+            BorderWidth = LocalStorage.Instance.Settings.BorderWidth;
+            BorderRadius = LocalStorage.Instance.Settings.BorderRadius;
+
+            // Get all controls that is contained within this widget
+            // Loop through each of them
+            foreach (Control control in GetAllControls())
+            {
+                // Set the BackColor property to the custom BackgroundColor property
+                control.BackColor = BackgroundColor;
+
+                if (control is Label label)
+                {
+                    label.ForeColor = LocalStorage.Instance.Settings.TextColor;
+                }
+            }
         }
 
         #endregion
@@ -118,9 +141,6 @@ namespace TUCDashboardGrp1.Model
             // Loop through each of them
             foreach (Control control in GetAllControls())
             {
-                // Set the BackColor property to the custom BackgroundColor property
-                control.BackColor = BackgroundColor;
-
                 // Subscribe to mouse events
                 // This is used for raising the same event but from the Widget
                 // so we can move the widget by dragging it, from anywhere within the widget
@@ -234,11 +254,6 @@ namespace TUCDashboardGrp1.Model
             pen.Dispose();
             brush.Dispose();
             borderBrush.Dispose();
-        }
-
-        private void UpdateColors()
-        {
-            
         }
 
         /// <summary>Get a list that contains all of the controls added to this widget</summary>

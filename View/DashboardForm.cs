@@ -40,6 +40,12 @@ namespace TUCDashboardGrp1
             InitializeWidgetControl();
             Resize += DashboardForm_Resize;
             Shown += DashboardForm_Shown;
+            GlobalTimer.Instance.RefreshWidget += Instance_RefreshWidget;
+        }
+
+        private void Instance_RefreshWidget(object? sender, EventArgs e)
+        {
+            BackColor = LocalStorage.Instance.Settings.BackgroundColor;
         }
 
         private void DashboardForm_Shown(object? sender, EventArgs e)
@@ -228,7 +234,8 @@ namespace TUCDashboardGrp1
 
         private void weatherWidghet1_Load(object sender, EventArgs e)
         {
-
+            GlobalTimer.Instance.Refresh();
+            GlobalTimer.Instance.RefreshSettingsOnly();
         }
 
         private void feedWidget1_Load(object sender, EventArgs e)

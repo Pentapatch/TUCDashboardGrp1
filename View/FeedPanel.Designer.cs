@@ -58,7 +58,7 @@
             this.listview_feed.Location = new System.Drawing.Point(305, 2);
             this.listview_feed.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listview_feed.Name = "listview_feed";
-            this.listview_feed.Size = new System.Drawing.Size(731, 415);
+            this.listview_feed.Size = new System.Drawing.Size(731, 475);
             this.listview_feed.TabIndex = 23;
             this.listview_feed.UseCompatibleStateImageBehavior = false;
             this.listview_feed.View = System.Windows.Forms.View.Details;
@@ -84,7 +84,7 @@
             // btn_feed_clear
             // 
             this.btn_feed_clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_feed_clear.Location = new System.Drawing.Point(147, 395);
+            this.btn_feed_clear.Location = new System.Drawing.Point(147, 455);
             this.btn_feed_clear.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_feed_clear.Name = "btn_feed_clear";
             this.btn_feed_clear.Size = new System.Drawing.Size(95, 22);
@@ -96,7 +96,7 @@
             // btn_feed_clearImage
             // 
             this.btn_feed_clearImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_feed_clearImage.Location = new System.Drawing.Point(147, 134);
+            this.btn_feed_clearImage.Location = new System.Drawing.Point(147, 194);
             this.btn_feed_clearImage.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_feed_clearImage.Name = "btn_feed_clearImage";
             this.btn_feed_clearImage.Size = new System.Drawing.Size(95, 21);
@@ -108,7 +108,7 @@
             // btn_feed_submit
             // 
             this.btn_feed_submit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_feed_submit.Location = new System.Drawing.Point(63, 395);
+            this.btn_feed_submit.Location = new System.Drawing.Point(63, 455);
             this.btn_feed_submit.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_feed_submit.Name = "btn_feed_submit";
             this.btn_feed_submit.Size = new System.Drawing.Size(81, 22);
@@ -121,7 +121,7 @@
             // 
             this.picturebox_feed_preview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.picturebox_feed_preview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.picturebox_feed_preview.Location = new System.Drawing.Point(63, 157);
+            this.picturebox_feed_preview.Location = new System.Drawing.Point(63, 217);
             this.picturebox_feed_preview.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.picturebox_feed_preview.Name = "picturebox_feed_preview";
             this.picturebox_feed_preview.Size = new System.Drawing.Size(236, 236);
@@ -132,7 +132,7 @@
             // btn_feed_browseForImage
             // 
             this.btn_feed_browseForImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_feed_browseForImage.Location = new System.Drawing.Point(63, 134);
+            this.btn_feed_browseForImage.Location = new System.Drawing.Point(63, 194);
             this.btn_feed_browseForImage.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_feed_browseForImage.Name = "btn_feed_browseForImage";
             this.btn_feed_browseForImage.Size = new System.Drawing.Size(81, 21);
@@ -149,7 +149,7 @@
             this.textbox_feed_content.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.textbox_feed_content.Multiline = true;
             this.textbox_feed_content.Name = "textbox_feed_content";
-            this.textbox_feed_content.Size = new System.Drawing.Size(237, 100);
+            this.textbox_feed_content.Size = new System.Drawing.Size(237, 160);
             this.textbox_feed_content.TabIndex = 15;
             this.textbox_feed_content.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Feed_Textboxes_KeyDown);
             // 
@@ -166,7 +166,7 @@
             // 
             this.label_feed_img.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label_feed_img.AutoSize = true;
-            this.label_feed_img.Location = new System.Drawing.Point(6, 137);
+            this.label_feed_img.Location = new System.Drawing.Point(6, 197);
             this.label_feed_img.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_feed_img.Name = "label_feed_img";
             this.label_feed_img.Size = new System.Drawing.Size(30, 15);
@@ -195,8 +195,7 @@
             // 
             // FeedPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.listview_feed);
             this.Controls.Add(this.btn_feed_clear);
             this.Controls.Add(this.btn_feed_clearImage);
@@ -209,7 +208,8 @@
             this.Controls.Add(this.label_feed_content);
             this.Controls.Add(this.label_feed_header);
             this.Name = "FeedPanel";
-            this.Size = new System.Drawing.Size(1039, 419);
+            this.Size = new System.Drawing.Size(1039, 479);
+            this.Resize += new System.EventHandler(this.FeedPanel_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.picturebox_feed_preview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
