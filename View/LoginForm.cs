@@ -19,8 +19,6 @@
 
             if (user == "admin" && pass == "admin" || DashboardForm.IsDebugging)
             {
-                //labelMessage.Text = "Welcome Admin";
-                //labelMessage.ForeColor = System.Drawing.Color.Green;
                 using (AdminTools a = new AdminTools())
                 {
                     this.Visible = false;
@@ -29,12 +27,11 @@
                     this.Visible = true;
 
                 }
-
             }
 
             else
             {
-                labelMessage.Text = "Invalid details";
+                labelMessage.Text = "Felaktiga inloggningsuppgifter";
                 labelMessage.ForeColor = System.Drawing.Color.Red;
             }
 
@@ -54,11 +51,13 @@
         {
             if (e.KeyCode == Keys.Enter)
             {
+                this.ActiveControl = textBoxUsername;
                 buttonLogin_Click(sender, new());
+
             }
         }
 
-     
+
     }
 
 }

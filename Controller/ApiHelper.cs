@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.Http.Headers;
 
 namespace TUCDashboardGrp1.Controller
 {
@@ -18,13 +13,13 @@ namespace TUCDashboardGrp1.Controller
         {
             get
             {
-                if(apiClient == null)
+                if (apiClient == null)
                 {
                     apiClient = new();
                     ApiClient.DefaultRequestHeaders.Accept.Clear();
                     ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 }
-                
+
                 return apiClient;
             }
         }

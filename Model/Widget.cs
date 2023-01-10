@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+﻿using TUCDashboardGrp1.Controller;
 
 namespace TUCDashboardGrp1.Model
 {
@@ -12,10 +12,10 @@ namespace TUCDashboardGrp1.Model
         #region Fields
 
         private bool isShown = false;
-        private int borderRadius = 50;
-        private Color borderColor = Color.FromArgb(84, 84, 84);
-        private int borderWidth = 2;
-        private Color backgroundColor = Color.FromArgb(48, 48, 48);
+        private int borderRadius = 15;
+        private Color borderColor = Color.FromArgb(255, 255, 255);
+        private int borderWidth = 0;
+        private Color backgroundColor = Color.FromArgb(255, 255, 255);
         private bool isHighlighted;
 
         #endregion
@@ -32,11 +32,7 @@ namespace TUCDashboardGrp1.Model
             set
             {
                 backgroundColor = value;
-                if (isShown)
-                {
-                    UpdateColors();
-                    Invalidate();
-                }
+                if (isShown) Invalidate();
             }
         }
 
@@ -96,6 +92,36 @@ namespace TUCDashboardGrp1.Model
             Load += Widget_Load;
             Resize += Widget_Resize;
             DoubleBuffered = true;
+            GlobalTimer.Instance.RefreshSettings += Instance_RefreshSettings;
+            UpdateLooks();
+        }
+
+        private void Instance_RefreshSettings(object? sender, EventArgs e) => UpdateLooks();
+
+        private void UpdateLooks()
+        {
+            // Update background color and border color
+            BackgroundColor = LocalStorage.Instance.Settings.WidgetBackgroundColor;
+            BorderColor = LocalStorage.Instance.Settings.BorderColor;
+            BorderWidth = LocalStorage.Instance.Settings.BorderWidth;
+            BorderRadius = LocalStorage.Instance.Settings.BorderRadius;
+
+            Font font = Settings.CreateFont();
+            Font = font;
+
+            // Get all controls that is contained within this widget
+            // Loop through each of them
+            foreach (Control control in GetAllControls())
+            {
+                // Set the BackColor property to the custom BackgroundColor property
+                control.BackColor = BackgroundColor;
+
+                if (control is Label label)
+                {
+                    label.ForeColor = LocalStorage.Instance.Settings.TextColor;
+                    label.Font = font;
+                }
+            }
         }
 
         #endregion
@@ -118,9 +144,6 @@ namespace TUCDashboardGrp1.Model
             // Loop through each of them
             foreach (Control control in GetAllControls())
             {
-                // Set the BackColor property to the custom BackgroundColor property
-                control.BackColor = BackgroundColor;
-
                 // Subscribe to mouse events
                 // This is used for raising the same event but from the Widget
                 // so we can move the widget by dragging it, from anywhere within the widget
@@ -158,15 +181,15 @@ namespace TUCDashboardGrp1.Model
         private MouseEventArgs CreateEventArgs(MouseEventArgs e, Control control)
         {
             var translatedCoordinates = Translate(e.Location, control);
-            return new (e.Button, e.Clicks, translatedCoordinates.X, translatedCoordinates.Y, e.Delta);
+            return new(e.Button, e.Clicks, translatedCoordinates.X, translatedCoordinates.Y, e.Delta);
         }
 
         /// <summary>Translate the event coordinates to the widget coordinate space.</summary>
         /// <param name="point">The event coordinates to translate.</param>
         /// <param name="control">The control that raised the event.</param>
         /// <returns>A tuple that contains translated X and Y values from control coordinates to widget coordinates.</returns>
-        private (int X, int Y) Translate(Point point, Control control) => 
-            (point.X + control.Left, point.Y + control.Top); 
+        private (int X, int Y) Translate(Point point, Control control) =>
+            (point.X + control.Left, point.Y + control.Top);
 
         private void Widget_Paint(object? sender, PaintEventArgs e)
         {
@@ -190,7 +213,7 @@ namespace TUCDashboardGrp1.Model
             SolidBrush brush = new(BackgroundColor);
             SolidBrush borderBrush = IsHighlighted ? new(tucRed) : new(BorderColor);
 
-            // Calculate offset
+            // Calculate bookingLengthOffset
             int offset = BorderWidth / 2;
             int size = BorderRadius - offset * 2;
 
@@ -236,11 +259,6 @@ namespace TUCDashboardGrp1.Model
             borderBrush.Dispose();
         }
 
-        private void UpdateColors()
-        {
-            
-        }
-
         /// <summary>Get a list that contains all of the controls added to this widget</summary>
         /// <returns>A List of Widget</returns>
         private List<Control> GetAllControls()
@@ -263,5 +281,11 @@ namespace TUCDashboardGrp1.Model
 
         #endregion 
 
+        protected int GetRelativeFontSize(int relativeSize)
+        {
+            int result = (int)Font.Size + relativeSize;
+            if (result <= 0) return 1;
+            return result;
+        }
     }
 }

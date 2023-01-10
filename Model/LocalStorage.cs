@@ -1,15 +1,16 @@
 ﻿using System.Diagnostics;
 using System.Xml.Serialization;
+using TUCDashboardGrp1.Controller;
 
 namespace TUCDashboardGrp1.Model
 {
     public class LocalStorage
     {
+        #region Fields
+        readonly string directoryPath = @$"{Application.UserAppDataPath}\Settings";
 
-        private string path = string.Empty;
-        private string directoryPath = string.Empty;
-
-        private XmlLocalStorage value;
+        private XmlLocalStorage dataStorage;
+        private Settings settings;
 
         private static LocalStorage? instance = null;
 
@@ -21,64 +22,91 @@ namespace TUCDashboardGrp1.Model
                 return instance;
             }
         }
+        #endregion
+
+        #region Props
+        public XmlLocalStorage Storage { get => dataStorage; }
+
+        public Settings Settings { get => settings; }
+        #endregion
 
         public static void Initialize() => instance ??= new();
 
-        public XmlLocalStorage Storage { get => value; }
 
-        public LocalStorage()
+        #region Functions
+        private LocalStorage()
         {
-            value = new();
+            dataStorage = new();
+            settings = new();
 
-            CreateFile("AppData1", "Settings");
+            // Create (if not existing already) a settings file
+            // then load the settings to local storage
+            CreateFile<Settings>(true);
+            settings = ReadFile<Settings>(true);
 
-            ReadFile();
-
-            Save();
+            // Create (if not already existing) a data file
+            // then load the data to local storage
+            CreateFile<XmlLocalStorage>(false);
+            dataStorage = ReadFile<XmlLocalStorage>(false);
         }
 
-        internal void Save()
-        {
-            if (File.Exists(path))
-            {
-                using FileStream fs = File.Create(path);
-                XmlSerializer writer = new(typeof(XmlLocalStorage));
 
-                writer.Serialize(fs, value);
+        private void Save<T>(bool isSettings)
+        {
+            if (File.Exists(GetCurrentPath(isSettings)))
+            {
+                using FileStream fs = File.Create(GetCurrentPath(isSettings));
+                XmlSerializer writer = new(typeof(T));
+
+                writer.Serialize(fs, isSettings ? settings : dataStorage);
             }
         }
+
+        public void SaveSettings() => Save<Settings>(true);
+
+        public void SaveData() => Save<XmlLocalStorage>(false);
 
         public void OpenInExplorer()
         {
             Process.Start("explorer.exe", directoryPath);
         }
 
-        private void CreateFile(string fileName, string directoryName = "Settings")
-        {
-            directoryPath = @$"{Application.UserAppDataPath}\{directoryName}";
-            path = @$"{directoryPath}\{fileName.Trim().Replace(".xml", "")}.xml";
+        private string GetSettingsPath() => $"{directoryPath}\\UserSettings.xml";
 
-            // Create a blank file if none exists
-            if (!File.Exists(path))
+        // This will either return, the current dataPath or a default value
+        private string GetDataPath() => settings.DataPath;
+
+        // Returns the CurrentPath to either Data or Settings
+        private string GetCurrentPath(bool isSettings) => isSettings ? GetSettingsPath() : GetDataPath();
+
+        private void CreateFile<T>(bool isSettings)
+        {
+            // Get the path to the file (either data or settings)
+            string filePath = GetCurrentPath(isSettings);
+
+            // If the file or directory does not exist, create them.
+            if (!File.Exists(filePath))
             {
                 Directory.CreateDirectory(directoryPath);
 
-                using FileStream fs = File.Create(path);
-                XmlSerializer writer = new(typeof(XmlLocalStorage));
+                using FileStream fs = File.Create(filePath);
+                XmlSerializer writer = new(typeof(T));
 
-                writer.Serialize(fs, value);
+                writer.Serialize(fs, isSettings ? settings : dataStorage);
             }
         }
 
-        private void ReadFile()
+        private T ReadFile<T>(bool isSettings)
         {
-            XmlSerializer reader = new(typeof(XmlLocalStorage));
+            XmlSerializer reader = new(typeof(T));
 
-            using StreamReader file = new(path);
+            // Get the path to the file (either data or settings)
+            string filePath = GetCurrentPath(isSettings);
+
+            using StreamReader file = new(filePath);
             try
             {
-                XmlLocalStorage ls = (XmlLocalStorage)reader.Deserialize(file)!;
-                value = ls;
+                return (T)reader.Deserialize(file)!;
             }
             catch (Exception e)
             {
@@ -88,6 +116,15 @@ namespace TUCDashboardGrp1.Model
             }
         }
 
+        internal void ReLoad()
+        {
+            // Change the current DataFile to the new one, saved in Settings.xml
+            dataStorage = ReadFile<XmlLocalStorage>(false);
+
+            GlobalTimer.Instance.Refresh();
+        }
+
+        #endregion
     }
 
 }

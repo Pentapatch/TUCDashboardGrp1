@@ -1,6 +1,6 @@
 ﻿namespace TUCDashboardGrp1
 {
-    partial class WeatherWidghet
+    partial class WeatherWidget
     {
         /// <summary> 
         /// Required designer variable.
@@ -38,20 +38,20 @@
             // 
             this.label_current_weather.AutoSize = true;
             this.label_current_weather.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_current_weather.Location = new System.Drawing.Point(134, 240);
+            this.label_current_weather.Location = new System.Drawing.Point(151, 252);
             this.label_current_weather.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_current_weather.Name = "label_current_weather";
-            this.label_current_weather.Size = new System.Drawing.Size(270, 46);
+            this.label_current_weather.Size = new System.Drawing.Size(217, 37);
             this.label_current_weather.TabIndex = 2;
             this.label_current_weather.Text = "Laddar prognos..";
             // 
             // current_weather_symbol
             // 
             this.current_weather_symbol.ImageLocation = "";
-            this.current_weather_symbol.Location = new System.Drawing.Point(134, 133);
+            this.current_weather_symbol.Location = new System.Drawing.Point(151, 140);
             this.current_weather_symbol.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.current_weather_symbol.Name = "current_weather_symbol";
-            this.current_weather_symbol.Size = new System.Drawing.Size(142, 93);
+            this.current_weather_symbol.Size = new System.Drawing.Size(160, 98);
             this.current_weather_symbol.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.current_weather_symbol.TabIndex = 3;
             this.current_weather_symbol.TabStop = false;
@@ -60,22 +60,21 @@
             // 
             this.label_forecast.AutoSize = true;
             this.label_forecast.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_forecast.Location = new System.Drawing.Point(134, 356);
+            this.label_forecast.Location = new System.Drawing.Point(151, 368);
             this.label_forecast.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_forecast.Name = "label_forecast";
-            this.label_forecast.Size = new System.Drawing.Size(0, 28);
+            this.label_forecast.Size = new System.Drawing.Size(0, 21);
             this.label_forecast.TabIndex = 4;
             // 
-            // WeatherWidghet
+            // WeatherWidget
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.label_forecast);
             this.Controls.Add(this.current_weather_symbol);
             this.Controls.Add(this.label_current_weather);
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.Name = "WeatherWidghet";
-            this.Size = new System.Drawing.Size(932, 631);
+            this.Name = "WeatherWidget";
+            this.Size = new System.Drawing.Size(1048, 663);
             this.Load += new System.EventHandler(this.WeatherWidghet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.current_weather_symbol)).EndInit();
             this.ResumeLayout(false);

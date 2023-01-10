@@ -59,6 +59,7 @@
         public event EventHandler? Tick15Minutes;
         public event EventHandler? Tick60Minutes;
         public event EventHandler? RefreshWidget;
+        public event EventHandler? RefreshSettings;
 
         protected virtual void OnTick1Second() => Tick1Second?.Invoke(this, EventArgs.Empty);
         protected virtual void OnTick10Seconds() => Tick10Seconds?.Invoke(this, EventArgs.Empty);
@@ -68,6 +69,8 @@
         protected virtual void OnTick60Minutes() => Tick60Minutes?.Invoke(this, EventArgs.Empty);
         protected virtual void OnRefreshWidget() => RefreshWidget?.Invoke(this, EventArgs.Empty);
 
+        protected virtual void OnRefreshSettings() => RefreshSettings?.Invoke(this, EventArgs.Empty);
+
         #endregion
 
         // Public methods
@@ -75,6 +78,8 @@
         #region Public Methods
 
         public void Refresh() => OnRefreshWidget();
+
+        public void RefreshSettingsOnly() => OnRefreshSettings();
 
         #endregion
 
@@ -116,7 +121,7 @@
             }
 
         }
-        
+
         #endregion
 
     }

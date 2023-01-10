@@ -1,4 +1,7 @@
-﻿namespace TUCDashboardGrp1.Controller
+﻿using TUCDashboardGrp1.Model;
+
+namespace TUCDashboardGrp1.Controller
+
 {
     public class WeatherProcessor
     {
@@ -8,6 +11,8 @@
          * When data is returned it uses WeatherResultModel to store the data.
          * A (string, int) tuple is returned, where Item1 is the string presented in the weather widget, 
            and Item2 is the number of the weather symbol.
+         * this link: https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer#param=airtemperatureInstant,stations=core
+         * is used for getting the Longitude and Latitude Coordinates to which works with the API.
         
         If you want to display any other type of data, you simply change the index of Paramaters[]. Find the different indexes below:
         0 = spp,      Percent of precipitation in frozen form.Unit: %. 
@@ -31,11 +36,13 @@
         18 = Wsymb2,  Weather symbol.                         Unit: Integer 1-27 (number of the symbol)
         */
 
-        public static string Url { get; set; } = "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/15.62157/lat/58.41086/data.json";
-
         public static async Task<WeatherResultModel> LoadWeather()
         {
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(Url))
+            string longitude = LocalStorage.Instance.Settings.Longitude == null ? "15.62157" : LocalStorage.Instance.Settings.Longitude;
+            string latitude = LocalStorage.Instance.Settings.Latitude == null ? "58.41086" : LocalStorage.Instance.Settings.Latitude;
+            string address = $"https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/{longitude}/lat/{latitude}/data.json";
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(address))
             {
                 // Get and return the result asynchronously
                 if (response.IsSuccessStatusCode) return await response.Content.ReadAsAsync<WeatherResultModel>();

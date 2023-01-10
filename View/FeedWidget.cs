@@ -1,6 +1,5 @@
-﻿using TUCDashboardGrp1.Model;
-using TUCDashboardGrp1.Properties;
-using TUCDashboardGrp1.Controller;
+﻿using TUCDashboardGrp1.Controller;
+using TUCDashboardGrp1.Model;
 
 namespace TUCDashboardGrp1
 {
@@ -48,13 +47,16 @@ namespace TUCDashboardGrp1
             // Subscribe to timer event
             GlobalTimer.Instance!.Tick10Seconds += Refresher_Tick;
             GlobalTimer.Instance!.RefreshWidget += FeedWidget_RefreshWidget;
+            GlobalTimer.Instance.RefreshSettings += Instance_RefreshSettings;
             Load += FeedWidget_RefreshWidget;
 
             // Subscribe to form event
             Resize += FeedWidget_Resize;
         }
 
-        private void FeedWidget_RefreshWidget(object? sender, EventArgs e) => 
+        private void Instance_RefreshSettings(object? sender, EventArgs e) => SetLayout();
+
+        private void FeedWidget_RefreshWidget(object? sender, EventArgs e) =>
             SetFeed(LocalStorage.Instance.Storage.Feed);
 
         #endregion
@@ -110,6 +112,8 @@ namespace TUCDashboardGrp1
             label_header.Visible = data.Header != "";
             label_content.Visible = data.Content != "";
             picture.Visible = data.Image != null;
+
+            label_header.Font = Settings.CreateFont(GetRelativeFontSize(20), true);
 
             // Organize the controls based on the contents of the current slide data
 

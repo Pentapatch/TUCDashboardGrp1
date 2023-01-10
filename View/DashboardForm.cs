@@ -19,7 +19,7 @@ namespace TUCDashboardGrp1
         private List<Widget> widgets = new();
 
         public const string ApplicationTitle = "TUC Dashboard";
-        public const bool IsDebugging = true;
+        public const bool IsDebugging = false;
 
         #endregion
 
@@ -38,6 +38,42 @@ namespace TUCDashboardGrp1
             //LocalStorage ls = new();
             LocalStorage.Initialize();
             InitializeWidgetControl();
+
+            GlobalTimer.Instance.RefreshSettingsOnly();
+            //GlobalTimer.Instance.Refresh();
+
+            Resize += DashboardForm_Resize;
+            Shown += DashboardForm_Shown;
+            GlobalTimer.Instance.RefreshSettings += Instance_RefreshSettings;
+            UpdateDesign();
+        }
+
+        private void Instance_RefreshSettings(object? sender, EventArgs e) => UpdateDesign();
+
+        private void UpdateDesign()
+        {
+            BackColor = LocalStorage.Instance.Settings.BackgroundColor;
+        }
+
+        private void DashboardForm_Shown(object? sender, EventArgs e)
+        {
+            var test = GetControlsOfType<Widget>(sc_main);
+            if (test.Count > 0) test[0].Focus();
+        }
+
+        private void DashboardForm_Resize(object? sender, EventArgs e)
+        {
+            UpdateLayout();
+        }
+
+        private void UpdateLayout()
+        {
+            sc_main.SplitterDistance = sc_main.Height / 5;
+            sc_top.SplitterDistance = sc_top.Width / 3;
+            sc_top_left.SplitterDistance = sc_top_left.Width / 2;
+            sc_top_right.SplitterDistance = sc_top_right.Width / 2;
+            sc_bottom.SplitterDistance = sc_bottom.Width / 3;
+            sc_right.SplitterDistance = sc_right.Height / 2;
         }
 
         #endregion
@@ -51,7 +87,7 @@ namespace TUCDashboardGrp1
         private void InitializeWidgetControl()
         {
             // Subscribe to target events
-            foreach (Widget widget in GetControlsOfType<Widget>(splitContainer1))
+            foreach (Widget widget in GetControlsOfType<Widget>(sc_main))
             {
                 widget.KeyDown += Widget_KeyDown;
                 widget.MouseDown += Widget_MouseDown;
@@ -135,7 +171,7 @@ namespace TUCDashboardGrp1
 
             // Get a list of all of the widgets that are added to this form, and store it in a variable
             // (for optimization purposes)
-            widgets = GetControlsOfType<Widget>(splitContainer1);
+            widgets = GetControlsOfType<Widget>(sc_main);
         }
 
         private void Widget_KeyDown(object? sender, KeyEventArgs e)
