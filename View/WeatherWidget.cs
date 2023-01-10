@@ -47,9 +47,13 @@ namespace TUCDashboardGrp1
             Resize += WeatherWidget_Resize;
             GlobalTimer.Instance!.Tick60Minutes += GlobalTimer_Tick60Minutes;
             GlobalTimer.Instance.RefreshSettings += Instance_RefreshSettings;
+            GlobalTimer.Instance.RefreshWidget += Instance_RefreshWidget;
         }
 
+        private void Instance_RefreshWidget(object? sender, EventArgs e) => UpdateForecastAsync();
+
         private void Instance_RefreshSettings(object? sender, EventArgs e) => SetLayout();
+       
 
         #endregion
 
@@ -105,9 +109,8 @@ namespace TUCDashboardGrp1
             catch (Exception)
             {
                 label_current_weather.Text = "Kunde inte ladda väder";
+                SetLayout();
                 return;
-
-
             }
    
 
