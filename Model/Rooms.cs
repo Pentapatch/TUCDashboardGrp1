@@ -11,6 +11,5 @@ namespace TUCDashboardGrp1.Model
         public string RoomName { get; set; }
         public string RoomType { get; set; }
         
-
     }
 }

@@ -57,6 +57,7 @@
             // 
             // btn_editrooms_back
             // 
+            this.btn_editrooms_back.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_editrooms_back.Location = new System.Drawing.Point(89, 382);
             this.btn_editrooms_back.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_editrooms_back.Name = "btn_editrooms_back";
@@ -68,7 +69,8 @@
             // 
             // btn_remove
             // 
-            this.btn_remove.Location = new System.Drawing.Point(649, 382);
+            this.btn_remove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_remove.Location = new System.Drawing.Point(674, 382);
             this.btn_remove.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_remove.Name = "btn_remove";
             this.btn_remove.Size = new System.Drawing.Size(81, 22);
@@ -79,7 +81,8 @@
             // 
             // btn_edit_room
             // 
-            this.btn_edit_room.Location = new System.Drawing.Point(553, 382);
+            this.btn_edit_room.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_edit_room.Location = new System.Drawing.Point(578, 382);
             this.btn_edit_room.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_edit_room.Name = "btn_edit_room";
             this.btn_edit_room.Size = new System.Drawing.Size(81, 22);
@@ -90,7 +93,8 @@
             // 
             // btn_remove_all
             // 
-            this.btn_remove_all.Location = new System.Drawing.Point(456, 382);
+            this.btn_remove_all.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_remove_all.Location = new System.Drawing.Point(481, 382);
             this.btn_remove_all.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_remove_all.Name = "btn_remove_all";
             this.btn_remove_all.Size = new System.Drawing.Size(81, 22);
@@ -164,6 +168,9 @@
             // 
             // listView_edit_rooms
             // 
+            this.listView_edit_rooms.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listView_edit_rooms.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.col_room_name,
             this.col_room_type});
@@ -171,7 +178,7 @@
             this.listView_edit_rooms.Location = new System.Drawing.Point(300, 3);
             this.listView_edit_rooms.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.listView_edit_rooms.Name = "listView_edit_rooms";
-            this.listView_edit_rooms.Size = new System.Drawing.Size(434, 377);
+            this.listView_edit_rooms.Size = new System.Drawing.Size(459, 377);
             this.listView_edit_rooms.TabIndex = 11;
             this.listView_edit_rooms.UseCompatibleStateImageBehavior = false;
             this.listView_edit_rooms.View = System.Windows.Forms.View.Details;
@@ -181,17 +188,16 @@
             // col_room_name
             // 
             this.col_room_name.Text = "Rumsnamn";
-            this.col_room_name.Width = 300;
+            this.col_room_name.Width = 200;
             // 
             // col_room_type
             // 
             this.col_room_type.Text = "Rumstyp";
-            this.col_room_type.Width = 300;
+            this.col_room_type.Width = 200;
             // 
             // RoomPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.btn_editrooms_clear);
             this.Controls.Add(this.btn_editrooms_back);
             this.Controls.Add(this.btn_remove);
@@ -205,7 +211,7 @@
             this.Controls.Add(this.label_room_name);
             this.Controls.Add(this.listView_edit_rooms);
             this.Name = "RoomPanel";
-            this.Size = new System.Drawing.Size(734, 406);
+            this.Size = new System.Drawing.Size(759, 406);
             this.ResumeLayout(false);
             this.PerformLayout();
 

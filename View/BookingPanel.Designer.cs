@@ -64,9 +64,10 @@
             this.columnHeader7,
             this.columnHeader8});
             this.listview_bookings.FullRowSelect = true;
-            this.listview_bookings.Location = new System.Drawing.Point(358, 3);
+            this.listview_bookings.Location = new System.Drawing.Point(313, 2);
+            this.listview_bookings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listview_bookings.Name = "listview_bookings";
-            this.listview_bookings.Size = new System.Drawing.Size(871, 507);
+            this.listview_bookings.Size = new System.Drawing.Size(763, 381);
             this.listview_bookings.TabIndex = 8;
             this.listview_bookings.UseCompatibleStateImageBehavior = false;
             this.listview_bookings.View = System.Windows.Forms.View.Details;
@@ -106,59 +107,59 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 48);
+            this.label1.Location = new System.Drawing.Point(3, 36);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 20);
+            this.label1.Size = new System.Drawing.Size(58, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bokad av:";
             // 
             // textBox_booked_by
             // 
-            this.textBox_booked_by.Location = new System.Drawing.Point(104, 48);
+            this.textBox_booked_by.Location = new System.Drawing.Point(91, 36);
             this.textBox_booked_by.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.textBox_booked_by.Name = "textBox_booked_by";
-            this.textBox_booked_by.Size = new System.Drawing.Size(235, 27);
+            this.textBox_booked_by.Size = new System.Drawing.Size(206, 23);
             this.textBox_booked_by.TabIndex = 1;
             // 
             // dateTimePicker_date
             // 
             this.dateTimePicker_date.CustomFormat = "yyyy-MM-dd";
             this.dateTimePicker_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_date.Location = new System.Drawing.Point(104, 91);
+            this.dateTimePicker_date.Location = new System.Drawing.Point(91, 68);
             this.dateTimePicker_date.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.dateTimePicker_date.Name = "dateTimePicker_date";
-            this.dateTimePicker_date.Size = new System.Drawing.Size(172, 27);
+            this.dateTimePicker_date.Size = new System.Drawing.Size(151, 23);
             this.dateTimePicker_date.TabIndex = 2;
             // 
             // dateTimePicker_start
             // 
             this.dateTimePicker_start.CustomFormat = "HH:mm";
             this.dateTimePicker_start.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_start.Location = new System.Drawing.Point(104, 124);
+            this.dateTimePicker_start.Location = new System.Drawing.Point(91, 93);
             this.dateTimePicker_start.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.dateTimePicker_start.Name = "dateTimePicker_start";
             this.dateTimePicker_start.ShowUpDown = true;
-            this.dateTimePicker_start.Size = new System.Drawing.Size(81, 27);
+            this.dateTimePicker_start.Size = new System.Drawing.Size(71, 23);
             this.dateTimePicker_start.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 93);
+            this.label2.Location = new System.Drawing.Point(3, 70);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 20);
+            this.label2.Size = new System.Drawing.Size(46, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "Datum:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 129);
+            this.label3.Location = new System.Drawing.Point(3, 97);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 20);
+            this.label3.Size = new System.Drawing.Size(48, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "Starttid:";
             // 
@@ -167,10 +168,10 @@
             this.combobox_room.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.combobox_room.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combobox_room.FormattingEnabled = true;
-            this.combobox_room.Location = new System.Drawing.Point(104, 204);
+            this.combobox_room.Location = new System.Drawing.Point(91, 153);
             this.combobox_room.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.combobox_room.Name = "combobox_room";
-            this.combobox_room.Size = new System.Drawing.Size(235, 28);
+            this.combobox_room.Size = new System.Drawing.Size(206, 23);
             this.combobox_room.TabIndex = 5;
             this.combobox_room.Text = "Välj ett rum..";
             this.combobox_room.DropDownClosed += new System.EventHandler(this.combobox_room_DropDownClosed);
@@ -179,19 +180,19 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 204);
+            this.label4.Location = new System.Drawing.Point(3, 153);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 20);
+            this.label4.Size = new System.Drawing.Size(61, 15);
             this.label4.TabIndex = 7;
             this.label4.Text = "Rum / Sal:";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(104, 247);
+            this.button1.Location = new System.Drawing.Point(91, 185);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 29);
+            this.button1.Size = new System.Drawing.Size(88, 22);
             this.button1.TabIndex = 6;
             this.button1.Text = "Boka";
             this.button1.UseVisualStyleBackColor = true;
@@ -200,27 +201,27 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 8);
+            this.label5.Location = new System.Drawing.Point(3, 6);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 20);
+            this.label5.Size = new System.Drawing.Size(61, 15);
             this.label5.TabIndex = 9;
             this.label5.Text = "Bokad för:";
             // 
             // textBox_booked_for
             // 
-            this.textBox_booked_for.Location = new System.Drawing.Point(105, 5);
+            this.textBox_booked_for.Location = new System.Drawing.Point(92, 4);
             this.textBox_booked_for.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.textBox_booked_for.Name = "textBox_booked_for";
-            this.textBox_booked_for.Size = new System.Drawing.Size(233, 27);
+            this.textBox_booked_for.Size = new System.Drawing.Size(204, 23);
             this.textBox_booked_for.TabIndex = 0;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(209, 247);
+            this.button2.Location = new System.Drawing.Point(183, 185);
             this.button2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 29);
+            this.button2.Size = new System.Drawing.Size(114, 22);
             this.button2.TabIndex = 7;
             this.button2.Text = "Rensa form";
             this.button2.UseVisualStyleBackColor = true;
@@ -230,27 +231,26 @@
             // 
             this.dateTimePicker_stop.CustomFormat = "HH:mm";
             this.dateTimePicker_stop.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_stop.Location = new System.Drawing.Point(104, 157);
+            this.dateTimePicker_stop.Location = new System.Drawing.Point(91, 118);
             this.dateTimePicker_stop.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.dateTimePicker_stop.Name = "dateTimePicker_stop";
             this.dateTimePicker_stop.ShowUpDown = true;
-            this.dateTimePicker_stop.Size = new System.Drawing.Size(81, 27);
+            this.dateTimePicker_stop.Size = new System.Drawing.Size(71, 23);
             this.dateTimePicker_stop.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 157);
+            this.label6.Location = new System.Drawing.Point(3, 118);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 20);
+            this.label6.Size = new System.Drawing.Size(44, 15);
             this.label6.TabIndex = 15;
             this.label6.Text = "Sluttid:";
             // 
             // BookingPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.label6);
             this.Controls.Add(this.listview_bookings);
             this.Controls.Add(this.dateTimePicker_stop);
@@ -266,9 +266,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.combobox_room);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "BookingPanel";
-            this.Size = new System.Drawing.Size(1233, 513);
+            this.Size = new System.Drawing.Size(1079, 385);
             this.ResumeLayout(false);
             this.PerformLayout();
 

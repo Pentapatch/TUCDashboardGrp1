@@ -35,18 +35,20 @@
             // pbx_logo
             // 
             this.pbx_logo.Location = new System.Drawing.Point(0, 0);
+            this.pbx_logo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbx_logo.Name = "pbx_logo";
-            this.pbx_logo.Size = new System.Drawing.Size(150, 150);
+            this.pbx_logo.Size = new System.Drawing.Size(193, 210);
             this.pbx_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbx_logo.TabIndex = 0;
             this.pbx_logo.TabStop = false;
             // 
             // LogoWidget
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.pbx_logo);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "LogoWidget";
+            this.Size = new System.Drawing.Size(193, 210);
             ((System.ComponentModel.ISupportInitialize)(this.pbx_logo)).EndInit();
             this.ResumeLayout(false);
 
