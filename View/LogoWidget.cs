@@ -16,7 +16,7 @@ namespace TUCDashboardGrp1.View
         }
 
         public int ImagePadding { get; set; } = 20;
-       
+
         public LogoWidget()
         {
             InitializeComponent();

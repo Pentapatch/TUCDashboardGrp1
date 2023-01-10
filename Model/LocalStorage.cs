@@ -65,7 +65,7 @@ namespace TUCDashboardGrp1.Model
         public void SaveSettings() => Save<Settings>(true);
 
         public void SaveData() => Save<XmlLocalStorage>(false);
-        
+
         public void OpenInExplorer()
         {
             Process.Start("explorer.exe", directoryPath);

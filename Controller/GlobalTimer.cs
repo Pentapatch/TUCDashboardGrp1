@@ -78,7 +78,7 @@
         #region Public Methods
 
         public void Refresh() => OnRefreshWidget();
-        
+
         public void RefreshSettingsOnly() => OnRefreshSettings();
 
         #endregion
@@ -121,7 +121,7 @@
             }
 
         }
-        
+
         #endregion
 
     }

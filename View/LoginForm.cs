@@ -19,8 +19,6 @@
 
             if (user == "admin" && pass == "admin" || DashboardForm.IsDebugging)
             {
-                //labelMessage.Text = "Welcome Admin";
-                //labelMessage.ForeColor = System.Drawing.Color.Green;
                 using (AdminTools a = new AdminTools())
                 {
                     this.Visible = false;
@@ -55,11 +53,11 @@
             {
                 this.ActiveControl = textBoxUsername;
                 buttonLogin_Click(sender, new());
-                
+
             }
         }
 
-     
+
     }
 
 }

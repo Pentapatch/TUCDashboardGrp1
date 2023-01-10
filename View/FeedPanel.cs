@@ -250,9 +250,6 @@ namespace TUCDashboardGrp1
 
         #endregion // End feed functions
 
-        private void FeedPanel_Resize(object sender, EventArgs e)
-        {
-            
-        }
+
     }
 }

@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json.Bson;
-using TUCDashboardGrp1.Controller;
+﻿using TUCDashboardGrp1.Controller;
 using TUCDashboardGrp1.Model;
 
 namespace TUCDashboardGrp1
@@ -20,7 +19,7 @@ namespace TUCDashboardGrp1
         private List<Widget> widgets = new();
 
         public const string ApplicationTitle = "TUC Dashboard";
-        public const bool IsDebugging = true;
+        public const bool IsDebugging = false;
 
         #endregion
 

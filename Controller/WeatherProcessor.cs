@@ -11,6 +11,8 @@ namespace TUCDashboardGrp1.Controller
          * When data is returned it uses WeatherResultModel to store the data.
          * A (string, int) tuple is returned, where Item1 is the string presented in the weather widget, 
            and Item2 is the number of the weather symbol.
+         * this link: https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer#param=airtemperatureInstant,stations=core
+         * is used for getting the Longitude and Latitude Coordinates to which works with the API.
         
         If you want to display any other type of data, you simply change the index of Paramaters[]. Find the different indexes below:
         0 = spp,      Percent of precipitation in frozen form.Unit: %. 
@@ -33,11 +35,6 @@ namespace TUCDashboardGrp1.Controller
         17 = gust,    Wind gust speed.                        Unit: m/s.
         18 = Wsymb2,  Weather symbol.                         Unit: Integer 1-27 (number of the symbol)
         */
-
-        //// Static Long and Lat for Linköping
-        //public static string Url { get; set; } = "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/15.62157/lat/58.41086/data.json";
-        //// If there is a manually fixed Long and Lat for the Weather, grab that instead
-        //public static string Uri { get; set; } = "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/" + Longitude + "/lat" + Latitude + "/data.json";
 
         public static async Task<WeatherResultModel> LoadWeather()
         {
