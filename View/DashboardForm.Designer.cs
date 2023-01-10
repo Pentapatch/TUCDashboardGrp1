@@ -34,7 +34,7 @@
             this.sc_top_left = new System.Windows.Forms.SplitContainer();
             this.clockWidget1 = new TUCDashboardGrp1.View.ClockWidget();
             this.sc_top_right = new System.Windows.Forms.SplitContainer();
-            this.weatherWidghet1 = new TUCDashboardGrp1.WeatherWidghet();
+            this.weatherWidghet1 = new TUCDashboardGrp1.WeatherWidget();
             this.traficWidget1 = new TUCDashboardGrp1.TraficWidget();
             this.sc_bottom = new System.Windows.Forms.SplitContainer();
             this.feedWidget1 = new TUCDashboardGrp1.FeedWidget();
@@ -348,7 +348,7 @@
         private SplitContainer sc_bottom;
         private SplitContainer sc_right;
         private View.ClockWidget clockWidget1;
-        private WeatherWidghet weatherWidghet1;
+        private WeatherWidget weatherWidghet1;
         private TraficWidget traficWidget1;
         private FeedWidget feedWidget1;
         private LecturesWidget lecturesWidget1;

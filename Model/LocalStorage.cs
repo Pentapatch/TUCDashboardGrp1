@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
 using System.Xml.Serialization;
 using TUCDashboardGrp1.Controller;
 
@@ -97,7 +96,6 @@ namespace TUCDashboardGrp1.Model
             }
         }
 
-       
         private T ReadFile<T>(bool isSettings)
         {
             XmlSerializer reader = new(typeof(T));

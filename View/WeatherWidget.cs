@@ -4,7 +4,7 @@ using TUCDashboardGrp1.Model;
 
 namespace TUCDashboardGrp1
 {
-    public partial class WeatherWidghet : Widget
+    public partial class WeatherWidget : Widget
     {
 
         // ############
@@ -41,7 +41,7 @@ namespace TUCDashboardGrp1
 
         #region Constructors
 
-        public WeatherWidghet()
+        public WeatherWidget()
         {
             InitializeComponent();
             Resize += WeatherWidget_Resize;

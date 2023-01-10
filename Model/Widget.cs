@@ -94,12 +94,12 @@ namespace TUCDashboardGrp1.Model
             Resize += Widget_Resize;
             DoubleBuffered = true;
             GlobalTimer.Instance.RefreshSettings += Instance_RefreshSettings;
-            UpdateColors();
+            UpdateLooks();
         }
 
-        private void Instance_RefreshSettings(object? sender, EventArgs e) => UpdateColors();
+        private void Instance_RefreshSettings(object? sender, EventArgs e) => UpdateLooks();
 
-        private void UpdateColors()
+        private void UpdateLooks()
         {
             // Update background color and border color
             BackgroundColor = LocalStorage.Instance.Settings.WidgetBackgroundColor;
@@ -117,6 +117,7 @@ namespace TUCDashboardGrp1.Model
                 if (control is Label label)
                 {
                     label.ForeColor = LocalStorage.Instance.Settings.TextColor;
+                    label.Font = Settings.CreateFont(); 
                 }
             }
         }

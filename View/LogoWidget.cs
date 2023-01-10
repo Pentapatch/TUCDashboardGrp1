@@ -9,19 +9,20 @@ namespace TUCDashboardGrp1.View
         public string ImagePath
         {
             get => pbx_logo.ImageLocation;
-            set => pbx_logo.ImageLocation = value;
+            set
+            {
+                if (value != null && value != "") pbx_logo.LoadAsync(value);
+            }
         }
 
         public int ImagePadding { get; set; } = 20;
        
-
-
         public LogoWidget()
         {
             InitializeComponent();
-            RefreshWidget();
             Resize += LogoWidget_Resize;
             GlobalTimer.Instance.RefreshWidget += Instance_RefreshSettings;
+            RefreshWidget();
         }
 
         private void Instance_RefreshSettings(object? sender, EventArgs e) => RefreshWidget();

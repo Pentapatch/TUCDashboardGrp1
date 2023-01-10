@@ -1,5 +1,4 @@
 ﻿using TUCDashboardGrp1.Model;
-using TUCDashboardGrp1.Properties;
 using TUCDashboardGrp1.Controller;
 
 namespace TUCDashboardGrp1

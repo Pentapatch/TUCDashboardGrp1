@@ -1,4 +1,5 @@
-﻿using TUCDashboardGrp1.Controller;
+﻿using Newtonsoft.Json.Bson;
+using TUCDashboardGrp1.Controller;
 using TUCDashboardGrp1.Model;
 
 namespace TUCDashboardGrp1
@@ -38,12 +39,19 @@ namespace TUCDashboardGrp1
             //LocalStorage ls = new();
             LocalStorage.Initialize();
             InitializeWidgetControl();
+
+            GlobalTimer.Instance.RefreshSettingsOnly();
+            //GlobalTimer.Instance.Refresh();
+
             Resize += DashboardForm_Resize;
             Shown += DashboardForm_Shown;
-            GlobalTimer.Instance.RefreshWidget += Instance_RefreshWidget;
+            GlobalTimer.Instance.RefreshSettings += Instance_RefreshSettings;
+            UpdateDesign();
         }
 
-        private void Instance_RefreshWidget(object? sender, EventArgs e)
+        private void Instance_RefreshSettings(object? sender, EventArgs e) => UpdateDesign();
+
+        private void UpdateDesign()
         {
             BackColor = LocalStorage.Instance.Settings.BackgroundColor;
         }
@@ -234,8 +242,7 @@ namespace TUCDashboardGrp1
 
         private void weatherWidghet1_Load(object sender, EventArgs e)
         {
-            GlobalTimer.Instance.Refresh();
-            GlobalTimer.Instance.RefreshSettingsOnly();
+            
         }
 
         private void feedWidget1_Load(object sender, EventArgs e)

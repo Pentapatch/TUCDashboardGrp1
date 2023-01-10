@@ -31,11 +31,21 @@
         18 = Wsymb2,  Weather symbol.                         Unit: Integer 1-27 (number of the symbol)
         */
 
+        public static string? Longitude { get; set; }
+
+        public static string? Latitude { get; set; }
+
+
+        // Static Long and Lat for Linköping
         public static string Url { get; set; } = "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/15.62157/lat/58.41086/data.json";
+        // If there is a manually fixed Long and Lat for the Weather, grab that instead
+        public static string Uri { get; set; } = "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/" + Longitude + "/lat" + Latitude + "/data.json";
 
         public static async Task<WeatherResultModel> LoadWeather()
         {
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(Url))
+            string address = (Longitude == null && Latitude == null) ? Url : Uri;
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(address))
             {
                 // Get and return the result asynchronously
                 if (response.IsSuccessStatusCode) return await response.Content.ReadAsAsync<WeatherResultModel>();

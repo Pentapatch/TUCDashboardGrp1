@@ -40,6 +40,10 @@ namespace TUCDashboardGrp1.View
             lbl_baseColorPreview.BackColor = LocalStorage.Instance.Settings.BaseColor;
             lbl_borderColorPreview.BackColor = LocalStorage.Instance.Settings.BorderColor;
 
+            // Update the font preview
+            lbl_fontPreview.Text = LocalStorage.Instance.Settings.FontName;
+            lbl_fontPreview.Font = Settings.CreateFont(11);
+
             // Update the slider
             slider_borderRadius.Value = LocalStorage.Instance.Settings.BorderRadius;
             slider_borderWidth.Value = LocalStorage.Instance.Settings.BorderWidth;
@@ -157,7 +161,7 @@ namespace TUCDashboardGrp1.View
             _ => lbl_textColorPreview,
         };
 
-        private Color? BrowseForColor()
+        private static Color? BrowseForColor()
         {
             ColorDialog cd = new();
 
@@ -232,6 +236,33 @@ namespace TUCDashboardGrp1.View
         {
             LocalStorage.Instance.Settings.BorderWidth = slider_borderWidth.Value;
             LocalStorage.Instance.SaveSettings();
+            GlobalTimer.Instance.RefreshSettingsOnly();
+        }
+
+        private void btn_browseForFont_Click(object sender, EventArgs e)
+        {
+            //lbl_fontPreview.Font = LocalStorage.Instance.Settings.Font;
+            //return;
+
+            FontDialog fd = new();
+
+            if (fd.ShowDialog() == DialogResult.OK)
+            {
+                lbl_fontPreview.Text = fd.Font.Name;
+                lbl_fontPreview.Font = new Font(fd.Font.FontFamily.ToString(), 9, fd.Font.Style);
+            }
+
+            // Save the font details
+            LocalStorage.Instance.Settings.FontSize = (int)fd.Font.Size;
+            LocalStorage.Instance.Settings.FontName = fd.Font.Name;
+            LocalStorage.Instance.Settings.FontBold = fd.Font.Style.HasFlag(FontStyle.Bold);
+            LocalStorage.Instance.Settings.FontItalic = fd.Font.Style.HasFlag(FontStyle.Italic);
+            LocalStorage.Instance.Settings.FontUnderline = fd.Font.Style.HasFlag(FontStyle.Underline);
+
+            // Save settings
+            LocalStorage.Instance.SaveSettings();
+
+            // Update all widgets
             GlobalTimer.Instance.RefreshSettingsOnly();
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace TUCDashboardGrp1
 {
-    partial class WeatherWidghet
+    partial class WeatherWidget
     {
         /// <summary> 
         /// Required designer variable.

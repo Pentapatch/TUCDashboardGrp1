@@ -40,6 +40,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btn_browseForFont = new System.Windows.Forms.Button();
+            this.lbl_fontPreview = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.slider_borderWidth = new System.Windows.Forms.TrackBar();
@@ -67,6 +70,8 @@
             this.lbl_logotypePath = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -74,6 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.slider_borderWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.slider_borderRadius)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_logotypePreview)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_edit_rooms
@@ -205,6 +211,9 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btn_browseForFont);
+            this.groupBox4.Controls.Add(this.lbl_fontPreview);
+            this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.slider_borderWidth);
@@ -239,11 +248,40 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Applikationstema";
             // 
+            // btn_browseForFont
+            // 
+            this.btn_browseForFont.Location = new System.Drawing.Point(438, 347);
+            this.btn_browseForFont.Name = "btn_browseForFont";
+            this.btn_browseForFont.Size = new System.Drawing.Size(95, 23);
+            this.btn_browseForFont.TabIndex = 32;
+            this.btn_browseForFont.Text = "Välj..";
+            this.btn_browseForFont.UseVisualStyleBackColor = true;
+            this.btn_browseForFont.Click += new System.EventHandler(this.btn_browseForFont_Click);
+            // 
+            // lbl_fontPreview
+            // 
+            this.lbl_fontPreview.AutoSize = true;
+            this.lbl_fontPreview.Location = new System.Drawing.Point(495, 324);
+            this.lbl_fontPreview.Name = "lbl_fontPreview";
+            this.lbl_fontPreview.Size = new System.Drawing.Size(45, 15);
+            this.lbl_fontPreview.TabIndex = 31;
+            this.lbl_fontPreview.Text = "<font>";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(438, 324);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(51, 15);
+            this.label9.TabIndex = 30;
+            this.label9.Text = "Typsnitt";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(316, 322);
+            this.label8.Location = new System.Drawing.Point(316, 324);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(71, 15);
             this.label8.TabIndex = 29;
@@ -253,7 +291,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(206, 322);
+            this.label3.Location = new System.Drawing.Point(206, 324);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(105, 15);
             this.label3.TabIndex = 28;
@@ -261,7 +299,7 @@
             // 
             // slider_borderWidth
             // 
-            this.slider_borderWidth.Location = new System.Drawing.Point(316, 340);
+            this.slider_borderWidth.Location = new System.Drawing.Point(316, 342);
             this.slider_borderWidth.Maximum = 6;
             this.slider_borderWidth.Name = "slider_borderWidth";
             this.slider_borderWidth.Size = new System.Drawing.Size(104, 45);
@@ -270,7 +308,7 @@
             // 
             // slider_borderRadius
             // 
-            this.slider_borderRadius.Location = new System.Drawing.Point(206, 340);
+            this.slider_borderRadius.Location = new System.Drawing.Point(206, 342);
             this.slider_borderRadius.Maximum = 100;
             this.slider_borderRadius.Name = "slider_borderRadius";
             this.slider_borderRadius.Size = new System.Drawing.Size(104, 45);
@@ -495,9 +533,32 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Logotyp";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.button1);
+            this.groupBox5.Location = new System.Drawing.Point(6, 342);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.groupBox5.Size = new System.Drawing.Size(215, 139);
+            this.groupBox5.TabIndex = 18;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Koordinater";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 87);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(81, 22);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Spara";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // SettingsPanel
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -514,6 +575,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.slider_borderWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.slider_borderRadius)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_logotypePreview)).EndInit();
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -558,5 +620,10 @@
         private Label label3;
         private TrackBar slider_borderWidth;
         private TrackBar slider_borderRadius;
+        private Label lbl_fontPreview;
+        private Label label9;
+        private GroupBox groupBox5;
+        private Button button1;
+        private Button btn_browseForFont;
     }
 }
