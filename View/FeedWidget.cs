@@ -1,5 +1,5 @@
-﻿using TUCDashboardGrp1.Model;
-using TUCDashboardGrp1.Controller;
+﻿using TUCDashboardGrp1.Controller;
+using TUCDashboardGrp1.Model;
 
 namespace TUCDashboardGrp1
 {
@@ -56,7 +56,7 @@ namespace TUCDashboardGrp1
 
         private void Instance_RefreshSettings(object? sender, EventArgs e) => SetLayout();
 
-        private void FeedWidget_RefreshWidget(object? sender, EventArgs e) => 
+        private void FeedWidget_RefreshWidget(object? sender, EventArgs e) =>
             SetFeed(LocalStorage.Instance.Storage.Feed);
 
         #endregion

@@ -1,6 +1,4 @@
-﻿using System.DirectoryServices.ActiveDirectory;
-using System.Drawing;
-using TUCDashboardGrp1.Controller;
+﻿using TUCDashboardGrp1.Controller;
 
 namespace TUCDashboardGrp1.Model
 {
@@ -44,9 +42,9 @@ namespace TUCDashboardGrp1.Model
         {
             UpdateRooms();
 
-            if (LocalStorage.Instance.Settings.OpeningHour != null) 
-                TimelineStart= LocalStorage.Instance.Settings.OpeningHour.Value.Hour;
-            if (LocalStorage.Instance.Settings.ClosingHour != null) 
+            if (LocalStorage.Instance.Settings.OpeningHour != null)
+                TimelineStart = LocalStorage.Instance.Settings.OpeningHour.Value.Hour;
+            if (LocalStorage.Instance.Settings.ClosingHour != null)
                 TimelineStop = LocalStorage.Instance.Settings.ClosingHour.Value.Hour;
 
             Bookings = LocalStorage.Instance.Storage.Bookings;
@@ -65,7 +63,7 @@ namespace TUCDashboardGrp1.Model
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            
+
             base.OnPaint(e);
 
             // Do not bother drawing if there are no rooms declared

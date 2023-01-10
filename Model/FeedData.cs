@@ -31,7 +31,8 @@ namespace TUCDashboardGrp1.Model
         }
 
         [XmlIgnore]
-        public Image? Image { 
+        public Image? Image
+        {
             get
             {
                 if (imagePath != null && imagePath != "")

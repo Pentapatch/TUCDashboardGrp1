@@ -209,7 +209,6 @@
             this.Controls.Add(this.label_feed_header);
             this.Name = "FeedPanel";
             this.Size = new System.Drawing.Size(1039, 479);
-            this.Resize += new System.EventHandler(this.FeedPanel_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.picturebox_feed_preview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -50,7 +50,7 @@ namespace TUCDashboardGrp1.View
             // Set the coordinates
             tbx_longitude.Text = LocalStorage.Instance.Settings.Longitude;
             tbx_latitude.Text = LocalStorage.Instance.Settings.Latitude;
-            
+
             // Update the slider
             slider_borderRadius.Value = LocalStorage.Instance.Settings.BorderRadius;
             slider_borderWidth.Value = LocalStorage.Instance.Settings.BorderWidth;
@@ -215,7 +215,7 @@ namespace TUCDashboardGrp1.View
 
             // Save the settings
             LocalStorage.Instance.SaveSettings();
-            
+
             // Update Widgets
             GlobalTimer.Instance.RefreshSettingsOnly();
         }
@@ -282,7 +282,7 @@ namespace TUCDashboardGrp1.View
             // Set the long and lat
             LocalStorage.Instance.Settings.Longitude = tbx_longitude.Text;
             LocalStorage.Instance.Settings.Latitude = tbx_latitude.Text;
-            
+
             // Save settings
             LocalStorage.Instance.SaveSettings();
 

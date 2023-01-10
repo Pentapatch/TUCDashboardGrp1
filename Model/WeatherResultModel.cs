@@ -5,7 +5,7 @@
     {
         public WeatherParameters[] TimeSeries { get; set; } = Array.Empty<WeatherParameters>();
     }
-    
+
     public class WeatherParameters
     {
         public WeatherValues[] Parameters { get; set; } = Array.Empty<WeatherValues>();

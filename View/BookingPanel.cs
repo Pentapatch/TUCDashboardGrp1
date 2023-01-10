@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using TUCDashboardGrp1.Controller;
+﻿using TUCDashboardGrp1.Controller;
 using TUCDashboardGrp1.Model;
 
 namespace TUCDashboardGrp1.View
@@ -330,7 +329,7 @@ namespace TUCDashboardGrp1.View
             }
 
             // Create the Booking
-            return true;   
+            return true;
         }
 
         private static List<BookingClass> GetAllBookingsOfRoom(string room)

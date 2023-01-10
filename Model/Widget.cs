@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using TUCDashboardGrp1.Controller;
+﻿using TUCDashboardGrp1.Controller;
 
 namespace TUCDashboardGrp1.Model
 {
@@ -120,7 +119,7 @@ namespace TUCDashboardGrp1.Model
                 if (control is Label label)
                 {
                     label.ForeColor = LocalStorage.Instance.Settings.TextColor;
-                    label.Font = font; 
+                    label.Font = font;
                 }
             }
         }
@@ -182,15 +181,15 @@ namespace TUCDashboardGrp1.Model
         private MouseEventArgs CreateEventArgs(MouseEventArgs e, Control control)
         {
             var translatedCoordinates = Translate(e.Location, control);
-            return new (e.Button, e.Clicks, translatedCoordinates.X, translatedCoordinates.Y, e.Delta);
+            return new(e.Button, e.Clicks, translatedCoordinates.X, translatedCoordinates.Y, e.Delta);
         }
 
         /// <summary>Translate the event coordinates to the widget coordinate space.</summary>
         /// <param name="point">The event coordinates to translate.</param>
         /// <param name="control">The control that raised the event.</param>
         /// <returns>A tuple that contains translated X and Y values from control coordinates to widget coordinates.</returns>
-        private (int X, int Y) Translate(Point point, Control control) => 
-            (point.X + control.Left, point.Y + control.Top); 
+        private (int X, int Y) Translate(Point point, Control control) =>
+            (point.X + control.Left, point.Y + control.Top);
 
         private void Widget_Paint(object? sender, PaintEventArgs e)
         {

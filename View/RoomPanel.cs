@@ -175,7 +175,7 @@ namespace TUCDashboardGrp1.View
                 listView_edit_rooms.Items.Add(room.RoomName);
                 listView_edit_rooms.Items[^1].SubItems.Add(room.RoomType);
                 admin.AddRoom(room.RoomName);
-                
+
             }
 
 

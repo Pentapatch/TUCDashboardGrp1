@@ -1,13 +1,9 @@
-﻿using TUCDashboardGrp1.Controller;
-using TUCDashboardGrp1.Model;
-using TUCDashboardGrp1.View;
+﻿using TUCDashboardGrp1.Model;
 
 namespace TUCDashboardGrp1
 {
     public partial class AdminTools : Form
     {
-
-        
         public AdminTools()
         {
             InitializeComponent();
@@ -17,7 +13,7 @@ namespace TUCDashboardGrp1
             tabControl1.Appearance = TabAppearance.FlatButtons;
             tabControl1.ItemSize = new Size(0, 1);
             tabControl1.SizeMode = TabSizeMode.Fixed;
-            
+
             feedPanel1.FeedRefresh();
         }
 
@@ -46,8 +42,5 @@ namespace TUCDashboardGrp1
                 bookingPanel1.BookingsRefresh();
             }
         }
-
-
     }
-
 }

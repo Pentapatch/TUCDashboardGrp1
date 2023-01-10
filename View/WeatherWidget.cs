@@ -1,6 +1,6 @@
 ﻿using TUCDashboardGrp1.Controller;
-using TUCDashboardGrp1.Properties;
 using TUCDashboardGrp1.Model;
+using TUCDashboardGrp1.Properties;
 
 namespace TUCDashboardGrp1
 {
@@ -53,7 +53,7 @@ namespace TUCDashboardGrp1
         private void Instance_RefreshWidget(object? sender, EventArgs e) => UpdateForecastAsync();
 
         private void Instance_RefreshSettings(object? sender, EventArgs e) => SetLayout();
-       
+
 
         #endregion
 
@@ -99,12 +99,12 @@ namespace TUCDashboardGrp1
         }
 
         private async void UpdateForecastAsync()
-        {            
+        {
             WeatherResultModel? weatherInfo;
 
             try
             {
-                weatherInfo = await WeatherProcessor.LoadWeather();                                
+                weatherInfo = await WeatherProcessor.LoadWeather();
             }
             catch (Exception)
             {
@@ -112,7 +112,7 @@ namespace TUCDashboardGrp1
                 SetLayout();
                 return;
             }
-   
+
 
             label_current_weather.Text = $"Temperatur: {GetValueAsInt(weatherInfo, "t")}°C";
             current_weather_symbol.Image = GetForecastImage(weatherInfo);
