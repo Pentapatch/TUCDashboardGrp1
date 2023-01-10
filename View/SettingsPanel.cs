@@ -44,6 +44,8 @@ namespace TUCDashboardGrp1.View
             lbl_fontPreview.Text = LocalStorage.Instance.Settings.FontName;
             lbl_fontPreview.Font = Settings.CreateFont(11);
 
+
+
             // Update the slider
             slider_borderRadius.Value = LocalStorage.Instance.Settings.BorderRadius;
             slider_borderWidth.Value = LocalStorage.Instance.Settings.BorderWidth;

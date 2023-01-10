@@ -46,7 +46,10 @@ namespace TUCDashboardGrp1
             InitializeComponent();
             Resize += WeatherWidget_Resize;
             GlobalTimer.Instance!.Tick60Minutes += GlobalTimer_Tick60Minutes;
+            GlobalTimer.Instance.RefreshSettings += Instance_RefreshSettings;
         }
+
+        private void Instance_RefreshSettings(object? sender, EventArgs e) => SetLayout();
 
         #endregion
 
@@ -68,7 +71,10 @@ namespace TUCDashboardGrp1
         {
             // Setup:
             int offsetFromCenter = 3;
-            int forecastOffset = label_forecast.Text == string.Empty ? 0 : 10;
+            int forecastOffset = label_forecast.Text == string.Empty ? 0 : 5;
+
+            // Update font size
+            label_current_weather.Font = Settings.CreateFont(GetRelativeFontSize(6));
 
             // Center according to width
             label_current_weather.Left = (Width / 2) - (label_current_weather.Width / 2);

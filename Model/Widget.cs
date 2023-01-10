@@ -107,6 +107,9 @@ namespace TUCDashboardGrp1.Model
             BorderWidth = LocalStorage.Instance.Settings.BorderWidth;
             BorderRadius = LocalStorage.Instance.Settings.BorderRadius;
 
+            Font font = Settings.CreateFont();
+            Font = font;
+
             // Get all controls that is contained within this widget
             // Loop through each of them
             foreach (Control control in GetAllControls())
@@ -117,7 +120,7 @@ namespace TUCDashboardGrp1.Model
                 if (control is Label label)
                 {
                     label.ForeColor = LocalStorage.Instance.Settings.TextColor;
-                    label.Font = Settings.CreateFont(); 
+                    label.Font = font; 
                 }
             }
         }
@@ -279,5 +282,11 @@ namespace TUCDashboardGrp1.Model
 
         #endregion 
 
+        protected int GetRelativeFontSize(int relativeSize)
+        {
+            int result = (int)Font.Size + relativeSize;
+            if (result <= 0) return 1;
+            return result;
+        }
     }
 }

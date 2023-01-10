@@ -128,13 +128,13 @@ namespace TUCDashboardGrp1.Model
 
         #endregion
 
-        public static Font CreateFont(int size = -1)
+        public static Font CreateFont(int size = -1, bool overrideBold = false, bool overrideItalic = false, bool overrideUnderline = false)
         {
             FontStyle style = FontStyle.Regular;
 
-            if (LocalStorage.Instance.Settings.FontBold) style &= ~FontStyle.Bold;
-            if (LocalStorage.Instance.Settings.FontItalic) style &= ~FontStyle.Italic;
-            if (LocalStorage.Instance.Settings.FontUnderline) style &= ~FontStyle.Underline;
+            if (LocalStorage.Instance.Settings.FontBold || overrideBold) style |= FontStyle.Bold;
+            if (LocalStorage.Instance.Settings.FontItalic || overrideItalic) style |= FontStyle.Italic;
+            if (LocalStorage.Instance.Settings.FontUnderline || overrideUnderline) style |= FontStyle.Underline;
 
             return new Font(LocalStorage.Instance.Settings.FontName, size == -1 ? LocalStorage.Instance.Settings.FontSize : size, style);
         }

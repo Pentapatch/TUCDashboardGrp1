@@ -17,6 +17,8 @@ namespace TUCDashboardGrp1.Model
         public int TimelineStart { get; set; } = 8;
         public int TimelineStop { get; set; } = 18;
 
+        public bool IsGroupRoom { get; set; }
+
 
         public RoomsWidget()
         {
@@ -33,8 +35,8 @@ namespace TUCDashboardGrp1.Model
             Rooms.Clear();
             foreach (Rooms room in LocalStorage.Instance.Storage.Rooms)
             {
-                if (this is LecturesWidget && room.RoomType == "Sal") Rooms.Add(room.RoomName);
-                else if (this is GroupRoomsWidget && room.RoomType == "Grupprum") Rooms.Add(room.RoomName);
+                if (!IsGroupRoom && room.RoomType == "Sal") Rooms.Add(room.RoomName);
+                else if (IsGroupRoom && room.RoomType == "Grupprum") Rooms.Add(room.RoomName);
             }
         }
 
@@ -71,9 +73,12 @@ namespace TUCDashboardGrp1.Model
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
 
-            Font bodyFont = new(Font.FontFamily, Font.Size - 8, Font.Style);
-            Font bookingFont = new(Font.FontFamily, Font.Size - 12, Font.Style);
+            Font bodyFont = new(Font.FontFamily, Font.Size, Font.Style);
+            Font headerFont = new(Font.FontFamily, GetRelativeFontSize(6), FontStyle.Bold);
+            Font bookingFont = new(Font.FontFamily, GetRelativeFontSize(-4), Font.Style);
 
             SolidBrush textBrush = new(LocalStorage.Instance.Settings.TextColor);
             SolidBrush baseBrush = new(LocalStorage.Instance.Settings.BaseColor);
@@ -93,7 +98,7 @@ namespace TUCDashboardGrp1.Model
             int totalTime = TimelineStop - TimelineStart;
 
             // Drawing the header
-            e.Graphics.DrawString(WidgetName, Font, textBrush, new Point(minimum, minimum));
+            e.Graphics.DrawString(WidgetName, headerFont, textBrush, new Point(minimum, minimum));
 
             // Draw a separator                                                              
             e.Graphics.FillRectangle(baseBrush, dividerlineX, rowTopStart + 10, 1, (RowHeight * Rooms.Count) - (TimelineHeight / 2) - 20);
@@ -105,9 +110,9 @@ namespace TUCDashboardGrp1.Model
                 // Do the Calc's needed for the drawing
                 int hour = TimelineStart + i;
                 int timeLeft = timelineX + ((totalLenght / totalTime) * i);
-                int timeTop = rowTopStart - bodyHeight - 4;
+                int timeTop = rowTopStart - bodyHeight;
                 // Draw the Header
-                e.Graphics.DrawString($"{hour}:00", bodyFont, textBrush, new Point(timeLeft, timeTop));
+                e.Graphics.DrawString($"{hour}:00", bookingFont, textBrush, new Point(timeLeft, timeTop));
             }
 
             // Loop through all the Rooms and Draw
