@@ -12,6 +12,8 @@ namespace TUCDashboardGrp1.Model
         private List<BookingClass> bookings = new();
         private List<Rooms> rooms = new();
 
+
+
         #endregion
 
         #region XMLIgnore

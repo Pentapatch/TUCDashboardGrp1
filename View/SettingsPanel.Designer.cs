@@ -71,7 +71,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_listCoords = new System.Windows.Forms.Button();
+            this.lbl_latitude = new System.Windows.Forms.Label();
+            this.lbl_longitude = new System.Windows.Forms.Label();
+            this.tbx_latitude = new System.Windows.Forms.TextBox();
+            this.tbx_longitude = new System.Windows.Forms.TextBox();
+            this.btn_setCoordinates = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -84,7 +89,7 @@
             // 
             // btn_edit_rooms
             // 
-            this.btn_edit_rooms.Location = new System.Drawing.Point(5, 43);
+            this.btn_edit_rooms.Location = new System.Drawing.Point(5, 27);
             this.btn_edit_rooms.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btn_edit_rooms.Name = "btn_edit_rooms";
             this.btn_edit_rooms.Size = new System.Drawing.Size(81, 22);
@@ -106,12 +111,13 @@
             // 
             // lbl_currentDataFile
             // 
-            this.lbl_currentDataFile.AutoSize = true;
-            this.lbl_currentDataFile.Location = new System.Drawing.Point(92, 40);
+            this.lbl_currentDataFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lbl_currentDataFile.Location = new System.Drawing.Point(92, 36);
             this.lbl_currentDataFile.Name = "lbl_currentDataFile";
-            this.lbl_currentDataFile.Size = new System.Drawing.Size(45, 15);
+            this.lbl_currentDataFile.Size = new System.Drawing.Size(118, 22);
             this.lbl_currentDataFile.TabIndex = 10;
             this.lbl_currentDataFile.Text = "<tom>";
+            this.lbl_currentDataFile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_open
             // 
@@ -175,11 +181,11 @@
             this.groupBox1.Controls.Add(this.dtpicker_closing);
             this.groupBox1.Controls.Add(this.dtpicker_opening);
             this.groupBox1.Controls.Add(this.btn_save_openedHour);
-            this.groupBox1.Location = new System.Drawing.Point(6, 201);
+            this.groupBox1.Location = new System.Drawing.Point(6, 160);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.groupBox1.Size = new System.Drawing.Size(215, 139);
+            this.groupBox1.Size = new System.Drawing.Size(215, 120);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Öppettider";
@@ -188,11 +194,11 @@
             // 
             this.groupBox2.Controls.Add(this.btn_dataBrowse);
             this.groupBox2.Controls.Add(this.lbl_currentDataFile);
-            this.groupBox2.Location = new System.Drawing.Point(6, 104);
+            this.groupBox2.Location = new System.Drawing.Point(6, 76);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.groupBox2.Size = new System.Drawing.Size(215, 94);
+            this.groupBox2.Size = new System.Drawing.Size(215, 78);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ladda ny Datafil";
@@ -204,7 +210,7 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.groupBox3.Size = new System.Drawing.Size(215, 94);
+            this.groupBox3.Size = new System.Drawing.Size(215, 66);
             this.groupBox3.TabIndex = 19;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Hantera rum";
@@ -260,12 +266,13 @@
             // 
             // lbl_fontPreview
             // 
-            this.lbl_fontPreview.AutoSize = true;
-            this.lbl_fontPreview.Location = new System.Drawing.Point(495, 324);
+            this.lbl_fontPreview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lbl_fontPreview.Location = new System.Drawing.Point(539, 347);
             this.lbl_fontPreview.Name = "lbl_fontPreview";
-            this.lbl_fontPreview.Size = new System.Drawing.Size(45, 15);
+            this.lbl_fontPreview.Size = new System.Drawing.Size(145, 23);
             this.lbl_fontPreview.TabIndex = 31;
             this.lbl_fontPreview.Text = "<font>";
+            this.lbl_fontPreview.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
@@ -535,25 +542,77 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.button1);
-            this.groupBox5.Location = new System.Drawing.Point(6, 342);
+            this.groupBox5.Controls.Add(this.btn_listCoords);
+            this.groupBox5.Controls.Add(this.lbl_latitude);
+            this.groupBox5.Controls.Add(this.lbl_longitude);
+            this.groupBox5.Controls.Add(this.tbx_latitude);
+            this.groupBox5.Controls.Add(this.tbx_longitude);
+            this.groupBox5.Controls.Add(this.btn_setCoordinates);
+            this.groupBox5.Location = new System.Drawing.Point(6, 282);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.groupBox5.Size = new System.Drawing.Size(215, 139);
+            this.groupBox5.Size = new System.Drawing.Size(215, 129);
             this.groupBox5.TabIndex = 18;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Koordinater";
+            this.groupBox5.Text = "Koordinater för Väder";
             // 
-            // button1
+            // btn_listCoords
             // 
-            this.button1.Location = new System.Drawing.Point(3, 87);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 22);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Spara";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_listCoords.Location = new System.Drawing.Point(117, 87);
+            this.btn_listCoords.Name = "btn_listCoords";
+            this.btn_listCoords.Size = new System.Drawing.Size(75, 23);
+            this.btn_listCoords.TabIndex = 21;
+            this.btn_listCoords.Text = "Lista..";
+            this.btn_listCoords.UseVisualStyleBackColor = true;
+            this.btn_listCoords.Click += new System.EventHandler(this.btn_listCoords_Click);
+            // 
+            // lbl_latitude
+            // 
+            this.lbl_latitude.AutoSize = true;
+            this.lbl_latitude.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_latitude.Location = new System.Drawing.Point(11, 59);
+            this.lbl_latitude.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_latitude.Name = "lbl_latitude";
+            this.lbl_latitude.Size = new System.Drawing.Size(56, 15);
+            this.lbl_latitude.TabIndex = 18;
+            this.lbl_latitude.Text = "Latitude:";
+            // 
+            // lbl_longitude
+            // 
+            this.lbl_longitude.AutoSize = true;
+            this.lbl_longitude.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_longitude.Location = new System.Drawing.Point(11, 31);
+            this.lbl_longitude.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_longitude.Name = "lbl_longitude";
+            this.lbl_longitude.Size = new System.Drawing.Size(66, 15);
+            this.lbl_longitude.TabIndex = 17;
+            this.lbl_longitude.Text = "Longitude:";
+            // 
+            // tbx_latitude
+            // 
+            this.tbx_latitude.Location = new System.Drawing.Point(92, 56);
+            this.tbx_latitude.Name = "tbx_latitude";
+            this.tbx_latitude.Size = new System.Drawing.Size(100, 23);
+            this.tbx_latitude.TabIndex = 22;
+            // 
+            // tbx_longitude
+            // 
+            this.tbx_longitude.Location = new System.Drawing.Point(92, 27);
+            this.tbx_longitude.Name = "tbx_longitude";
+            this.tbx_longitude.Size = new System.Drawing.Size(100, 23);
+            this.tbx_longitude.TabIndex = 21;
+            // 
+            // btn_setCoordinates
+            // 
+            this.btn_setCoordinates.Location = new System.Drawing.Point(3, 87);
+            this.btn_setCoordinates.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btn_setCoordinates.Name = "btn_setCoordinates";
+            this.btn_setCoordinates.Size = new System.Drawing.Size(81, 22);
+            this.btn_setCoordinates.TabIndex = 4;
+            this.btn_setCoordinates.Text = "Spara";
+            this.btn_setCoordinates.UseVisualStyleBackColor = true;
+            this.btn_setCoordinates.Click += new System.EventHandler(this.btn_setCoordinates_Click);
             // 
             // SettingsPanel
             // 
@@ -564,11 +623,10 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "SettingsPanel";
-            this.Size = new System.Drawing.Size(1120, 498);
+            this.Size = new System.Drawing.Size(1044, 419);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -576,6 +634,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.slider_borderRadius)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_logotypePreview)).EndInit();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -623,7 +682,12 @@
         private Label lbl_fontPreview;
         private Label label9;
         private GroupBox groupBox5;
-        private Button button1;
+        private Button btn_setCoordinates;
         private Button btn_browseForFont;
+        private Label lbl_latitude;
+        private Label lbl_longitude;
+        private TextBox tbx_latitude;
+        private TextBox tbx_longitude;
+        private Button btn_listCoords;
     }
 }

@@ -21,6 +21,8 @@ namespace TUCDashboardGrp1.Model
         public bool FontUnderline { get; set; } = false;
 
         public string FontName { get; set; } = "Segoe UI";
+        public string? Longitude { get; set; }
+        public string? Latitude { get; set; }
 
         #region XMLIgnore
 

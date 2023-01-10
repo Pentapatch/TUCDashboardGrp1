@@ -1,10 +1,13 @@
-﻿using TUCDashboardGrp1.Controller;
+﻿using System.Diagnostics;
+using TUCDashboardGrp1.Controller;
 using TUCDashboardGrp1.Model;
 
 namespace TUCDashboardGrp1.View
 {
     public partial class SettingsPanel : UserControl
     {
+        readonly string smhiUrl = "https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer#param=airtemperatureInstant,stations=core";
+
         public SettingsPanel()
         {
             InitializeComponent();
@@ -44,8 +47,10 @@ namespace TUCDashboardGrp1.View
             lbl_fontPreview.Text = LocalStorage.Instance.Settings.FontName;
             lbl_fontPreview.Font = Settings.CreateFont(11);
 
-
-
+            // Set the coordinates
+            tbx_longitude.Text = LocalStorage.Instance.Settings.Longitude;
+            tbx_latitude.Text = LocalStorage.Instance.Settings.Latitude;
+            
             // Update the slider
             slider_borderRadius.Value = LocalStorage.Instance.Settings.BorderRadius;
             slider_borderWidth.Value = LocalStorage.Instance.Settings.BorderWidth;
@@ -264,8 +269,36 @@ namespace TUCDashboardGrp1.View
             // Save settings
             LocalStorage.Instance.SaveSettings();
 
-            // Update all widgets
+            // Update all settings on all widgets
             GlobalTimer.Instance.RefreshSettingsOnly();
         }
+
+        private void btn_setCoordinates_Click(object sender, EventArgs e)
+        {
+            // Change eventual commas for dots
+            tbx_latitude.Text = tbx_latitude.Text.Replace(",", ".");
+            tbx_longitude.Text = tbx_longitude.Text.Replace(",", ".");
+
+            // Set the long and lat
+            LocalStorage.Instance.Settings.Longitude = tbx_longitude.Text;
+            LocalStorage.Instance.Settings.Latitude = tbx_latitude.Text;
+            
+            // Save settings
+            LocalStorage.Instance.SaveSettings();
+
+            // Update data on all widgets
+            GlobalTimer.Instance.Refresh();
+        }
+
+        private void btn_listCoords_Click(object sender, EventArgs e)
+        {
+            // Start a new process/tab with your default browser and take you to SMHI's list of Coordinates for weather
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = smhiUrl,
+                UseShellExecute = true
+            });
+        }
+
     }
 }
