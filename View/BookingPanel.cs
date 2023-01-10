@@ -1,4 +1,5 @@
-﻿using TUCDashboardGrp1.Controller;
+﻿using System.Security.Cryptography.X509Certificates;
+using TUCDashboardGrp1.Controller;
 using TUCDashboardGrp1.Model;
 
 namespace TUCDashboardGrp1.View
@@ -230,7 +231,7 @@ namespace TUCDashboardGrp1.View
 
         private static bool IsFacilityOpen(DateTime dateTime)
         {
-            TimeOnly time = new (dateTime.Hour, dateTime.Minute);
+            TimeOnly time = new(dateTime.Hour, dateTime.Minute);
 
             //School has not opened yet
             if (time < LocalStorage.Instance.Settings.OpeningHour) return false;
@@ -256,13 +257,13 @@ namespace TUCDashboardGrp1.View
             // Early exit if opening hours have not been set yet
             if (openingHours == "" || closingHours == "")
             {
-                if(MessageBox.Show("Du måste ange öppettider innan du kan boka.\nVill du gå till inställningar?",
-                    DashboardForm.ApplicationTitle, MessageBoxButtons.YesNoCancel, 
+                if (MessageBox.Show("Du måste ange öppettider innan du kan boka.\nVill du gå till inställningar?",
+                    DashboardForm.ApplicationTitle, MessageBoxButtons.YesNoCancel,
                     MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    if(ParentForm is TUCDashboardGrp1.AdminTools admin) admin.ChangeTab(2);
+                    if (ParentForm is TUCDashboardGrp1.AdminTools admin) admin.ChangeTab(2);
                 }
-                
+
                 return false;
             }
 
@@ -285,7 +286,65 @@ namespace TUCDashboardGrp1.View
                 return false;
             }
 
-            return true;
+            // Booked For needs a value
+            if (textBox_booked_for.Text == "")
+            {
+                MessageBox.Show(
+                    $"Du måste ange 'Bokad För' för att skapa en bokning.",
+                    DashboardForm.ApplicationTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Have the time passed for which we're trying to book
+            DateTime value = Convert.ToDateTime($"{dateTimePicker_date.Text} {dateTimePicker_start.Text}");
+
+            if (value <= DateTime.Now)
+            {
+                MessageBox.Show(
+                    $"Du måste ange en giltig tid för att skapa en bokning.",
+                    DashboardForm.ApplicationTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Does the Current Room already have a Booking that touches the new time?
+            DateOnly selectedDate = DateOnly.FromDateTime(value);
+            TimeOnly selectedStart = TimeOnly.FromDateTime(value);
+            TimeOnly selectedStop = TimeOnly.FromDateTime(Convert.ToDateTime($"{dateTimePicker_date.Text} {dateTimePicker_stop.Text}"));
+
+            foreach (BookingClass booking in GetAllBookingsOfRoom(combobox_room.Text))
+            {
+                // Cycle through all the dates
+                if (selectedDate == booking.Date)
+                {
+                    // Compare start and Stop times of both the new and old bookings
+                    if (!((selectedStop < booking.StartTime) || (selectedStart > booking.EndTime)))
+                    {
+                        // Throw a Error if the Time is within a already booked time
+                        MessageBox.Show(
+                        $"Din tid ligger inom en redan bokad tid.",
+                        DashboardForm.ApplicationTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+
+                }
+            }
+
+            // Create the Booking
+            return true;   
+        }
+
+        private static List<BookingClass> GetAllBookingsOfRoom(string room)
+        {
+            List<BookingClass> result = new();
+            foreach (BookingClass booking in LocalStorage.Instance.Storage.Bookings)
+            {
+                if (booking.Room.ToLower() == room.ToLower())
+                {
+                    result.Add(booking);
+                }
+            }
+
+            return result;
         }
 
         #endregion
